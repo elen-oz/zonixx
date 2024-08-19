@@ -11,10 +11,12 @@ const SearchExercises = () => {
     console.log('you are looking for: ', search.toLowerCase());
 
     if (search) {
-      const exerciseData = await fetchData(
-        'https://exercisedb.p.rapidapi.com/exercises?limit=150',
-        exerciseOptions
-      );
+      // const exerciseData = await fetchData(
+      //   'https://exercisedb.p.rapidapi.com/exercises?limit=1400',
+      //   exerciseOptions
+      // );
+
+      const exerciseData = await fetchData('/data/data.json');
 
       const searchedExercises = exerciseData.filter(
         (exercise: any) =>
@@ -27,16 +29,17 @@ const SearchExercises = () => {
       setSearch('');
       setExercises(searchedExercises);
 
-      console.log('RESULT: ', searchedExercises);
+      // console.log('RESULT: ', searchedExercises);
+      console.log('FILTER: ', searchedExercises);
+      console.log('ALL: ', exerciseData);
 
-      // Save the result to the data.json file
-      await fetch('/api/saveData', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(searchedExercises),
-      });
+      // await fetch('/api/saveData', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(exerciseData),
+      // });
     }
   };
 
