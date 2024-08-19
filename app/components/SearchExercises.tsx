@@ -1,12 +1,34 @@
 'use client';
 import { useState } from 'react';
+import { exerciseOptions, fetchData } from '../utils/fetchData';
 
 const SearchExercises = () => {
   const [search, setSearch] = useState('');
+  const [exercises, setExercises] = useState([]);
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(search.toLowerCase());
+    console.log('you are lookin for: ', search.toLowerCase());
+
+    if (search) {
+      const exerciseData = await fetchData(
+        'https://exercisedb.p.rapidapi.com/exercises?limit=150',
+        exerciseOptions
+      );
+
+      const searchedExercises = exerciseData.filter(
+        (exercise: any) =>
+          exercise.name.toLowerCase().includes(search) ||
+          exercise.target.toLowerCase().includes(search) ||
+          exercise.equipment.toLowerCase().includes(search) ||
+          exercise.bodyPart.toLowerCase().includes(search)
+      );
+
+      setSearch('');
+      setExercises(searchedExercises);
+
+      console.log('RESULT: ', searchedExercises);
+    }
   };
 
   return (
