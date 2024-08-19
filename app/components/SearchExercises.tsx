@@ -8,7 +8,7 @@ const SearchExercises = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log('you are lookin for: ', search.toLowerCase());
+    console.log('you are looking for: ', search.toLowerCase());
 
     if (search) {
       const exerciseData = await fetchData(
@@ -28,6 +28,15 @@ const SearchExercises = () => {
       setExercises(searchedExercises);
 
       console.log('RESULT: ', searchedExercises);
+
+      // Save the result to the data.json file
+      await fetch('/api/saveData', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(searchedExercises),
+      });
     }
   };
 
