@@ -1,14 +1,49 @@
+'use client';
+import { useState, useEffect } from 'react';
+// import ExerciseCard from './ExerciseCard';
+import SearchExercises from '../components/SearchExercises';
+// import { fetchData } from '../utils/fetchData';
+import { exerciseOptions, fetchData } from '../utils/fetchData';
+
 import ExerciseList from '../components/ExerciseList';
 
+export type ExerciseData = {
+  bodyPart: string;
+  equipment: string;
+  gifUrl: string;
+  id: string;
+  name: string;
+  target: string;
+  secondaryMuscles: string[];
+  instructions: string[];
+};
+
 export default function Home() {
+  const [exercises, setExercisesData] = useState<ExerciseData[]>([]);
+  const [bodyPart, setBodyPart] = useState('all');
+
+  const handleExercisesData = (data: ExerciseData[]) => {
+    setExercisesData(data);
+  };
+
   return (
     <>
       <div className='w-full flex flex-col items-center justify-between'>
         <h2 className='text-3xl font-extrabold text-black pb-5 dark:text-white sm:text-4xl'>
           search workout
         </h2>
+        <SearchExercises
+          handleExercisesData={handleExercisesData}
+          exercises={exercises}
+          bodyPart={bodyPart}
+          setBodyPart={setBodyPart}
+        />
       </div>
-      <ExerciseList />
+      <ExerciseList
+        exercises={exercises}
+        bodyPart={bodyPart}
+        setBodyPart={setBodyPart}
+      />
     </>
   );
 }
