@@ -25,12 +25,12 @@ export default function RootLayout({
                 <Link href='/'>home</Link>
               </li>
               <li>
-                <Link href='/my-workout'>my page</Link>
+                <Link href='/exercises'>my page</Link>
               </li>
             </ul>
           </nav>
         </header>
-        {children}
+        <main className='w-full p-24'>{children}</main>
       </body>
     </html>
   );
