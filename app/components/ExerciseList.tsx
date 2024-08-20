@@ -4,6 +4,7 @@ import ExerciseCard from './ExerciseCard';
 import SearchExercises from './SearchExercises';
 // import { fetchData } from '../utils/fetchData';
 import { exerciseOptions, fetchData } from '../utils/fetchData';
+import Pagination from './Pagination';
 
 export type ExerciseData = {
   bodyParts: string;
@@ -33,14 +34,33 @@ const ExerciseList = ({
   //   setExercisesData(data);
   // };
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const exercisesPerPage = 12;
+
+  const indexOfLastExercise = currentPage * exercisesPerPage;
+  const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
+  const currentExercises = exercises.slice(
+    indexOfFirstExercise,
+    indexOfLastExercise
+  );
+  const numberPages = Math.ceil(exercises.length / exercisesPerPage);
+
   return (
     <>
       {/* <SearchExercises handleExercisesData={handleExercisesData} /> */}
       <ul className='p-10 grid grid-cols-4 gap-4'>
-        {exercises.map((exercise: ExerciseData, index: number) => (
+        {/* {exercises.map((exercise: ExerciseData, index: number) => (
+          <ExerciseCard key={index} exercise={exercise} />
+        ))} */}
+        {currentExercises.map((exercise: ExerciseData, index: number) => (
           <ExerciseCard key={index} exercise={exercise} />
         ))}
       </ul>
+      <Pagination
+        numberPages={numberPages}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </>
   );
 };
