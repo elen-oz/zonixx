@@ -24,8 +24,8 @@ const Pagination = ({
   };
 
   return (
-    <nav className='h-[50px]'>
-      <ul className='flex justify-center gap-1'>
+    <nav>
+      <ul className='flex items-center justify-between'>
         <li className='w-[60px] h-[40px] rounded-l-full bg-blue-300 '>
           <a
             className='w-full h-full flex items-center justify-center'
@@ -35,22 +35,26 @@ const Pagination = ({
             Prev
           </a>
         </li>
-        {pageNumbers.map((pgNumber) => (
-          <li
-            key={pgNumber}
-            className={`w-[40px] h-[40px] rounded-full ${
-              currentPage == pgNumber ? 'bg-blue-800 text-white' : 'bg-blue-300'
-            } `}
-          >
-            <a
-              onClick={() => setCurrentPage(pgNumber)}
-              className='w-full h-full flex items-center justify-center'
-              href='#'
+        <div className='grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 gap-1'>
+          {pageNumbers.map((pgNumber) => (
+            <li
+              key={pgNumber}
+              className={`w-[40px] h-[40px] rounded-full ${
+                currentPage == pgNumber
+                  ? 'bg-blue-800 text-white'
+                  : 'bg-blue-300'
+              } `}
             >
-              {pgNumber}
-            </a>
-          </li>
-        ))}
+              <a
+                onClick={() => setCurrentPage(pgNumber)}
+                className='w-full h-full flex items-center justify-center'
+                href='#'
+              >
+                {pgNumber}
+              </a>
+            </li>
+          ))}
+        </div>
         <li className='w-[60px] h-[40px] rounded-r-full bg-blue-300'>
           <a
             className='w-full h-full flex items-center justify-center'

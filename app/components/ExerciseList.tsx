@@ -48,7 +48,7 @@ const ExerciseList = ({
   return (
     <>
       {/* <SearchExercises handleExercisesData={handleExercisesData} /> */}
-      <ul className='p-10 grid grid-cols-4 gap-4'>
+      <ul className='p-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
         {/* {exercises.map((exercise: ExerciseData, index: number) => (
           <ExerciseCard key={index} exercise={exercise} />
         ))} */}
