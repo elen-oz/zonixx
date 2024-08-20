@@ -1,10 +1,14 @@
 'use client';
 import { useState } from 'react';
-import { exerciseOptions, fetchData } from '../utils/fetchData';
+// import { exerciseOptions, fetchData } from '../utils/fetchData';
+import { fetchData } from '../utils/fetchData';
 
-const SearchExercises = () => {
+type SearchExerciseProps = {
+  handleExercisesData: (data: any) => void;
+};
+
+const SearchExercises = ({ handleExercisesData }: SearchExerciseProps) => {
   const [search, setSearch] = useState('');
-  const [exercises, setExercises] = useState([]);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -27,9 +31,8 @@ const SearchExercises = () => {
       );
 
       setSearch('');
-      setExercises(searchedExercises);
+      handleExercisesData(searchedExercises);
 
-      // console.log('RESULT: ', searchedExercises);
       console.log('FILTER: ', searchedExercises);
       console.log('ALL: ', exerciseData);
 
