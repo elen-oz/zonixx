@@ -9,13 +9,22 @@ const config: Config = {
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-    },
+    // extend: {
+    //   colors: {
+    //     primary: {
+    //       50: '#e7e7ff',
+    //       100: '#b8bafd',
+    //       200: '#8a8cf5',
+    //       300: '#5b5ef0',
+    //       400: '#2e30eb',
+    //       500: '#1618d2',
+    //       600: '#0f12a4',
+    //       700: '#230976',
+    //       800: '#030749',
+    //       900: '#0a001d',
+    //     },
+    //   },
+    // },
   },
   darkMode: 'class',
   plugins: [
@@ -24,40 +33,31 @@ const config: Config = {
       themes: {
         light: {
           colors: {
-            background: '#FFFFFF', // or DEFAULT
-            foreground: '#09051a', // or 50 to 900 DEFAULT
+            background: '#FFFFFF',
+            foreground: '#0a001d',
             primary: {
-              //... 50 to 900
               foreground: '#FFFFFF',
               DEFAULT: '#6366f1',
             },
-            // ... rest of the colors
+            // second: {
+            //   foreground: '#FFFFFF',
+            //   DEFAULT: '#8a8cf5',
+            // },
           },
         },
         dark: {
           colors: {
-            background: '#09051a', // or DEFAULT
-            foreground: '#e9eaff', // or 50 to 900 DEFAULT
+            background: '#0a001d',
+            foreground: '#e7e7ff',
             primary: {
-              //... 50 to 900
               foreground: '#FFFFFF',
               DEFAULT: '#6366f1',
             },
           },
-          // ... rest of the colors
         },
-        // mytheme: {
-        //   extend: "dark",
-        //   colors: {
-        //     primary: {
-        //       DEFAULT: "#BEF264",
-        //       foreground: "#000000",
-        //     },
-        //     focus: "#BEF264",
-        //   },
-        // },
       },
     }),
   ],
 };
+
 export default config;

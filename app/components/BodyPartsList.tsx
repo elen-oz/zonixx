@@ -15,7 +15,7 @@ const BodyPartsList = ({
   setBodyPart,
 }: BodyPartsListProps) => {
   return (
-    <ul className='py-8 w-full md:px-10 lg:w-[700px] flex gap-1 flex-wrap justify-center'>
+    <ul className='py-8 w-full md:px-10 max-w-[550px] flex gap-1 flex-wrap justify-center'>
       {data.map((item, index) => (
         <li key={index}>
           {bodyParts ? (

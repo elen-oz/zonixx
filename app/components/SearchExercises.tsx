@@ -76,7 +76,7 @@ const SearchExercises = ({
     <>
       <form
         onSubmit={handleSubmit}
-        className='flex flex-col justify-center w-3/4 max-w-sm space-y-3 md:flex-row md:w-full md:space-x-3 md:space-y-0'
+        className='flex flex-col justify-center w-3/4 max-w-sm space-y-3 md:flex-row md:items-center md:w-full md:space-x-3 md:space-y-0'
       >
         <Input
           isClearable
@@ -85,9 +85,16 @@ const SearchExercises = ({
           labelPlacement='outside'
           onChange={(e) => setSearch(e.target.value)}
         />
-        <Button color='primary' className='font-semibold shadow' type='submit'>
-          Search
-        </Button>
+
+        <div className='md:pt-[calc(theme(fontSize.small)_+_10px)] '>
+          <Button
+            color='primary'
+            className='font-semibold shadow w-full'
+            type='submit'
+          >
+            Search
+          </Button>
+        </div>
       </form>
       <BodyPartsList
         data={bodyParts}

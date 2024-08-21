@@ -1,3 +1,5 @@
+import { Chip } from '@nextui-org/react';
+
 type BodyPartCardProps = {
   item: any;
   bodyPart: string;
@@ -6,16 +8,13 @@ type BodyPartCardProps = {
 
 const BodyPartCard = ({ item, bodyPart, setBodyPart }: BodyPartCardProps) => {
   return (
-    <div
-      className={` whitespace-nowrap text-sm flex items-center justify-center border-2 border-blue-400 rounded-full  px-6 py-2 ${
-        bodyPart === item ? 'bg-blue-800 text-white' : 'bg-blue-200'
-      }`}
-      onClick={() => {
-        setBodyPart(item);
-      }}
+    <Chip
+      onClick={() => setBodyPart(item)}
+      // variant='flat'
+      className='bg-blue-50 hover:cursor-pointer active:bg-primary active:text-white'
     >
       {item}
-    </div>
+    </Chip>
   );
 };
 
