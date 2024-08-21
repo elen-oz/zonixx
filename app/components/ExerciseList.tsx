@@ -1,22 +1,12 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { Pagination } from '@nextui-org/react';
+
 import ExerciseCard from './ExerciseCard';
 import SearchExercises from './SearchExercises';
 // import { fetchData } from '../utils/fetchData';
 import { exerciseOptions, fetchData } from '../utils/fetchData';
-import Pagination from './Pagination';
 import { ExerciseData } from '../exercises/page';
-
-// export type ExerciseData = {
-//   bodyParts: string;
-//   equipment: string;
-//   gifUrl: string;
-//   id: string;
-//   name: string;
-//   target: string;
-//   secondaryMuscles: string[];
-//   instructions: string[];
-// };
 
 type ExerciseListProps = {
   exercises: ExerciseData[];
@@ -72,9 +62,11 @@ const ExerciseList = ({
         ))}
       </ul>
       <Pagination
-        numberPages={numberPages}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
+        isCompact
+        showControls
+        total={numberPages}
+        initialPage={currentPage}
+        onChange={setCurrentPage}
       />
     </>
   );
