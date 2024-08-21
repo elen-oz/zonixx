@@ -48,6 +48,7 @@ const SearchExercises = ({
         'https://exercisedb.p.rapidapi.com/exercises?limit=1400',
         exerciseOptions
       );
+      console.log(exerciseData);
 
       // const exerciseData = await fetchData('/data/data.json');
 
