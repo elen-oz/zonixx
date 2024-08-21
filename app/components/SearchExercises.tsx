@@ -38,11 +38,8 @@ const SearchExercises = ({
     fetchExercisesData();
   }, []);
 
-  // console.log('--- bodyParts', bodyParts);
-
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log('you are looking for: ', search.toLowerCase());
 
     if (search) {
       const exerciseData = await fetchData(
@@ -62,9 +59,6 @@ const SearchExercises = ({
 
       setSearch('');
       handleExercisesData(searchedExercises);
-
-      console.log('FILTER: ', searchedExercises);
-      console.log('ALL: ', exerciseData);
 
       // await fetch('/api/saveData', {
       //   method: 'POST',

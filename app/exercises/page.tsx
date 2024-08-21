@@ -1,6 +1,5 @@
 'use client';
 import { useState, useEffect } from 'react';
-// import ExerciseCard from './ExerciseCard';
 import SearchExercises from '../components/SearchExercises';
 // import { fetchData } from '../utils/fetchData';
 import { exerciseOptions, fetchData } from '../utils/fetchData';
@@ -25,8 +24,6 @@ export default function Home() {
   const handleExercisesData = (data: ExerciseData[]) => {
     setExercises(data);
   };
-
-  console.log(bodyPart);
 
   return (
     <>

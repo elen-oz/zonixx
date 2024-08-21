@@ -5,17 +5,18 @@ import SearchExercises from './SearchExercises';
 // import { fetchData } from '../utils/fetchData';
 import { exerciseOptions, fetchData } from '../utils/fetchData';
 import Pagination from './Pagination';
+import { ExerciseData } from '../exercises/page';
 
-export type ExerciseData = {
-  bodyParts: string;
-  equipment: string;
-  gifUrl: string;
-  id: string;
-  name: string;
-  target: string;
-  secondaryMuscles: string[];
-  instructions: string[];
-};
+// export type ExerciseData = {
+//   bodyParts: string;
+//   equipment: string;
+//   gifUrl: string;
+//   id: string;
+//   name: string;
+//   target: string;
+//   secondaryMuscles: string[];
+//   instructions: string[];
+// };
 
 type ExerciseListProps = {
   exercises: ExerciseData[];
@@ -30,12 +31,6 @@ const ExerciseList = ({
   bodyPart,
   setBodyPart,
 }: ExerciseListProps) => {
-  // const [exercises, setExercisesData] = useState<ExerciseData[]>([]);
-
-  // const handleExercisesData = (data: ExerciseData[]) => {
-  //   setExercisesData(data);
-  // };
-
   const [currentPage, setCurrentPage] = useState(1);
   const exercisesPerPage = 12;
 
@@ -71,11 +66,7 @@ const ExerciseList = ({
 
   return (
     <>
-      {/* <SearchExercises handleExercisesData={handleExercisesData} /> */}
       <ul className='p-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-        {/* {exercises.map((exercise: ExerciseData, index: number) => (
-          <ExerciseCard key={index} exercise={exercise} />
-        ))} */}
         {currentExercises.map((exercise: ExerciseData, index: number) => (
           <ExerciseCard key={index} exercise={exercise} />
         ))}

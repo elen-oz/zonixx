@@ -1,5 +1,3 @@
-import { log } from 'console';
-
 type PaginationProps = {
   numberPages: number;
   currentPage: number;
@@ -12,8 +10,6 @@ const Pagination = ({
   setCurrentPage,
 }: PaginationProps) => {
   const pageNumbers = [...Array(numberPages + 1).keys()].slice(1);
-
-  console.log('=== pageNumbers', pageNumbers);
 
   const goToNextPage = () => {
     if (currentPage !== numberPages) setCurrentPage(currentPage + 1);

@@ -2,7 +2,7 @@ import BodyPartCard from './BodyPartCard';
 import ExerciseCard from './ExerciseCard';
 
 type BodyPartsListProps = {
-  data: [];
+  data: string[];
   bodyParts: boolean;
   bodyPart: string;
   setBodyPart: any;
