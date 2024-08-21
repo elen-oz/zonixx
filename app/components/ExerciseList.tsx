@@ -61,13 +61,15 @@ const ExerciseList = ({
           <ExerciseCard key={index} exercise={exercise} />
         ))}
       </div>
-      <Pagination
-        isCompact
-        showControls
-        total={numberPages}
-        initialPage={currentPage}
-        onChange={setCurrentPage}
-      />
+      <div className='flex justify-center'>
+        <Pagination
+          isCompact
+          showControls
+          total={numberPages}
+          initialPage={currentPage}
+          onChange={setCurrentPage}
+        />
+      </div>
     </>
   );
 };

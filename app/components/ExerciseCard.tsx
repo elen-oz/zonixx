@@ -23,18 +23,13 @@ const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
           width={270}
         />
       </CardBody>
-      <CardFooter className='text-small flex-col justify-between'>
+      <CardFooter className='flex-col justify-between'>
         <h4 className='text-tiny uppercase font-bold pb-2'>{exercise.name}</h4>
         <div className='flex gap-1 justify-center flex-wrap'>
           {exercise.secondaryMuscles.map((item) => (
-            <Chip
-              size='sm'
-              color='warning'
-              radius='full'
-              className='text-white'
-            >
+            <div className='bg-warning-500 text-white rounded-full px-1 sm:px-2 text-[0.5rem] sm:text-[1rem]'>
               {item}
-            </Chip>
+            </div>
           ))}
         </div>
       </CardFooter>
