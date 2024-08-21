@@ -56,11 +56,11 @@ const ExerciseList = ({
 
   return (
     <>
-      <ul className='p-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+      <div className='p-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
         {currentExercises.map((exercise: ExerciseData, index: number) => (
           <ExerciseCard key={index} exercise={exercise} />
         ))}
-      </ul>
+      </div>
       <Pagination
         isCompact
         showControls
