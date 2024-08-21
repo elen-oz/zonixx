@@ -19,12 +19,14 @@ export type ExerciseData = {
 };
 
 export default function Home() {
-  const [exercises, setExercisesData] = useState<ExerciseData[]>([]);
+  const [exercises, setExercises] = useState<ExerciseData[]>([]);
   const [bodyPart, setBodyPart] = useState('all');
 
   const handleExercisesData = (data: ExerciseData[]) => {
-    setExercisesData(data);
+    setExercises(data);
   };
+
+  console.log(bodyPart);
 
   return (
     <>
@@ -41,6 +43,7 @@ export default function Home() {
       </div>
       <ExerciseList
         exercises={exercises}
+        setExercises={setExercises}
         bodyPart={bodyPart}
         setBodyPart={setBodyPart}
       />

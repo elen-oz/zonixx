@@ -19,14 +19,16 @@ export type ExerciseData = {
 
 type ExerciseListProps = {
   exercises: ExerciseData[];
-  bodyParts: string;
-  setBodyParts: any;
+  setBodyPart: any;
+  bodyPart: string;
+  setExercises: any;
 };
 
 const ExerciseList = ({
   exercises,
-  bodyParts,
-  setBodyParts,
+  setExercises,
+  bodyPart,
+  setBodyPart,
 }: ExerciseListProps) => {
   // const [exercises, setExercisesData] = useState<ExerciseData[]>([]);
 
@@ -44,6 +46,28 @@ const ExerciseList = ({
     indexOfLastExercise
   );
   const numberPages = Math.ceil(exercises.length / exercisesPerPage);
+
+  useEffect(() => {
+    const fetchingExerciseData = async () => {
+      let exerciseData = [];
+
+      if (bodyPart === 'all') {
+        exerciseData = await fetchData(
+          'https://exercisedb.p.rapidapi.com/exercises?limit=1400',
+          exerciseOptions
+        );
+      } else {
+        exerciseData = await fetchData(
+          `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`,
+          exerciseOptions
+        );
+      }
+
+      setExercises(exerciseData);
+    };
+
+    fetchingExerciseData();
+  }, [bodyPart]);
 
   return (
     <>
