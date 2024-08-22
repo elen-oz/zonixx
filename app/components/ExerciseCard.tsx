@@ -16,6 +16,7 @@ import {
   Image,
   CardFooter,
 } from '@nextui-org/react';
+import Link from 'next/link';
 
 type ExerciseCardProps = {
   exercise: ExerciseData;
@@ -77,24 +78,25 @@ const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
           </ModalContent>
         </Modal>
       </CardHeader>
-      <CardBody className='overflow-visible py-2'>
-        <Image
-          alt={exercise.name}
-          className='object-cover rounded-xl'
-          src={exercise.gifUrl}
-          width={270}
-        />
-      </CardBody>
-      <CardFooter className='flex-col justify-between'>
-        <h4 className='text-tiny uppercase font-bold pb-2'>{exercise.name}</h4>
-        {/* <div className='flex gap-1 justify-center flex-wrap'>
-          {exercise.secondaryMuscles.map((item) => ( */}
-        <div className='bg-warning-500 text-white rounded-full px-1 sm:px-2 text-[0.5rem] sm:text-[1rem]'>
-          {exercise.target}
-        </div>
-        {/* ))}
-        </div> */}
-      </CardFooter>
+      <Link href={`/exercises/${exercise.id}`}>
+        <CardBody className='overflow-visible py-2'>
+          <Image
+            alt={exercise.name}
+            className='object-cover rounded-xl'
+            src={exercise.gifUrl}
+            width={270}
+          />
+        </CardBody>
+        <CardFooter className='flex-col justify-between'>
+          <h4 className='text-tiny uppercase font-bold pb-2'>
+            {exercise.name}
+          </h4>
+
+          <div className='bg-warning-500 text-white rounded-full px-1 sm:px-2 text-[0.5rem] sm:text-[1rem]'>
+            {exercise.target}
+          </div>
+        </CardFooter>
+      </Link>
     </Card>
   );
 };
