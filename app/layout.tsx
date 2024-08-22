@@ -20,11 +20,20 @@ export default function RootLayout({
     <html lang='en' className='light'>
       <body className={`${inter.className} min-h-screen`}>
         <Providers>
-          <header className='px-20 py-10'>
-            <nav>
+          <header className='pr-20 pl-5 py-10'>
+            <nav className='flex'>
+              <img
+                src='/icons/gym.svg'
+                alt='logo'
+                width={50}
+                className='pr-5'
+              />
               <ul className='w-full flex justify-between'>
                 <li>
                   <Link href='/'>home</Link>
+                </li>
+                <li>
+                  <Link href='/my-page'>My Page</Link>
                 </li>
                 <li>
                   <Link href='/exercises'>Exercises</Link>
