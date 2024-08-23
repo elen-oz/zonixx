@@ -41,7 +41,7 @@ export default function RootLayout({
               </ul>
             </nav>
           </header>
-          <main className='w-full p-4'>{children}</main>
+          <main className='w-full'>{children}</main>
         </Providers>
       </body>
     </html>

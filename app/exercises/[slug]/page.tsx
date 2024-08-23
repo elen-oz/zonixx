@@ -6,13 +6,17 @@ import Detail from '@/app/components/Detail';
 import ExerciseVideo from '@/app/components/ExerciseVideo';
 import SimilarExercises from '@/app/components/SimilarExercises';
 import { ExerciseData } from '../page';
-import { exerciseOptions, fetchData } from '@/app/utils/fetchData';
+import {
+  exerciseOptions,
+  youtubeOptions,
+  fetchData,
+} from '@/app/utils/fetchData';
 import { log } from 'console';
 
 const Details = (props: ExerciseData) => {
   const [exerciseDetail, setExerciseDetail] = useState({});
+  const [exerciseVideos, setExerciseVideos] = useState([]);
   const { slug } = useParams<{ slug: string }>();
-  // console.log('params', params);
 
   useEffect(() => {
     const fetchExercisesData = async () => {
@@ -24,24 +28,29 @@ const Details = (props: ExerciseData) => {
         `${exerciseDbUrl}/exercises/exercise/${slug}`,
         exerciseOptions
       );
-      setExerciseDetail(exerciseDetailData);
-
-      console.log('-- exerciseDetailData', exerciseDetailData);
 
       setExerciseDetail(exerciseDetailData);
+
+      const exerciseVideosData = await fetchData(
+        `${youtubeSearchUrl}/search?query=${exerciseDetailData.name}`,
+        youtubeOptions
+      );
+
+      setExerciseVideos(exerciseVideosData.contents);
     };
 
     fetchExercisesData();
   }, []);
 
-  console.log('=== exerciseDetail', exerciseDetail);
-
   return (
     <>
       {/* <h1 className='w-[100px] h-[100px] bg-yellow-500 text-white'>{slug}</h1> */}
       <Detail exerciseDetail={exerciseDetail} />
-      {/* <ExerciseVideo />
-      <SimilarExercises /> */}
+      <ExerciseVideo
+        exerciseVideos={exerciseVideos}
+        name={exerciseDetail.name}
+      />
+      {/* <SimilarExercises /> */}
     </>
   );
 };
