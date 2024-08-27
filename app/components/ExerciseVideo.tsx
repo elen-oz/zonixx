@@ -4,16 +4,14 @@ type ExerciseVideoProps = {
 };
 
 const ExerciseVideo = ({ exerciseVideos, name }: ExerciseVideoProps) => {
-  // console.log('exerciseVideos', exerciseVideos);
-
   if (!exerciseVideos.length) return 'Loading...';
 
   return (
-    <div className='px-2  lg:w-[1024px] mx-auto'>
-      <h3 className='my-3 text-xl'>
+    <div className='px-2 lg:w-[1024px] mx-auto'>
+      <h2>
         Watch <span className='font-semibold capitalize'>{name}</span> exercise
         videos:
-      </h3>
+      </h2>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-x-3 md:gap-y-6'>
         {exerciseVideos?.slice(0, 6).map((item, index) => (
           <a

@@ -16,6 +16,8 @@ import { log } from 'console';
 const Details = (props: ExerciseData) => {
   const [exerciseDetail, setExerciseDetail] = useState({});
   const [exerciseVideos, setExerciseVideos] = useState([]);
+  const [targetMuscleExercises, setTargetMuscleExercises] = useState([]);
+  const [equipmentExercises, setEquipmentExercises] = useState([]);
   const { slug } = useParams<{ slug: string }>();
 
   useEffect(() => {
@@ -28,15 +30,25 @@ const Details = (props: ExerciseData) => {
         `${exerciseDbUrl}/exercises/exercise/${slug}`,
         exerciseOptions
       );
-
       setExerciseDetail(exerciseDetailData);
 
       const exerciseVideosData = await fetchData(
         `${youtubeSearchUrl}/search?query=${exerciseDetailData.name}`,
         youtubeOptions
       );
-
       setExerciseVideos(exerciseVideosData.contents);
+
+      const targetMuscleExercisesData = await fetchData(
+        `${exerciseDbUrl}/exercises/target/${exerciseDetailData.target}`,
+        exerciseOptions
+      );
+      setTargetMuscleExercises(targetMuscleExercisesData);
+
+      const equipmentExercisesData = await fetchData(
+        `${exerciseDbUrl}/exercises/equipment/${exerciseDetailData.equipment}`,
+        exerciseOptions
+      );
+      setEquipmentExercises(equipmentExercisesData);
     };
 
     fetchExercisesData();
@@ -44,13 +56,15 @@ const Details = (props: ExerciseData) => {
 
   return (
     <>
-      {/* <h1 className='w-[100px] h-[100px] bg-yellow-500 text-white'>{slug}</h1> */}
       <Detail exerciseDetail={exerciseDetail} />
       <ExerciseVideo
         exerciseVideos={exerciseVideos}
         name={exerciseDetail.name}
       />
-      {/* <SimilarExercises /> */}
+      <SimilarExercises
+        targetMuscleExercises={targetMuscleExercises}
+        equipmentExercises={equipmentExercises}
+      />
     </>
   );
 };
