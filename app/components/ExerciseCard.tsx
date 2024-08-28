@@ -28,12 +28,12 @@ const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
-    <Card className='py-4'>
+    <Card className='pb-4'>
       <CardHeader>
         {/* <Button onPress={onOpen}>Details</Button> */}
         <IoIosInformationCircleOutline
           onClick={onOpen}
-          size={20}
+          size={40}
           className='p-2'
         />
         <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
