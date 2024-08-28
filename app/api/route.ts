@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  return NextResponse.json({ message: 'it works outside!' });
+  return NextResponse.json({ message: 'it works!' });
 }
