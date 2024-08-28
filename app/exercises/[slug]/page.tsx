@@ -6,11 +6,7 @@ import Detail from '@/app/components/Detail';
 import ExerciseVideo from '@/app/components/ExerciseVideo';
 import SimilarExercises from '@/app/components/SimilarExercises';
 import { ExerciseData } from '../page';
-import {
-  exerciseOptions,
-  youtubeOptions,
-  fetchData,
-} from '@/app/lib/fetchData';
+import { exerciseOptions, youtubeOptions, fetchData } from '@/lib/fetchData';
 import { log } from 'console';
 
 const Details = (props: ExerciseData) => {
