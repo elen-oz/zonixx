@@ -5,7 +5,7 @@ import { Pagination } from '@nextui-org/react';
 import ExerciseCard from './ExerciseCard';
 import SearchExercises from './SearchExercises';
 // import { fetchData } from '../utils/fetchData';
-import { exerciseOptions, fetchData } from '../utils/fetchData';
+import { exerciseOptions, fetchData } from '../lib/fetchData';
 import { ExerciseData } from '../exercises/page';
 
 type ExerciseListProps = {

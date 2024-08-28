@@ -8,6 +8,14 @@ export const exerciseOptions = {
   },
 };
 
+export const youtubeOptions = {
+  method: 'GET',
+  headers: {
+    'x-rapidapi-key': process.env.NEXT_PUBLIC_API_KEY,
+    'x-rapidapi-host': 'youtube-search-and-download.p.rapidapi.com',
+  },
+};
+
 export const fetchData = async (url: string, options: any) => {
   if (cache[url]) {
     console.log('Using cached data for:', url);
@@ -30,14 +38,6 @@ export const fetchData = async (url: string, options: any) => {
     console.error('Fetch data error:', error);
     return null;
   }
-};
-
-export const youtubeOptions = {
-  method: 'GET',
-  headers: {
-    'x-rapidapi-key': process.env.NEXT_PUBLIC_API_KEY,
-    'x-rapidapi-host': 'youtube-search-and-download.p.rapidapi.com',
-  },
 };
 
 // export const fetchData = async (url: string) => {

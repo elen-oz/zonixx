@@ -10,7 +10,7 @@ import {
   exerciseOptions,
   youtubeOptions,
   fetchData,
-} from '@/app/utils/fetchData';
+} from '@/app/lib/fetchData';
 import { log } from 'console';
 
 const Details = (props: ExerciseData) => {
