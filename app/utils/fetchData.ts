@@ -1,3 +1,5 @@
+const cache: { [key: string]: any } = {};
+
 export const exerciseOptions = {
   method: 'GET',
   headers: {
@@ -7,10 +9,27 @@ export const exerciseOptions = {
 };
 
 export const fetchData = async (url: string, options: any) => {
-  const response = await fetch(url, options);
-  const data = await response.json();
+  if (cache[url]) {
+    console.log('Using cached data for:', url);
+    return cache[url];
+  }
 
-  return data;
+  try {
+    const response = await fetch(url, options);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    cache[url] = data;
+
+    return data;
+  } catch (error) {
+    console.error('Fetch data error:', error);
+    return null;
+  }
 };
 
 export const youtubeOptions = {
