@@ -7,6 +7,8 @@ import {
   Button,
   useDisclosure,
 } from '@nextui-org/react';
+import { IoIosInformationCircleOutline } from 'react-icons/io';
+
 import { ExerciseData } from '../exercises/page';
 import { Chip } from '@nextui-org/react';
 import {
@@ -28,7 +30,12 @@ const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
   return (
     <Card className='py-4'>
       <CardHeader>
-        <Button onPress={onOpen}>Details</Button>
+        {/* <Button onPress={onOpen}>Details</Button> */}
+        <IoIosInformationCircleOutline
+          onClick={onOpen}
+          size={20}
+          className='p-2'
+        />
         <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
           <ModalContent>
             {(onClose) => (

@@ -1,10 +1,12 @@
+import { Spinner } from '@nextui-org/spinner';
+
 type ExerciseVideoProps = {
   exerciseVideos: any;
   name: string;
 };
 
 const ExerciseVideo = ({ exerciseVideos, name }: ExerciseVideoProps) => {
-  if (!exerciseVideos.length) return 'Loading...';
+  if (!exerciseVideos.length) return <Spinner />;
 
   return (
     <div className='px-2 lg:w-[1024px] mx-auto'>
