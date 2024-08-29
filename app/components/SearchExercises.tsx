@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Input } from '@nextui-org/react';
 import { Button } from '@nextui-org/button';
 
-import { exerciseOptions, fetchData } from '../lib/fetchData';
+import { exerciseOptions, fetchData } from '../../lib/fetchData';
 
 // import { fetchData } from '../utils/fetchData';
 import { ExerciseData } from '../exercises/page';
