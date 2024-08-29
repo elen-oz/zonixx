@@ -9,7 +9,7 @@ import {
 } from '@nextui-org/react';
 import { IoIosInformationCircleOutline } from 'react-icons/io';
 
-import { ExerciseData } from '../exercises/page';
+import { ExerciseData } from '../app/exercises/page';
 import { Chip } from '@nextui-org/react';
 import {
   Card,

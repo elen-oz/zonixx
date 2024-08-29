@@ -1,10 +1,10 @@
 'use client';
 import { useState, useEffect } from 'react';
-import SearchExercises from '../components/SearchExercises';
+import SearchExercises from '@/components/SearchExercises';
 // import { fetchData } from '../utils/fetchData';
-import { exerciseOptions, fetchData } from '../../lib/fetchData';
+import { exerciseOptions, fetchData } from '@/lib/fetchData';
 
-import ExerciseList from '../components/ExerciseList';
+import ExerciseList from '@/components/ExerciseList';
 
 export type ExerciseData = {
   bodyPart: string;

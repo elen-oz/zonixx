@@ -2,12 +2,11 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 
-import Detail from '@/app/components/Detail';
-import ExerciseVideo from '@/app/components/ExerciseVideo';
-import SimilarExercises from '@/app/components/SimilarExercises';
+import Detail from '@/components/Detail';
+import ExerciseVideo from '@/components/ExerciseVideo';
+import SimilarExercises from '@/components/SimilarExercises';
 import { ExerciseData } from '../page';
 import { exerciseOptions, youtubeOptions, fetchData } from '@/lib/fetchData';
-import { log } from 'console';
 
 const Details = (props: ExerciseData) => {
   const [exerciseDetail, setExerciseDetail] = useState({});
