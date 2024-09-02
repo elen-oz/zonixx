@@ -11,35 +11,35 @@ type SearchExerciseProps = {
   handleExercisesData: (data: any) => void;
   exercises: ExerciseData[];
   bodyPart: string;
-  setBodyPart: any;
+  // setBodyPart: any;
 };
 
 const SearchExercises = ({
   handleExercisesData,
   exercises,
   bodyPart,
-  setBodyPart,
-}: SearchExerciseProps) => {
+}: // setBodyPart,
+SearchExerciseProps) => {
   const [search, setSearch] = useState('');
-  const [bodyParts, setBodyParts] = useState<string[]>([]);
+  // const [bodyParts, setBodyParts] = useState<string[]>([]);
 
-  useEffect(() => {
-    const fetchExercisesData = async () => {
-      const bodyPartsData = await fetchData(
-        'https://exercisedb.p.rapidapi.com/exercises/bodyPartList',
-        exerciseOptions
-      );
+  // useEffect(() => {
+  //   const fetchExercisesData = async () => {
+  //     const bodyPartsData = await fetchData(
+  //       'https://exercisedb.p.rapidapi.com/exercises/bodyPartList',
+  //       exerciseOptions
+  //     );
 
-      setBodyParts(['all', ...bodyPartsData]);
-    };
+  //     setBodyParts(['all', ...bodyPartsData]);
+  //   };
 
-    fetchExercisesData();
-  }, []);
+  //   fetchExercisesData();
+  // }, []);
+  // let search = '';
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    // zdes
     if (search) {
       const exerciseData = await fetchData(
         'https://exercisedb.p.rapidapi.com/exercises?limit=1400',
@@ -56,15 +56,9 @@ const SearchExercises = ({
       );
 
       setSearch('');
+      // todo: add state manager!
       handleExercisesData(searchedExercises);
-
-      // await fetch('/api/saveData', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(exerciseData),
-      // });
+      // => setExercises(searchedExercises)
     }
   };
 
@@ -92,12 +86,6 @@ const SearchExercises = ({
           </Button>
         </div>
       </form>
-      <BodyPartsList
-        data={bodyParts}
-        bodyParts
-        bodyPart={bodyPart}
-        setBodyPart={setBodyPart}
-      />
     </>
   );
 };

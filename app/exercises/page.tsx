@@ -1,9 +1,10 @@
 'use client';
 import { useState, useEffect } from 'react';
 import SearchExercises from '@/components/SearchExercises';
-// import { exerciseOptions, fetchData } from '@/lib/fetchData';
-
 import ExerciseList from '@/components/ExerciseList';
+import { exerciseOptions, fetchData } from '@/lib/fetchData';
+import BodyPartsList from '@/components/BodyPartsList';
+import { Chip } from '@nextui-org/react';
 
 export type ExerciseData = {
   bodyPart: string;
@@ -16,13 +17,68 @@ export type ExerciseData = {
   instructions: string[];
 };
 
-export default function Home() {
-  const [exercises, setExercises] = useState<ExerciseData[]>([]);
+export default function ExercisesPage() {
   const [bodyPart, setBodyPart] = useState('all');
+  const [exercises, setExercises] = useState<ExerciseData[]>([]);
+  // let bodyPart = 'all';
+  // let exercises: ExerciseData[] = [];
+
+  const bodyParts = [
+    'back',
+    'cardio',
+    'chest',
+    'lower arms',
+    'lower legs',
+    'neck',
+    'shoulders',
+    'upper arms',
+    'upper legs',
+    'waist',
+  ];
+
+  useEffect(() => {
+    const fetchingExerciseData = async () => {
+      let exerciseData: ExerciseData[] = [];
+
+      if (bodyPart === 'all') {
+        exerciseData = await fetchData(
+          'https://exercisedb.p.rapidapi.com/exercises?limit=1400',
+          exerciseOptions
+        );
+      } else {
+        exerciseData = await fetchData(
+          `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`,
+          exerciseOptions
+        );
+      }
+
+      setExercises(exerciseData);
+    };
+
+    fetchingExerciseData();
+  }, [bodyPart]);
 
   const handleExercisesData = (data: ExerciseData[]) => {
     setExercises(data);
   };
+
+  // if (bodyPart === 'all') {
+  //   exercises = await fetchData(
+  //     'https://exercisedb.p.rapidapi.com/exercises?limit=1400',
+  //     exerciseOptions
+  //   );
+  // } else {
+  //   exercises = await fetchData(
+  //     `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`,
+  //     exerciseOptions
+  //   );
+  // }
+  // const bodyPartsData = await fetchData(
+  //   'https://exercisedb.p.rapidapi.com/exercises/bodyPartList',
+  //   exerciseOptions
+  // );
+
+  // const bodyParts = ['all', ...bodyPartsData];
 
   return (
     <>
@@ -34,15 +90,22 @@ export default function Home() {
           handleExercisesData={handleExercisesData}
           exercises={exercises}
           bodyPart={bodyPart}
-          setBodyPart={setBodyPart}
         />
+        {/* --- BodyPartsList --- */}
+        <ul className='py-8 w-full md:px-10 max-w-[550px] flex gap-1 flex-wrap justify-center'>
+          {bodyParts.map((item, index) => (
+            <li key={index}>
+              <Chip
+                onClick={() => setBodyPart(item)}
+                className='bg-blue-50 hover:cursor-pointer active:bg-primary active:text-white'
+              >
+                {item}
+              </Chip>
+            </li>
+          ))}
+        </ul>
       </div>
-      <ExerciseList
-        exercises={exercises}
-        setExercises={setExercises}
-        bodyPart={bodyPart}
-        setBodyPart={setBodyPart}
-      />
+      <ExerciseList initialExercises={exercises} />
     </>
   );
 }

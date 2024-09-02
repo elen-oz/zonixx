@@ -1,5 +1,5 @@
-'use client';
-import { useState, useEffect } from 'react';
+// 'use client';
+// import { useState, useEffect } from 'react';
 import { Pagination } from '@nextui-org/react';
 
 import ExerciseCard from './ExerciseCard';
@@ -8,51 +8,55 @@ import { exerciseOptions, fetchData } from '@/lib/fetchData';
 import { ExerciseData } from '@/app/exercises/page';
 
 type ExerciseListProps = {
-  exercises: ExerciseData[];
-  setBodyPart: any;
-  bodyPart: string;
-  setExercises: any;
+  initialExercises: ExerciseData[];
+  // currentPage?: number;
+  // bodyPart: string;
+
+  // setBodyPart: any;
+  // setExercises: any;
 };
 
-const ExerciseList = ({
-  exercises,
-  setExercises,
-  bodyPart,
-  setBodyPart,
-}: ExerciseListProps) => {
-  const [currentPage, setCurrentPage] = useState(1);
+export default async function ExerciseList({
+  initialExercises,
+}: // currentPage = 1,
+// setExercises,
+// bodyPart = 'all',
+// setBodyPart,
+ExerciseListProps) {
+  // const [currentPage, setCurrentPage] = useState(1);
   const exercisesPerPage = 12;
+  const currentPage = 1;
+  const numberPages = Math.ceil(initialExercises.length / exercisesPerPage);
 
   const indexOfLastExercise = currentPage * exercisesPerPage;
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
-  const currentExercises = exercises.slice(
+  const currentExercises = initialExercises.slice(
     indexOfFirstExercise,
     indexOfLastExercise
   );
-  const numberPages = Math.ceil(exercises.length / exercisesPerPage);
 
   // zdes
-  useEffect(() => {
-    const fetchingExerciseData = async () => {
-      let exerciseData = [];
+  // useEffect(() => {
+  //   const fetchingExerciseData = async () => {
+  //     let exerciseData = [];
 
-      if (bodyPart === 'all') {
-        exerciseData = await fetchData(
-          'https://exercisedb.p.rapidapi.com/exercises?limit=1400',
-          exerciseOptions
-        );
-      } else {
-        exerciseData = await fetchData(
-          `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`,
-          exerciseOptions
-        );
-      }
+  //     if (bodyPart === 'all') {
+  //       exerciseData = await fetchData(
+  //         'https://exercisedb.p.rapidapi.com/exercises?limit=1400',
+  //         exerciseOptions
+  //       );
+  //     } else {
+  //       exerciseData = await fetchData(
+  //         `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`,
+  //         exerciseOptions
+  //       );
+  //     }
 
-      setExercises(exerciseData);
-    };
+  //     setExercises(exerciseData);
+  //   };
 
-    fetchingExerciseData();
-  }, [bodyPart]);
+  //   fetchingExerciseData();
+  // }, [bodyPart]);
 
   return (
     <>
@@ -67,11 +71,9 @@ const ExerciseList = ({
           showControls
           total={numberPages}
           initialPage={currentPage}
-          onChange={setCurrentPage}
+          // onChange={setCurrentPage}
         />
       </div>
     </>
   );
-};
-
-export default ExerciseList;
+}
