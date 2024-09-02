@@ -4,7 +4,6 @@ import { Pagination } from '@nextui-org/react';
 
 import ExerciseCard from './ExerciseCard';
 import SearchExercises from './SearchExercises';
-// import { fetchData } from '../utils/fetchData';
 import { exerciseOptions, fetchData } from '@/lib/fetchData';
 import { ExerciseData } from '@/app/exercises/page';
 
@@ -32,6 +31,7 @@ const ExerciseList = ({
   );
   const numberPages = Math.ceil(exercises.length / exercisesPerPage);
 
+  // zdes
   useEffect(() => {
     const fetchingExerciseData = async () => {
       let exerciseData = [];

@@ -4,8 +4,6 @@ import { Input } from '@nextui-org/react';
 import { Button } from '@nextui-org/button';
 
 import { exerciseOptions, fetchData } from '@/lib/fetchData';
-
-// import { fetchData } from '../utils/fetchData';
 import { ExerciseData } from '@/app/exercises/page';
 import BodyPartsList from './BodyPartsList';
 
@@ -27,8 +25,6 @@ const SearchExercises = ({
 
   useEffect(() => {
     const fetchExercisesData = async () => {
-      // const bodyPartsData = await fetchData('/data/data.json');
-
       const bodyPartsData = await fetchData(
         'https://exercisedb.p.rapidapi.com/exercises/bodyPartList',
         exerciseOptions
@@ -43,14 +39,13 @@ const SearchExercises = ({
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
+    // zdes
     if (search) {
       const exerciseData = await fetchData(
         'https://exercisedb.p.rapidapi.com/exercises?limit=1400',
         exerciseOptions
       );
       console.log(exerciseData);
-
-      // const exerciseData = await fetchData('/data/data.json');
 
       const searchedExercises = exerciseData.filter(
         (exercise: any) =>
