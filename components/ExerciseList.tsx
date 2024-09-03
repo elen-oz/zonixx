@@ -1,5 +1,3 @@
-// 'use client';
-// import { useState, useEffect } from 'react';
 import { Pagination } from '@nextui-org/react';
 
 import ExerciseCard from './ExerciseCard';
@@ -9,21 +7,11 @@ import { ExerciseData } from '@/app/exercises/page';
 
 type ExerciseListProps = {
   initialExercises: ExerciseData[];
-  // currentPage?: number;
-  // bodyPart: string;
-
-  // setBodyPart: any;
-  // setExercises: any;
 };
 
 export default async function ExerciseList({
   initialExercises,
-}: // currentPage = 1,
-// setExercises,
-// bodyPart = 'all',
-// setBodyPart,
-ExerciseListProps) {
-  // const [currentPage, setCurrentPage] = useState(1);
+}: ExerciseListProps) {
   const exercisesPerPage = 12;
   const currentPage = 1;
   const numberPages = Math.ceil(initialExercises.length / exercisesPerPage);
@@ -34,29 +22,6 @@ ExerciseListProps) {
     indexOfFirstExercise,
     indexOfLastExercise
   );
-
-  // zdes
-  // useEffect(() => {
-  //   const fetchingExerciseData = async () => {
-  //     let exerciseData = [];
-
-  //     if (bodyPart === 'all') {
-  //       exerciseData = await fetchData(
-  //         'https://exercisedb.p.rapidapi.com/exercises?limit=1400',
-  //         exerciseOptions
-  //       );
-  //     } else {
-  //       exerciseData = await fetchData(
-  //         `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`,
-  //         exerciseOptions
-  //       );
-  //     }
-
-  //     setExercises(exerciseData);
-  //   };
-
-  //   fetchingExerciseData();
-  // }, [bodyPart]);
 
   return (
     <>

@@ -1,41 +1,22 @@
-'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Input } from '@nextui-org/react';
 import { Button } from '@nextui-org/button';
 
 import { exerciseOptions, fetchData } from '@/lib/fetchData';
 import { ExerciseData } from '@/app/exercises/page';
-import BodyPartsList from './BodyPartsList';
 
 type SearchExerciseProps = {
   handleExercisesData: (data: any) => void;
-  exercises: ExerciseData[];
-  bodyPart: string;
-  // setBodyPart: any;
+  // exercises: ExerciseData[];
 };
 
 const SearchExercises = ({
   handleExercisesData,
-  exercises,
-  bodyPart,
-}: // setBodyPart,
+}: // exercises,
 SearchExerciseProps) => {
   const [search, setSearch] = useState('');
-  // const [bodyParts, setBodyParts] = useState<string[]>([]);
 
-  // useEffect(() => {
-  //   const fetchExercisesData = async () => {
-  //     const bodyPartsData = await fetchData(
-  //       'https://exercisedb.p.rapidapi.com/exercises/bodyPartList',
-  //       exerciseOptions
-  //     );
-
-  //     setBodyParts(['all', ...bodyPartsData]);
-  //   };
-
-  //   fetchExercisesData();
-  // }, []);
-  // let search = '';
+  // console.log('exercises in SearchExercises', exercises);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -45,7 +26,6 @@ SearchExerciseProps) => {
         'https://exercisedb.p.rapidapi.com/exercises?limit=1400',
         exerciseOptions
       );
-      console.log(exerciseData);
 
       const searchedExercises = exerciseData.filter(
         (exercise: any) =>
@@ -56,9 +36,7 @@ SearchExerciseProps) => {
       );
 
       setSearch('');
-      // todo: add state manager!
       handleExercisesData(searchedExercises);
-      // => setExercises(searchedExercises)
     }
   };
 
