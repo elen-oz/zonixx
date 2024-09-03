@@ -20,28 +20,36 @@ export default function RootLayout({
     <html lang='en' className='light'>
       <body className={`${inter.className} min-h-screen`}>
         <Providers>
-          <header className='pr-20 pl-5 py-10'>
+          <header className='px-10 py-6'>
             <nav className='flex'>
-              <img
-                src='/icons/gym.svg'
-                alt='logo'
-                width={50}
-                className='pr-5'
-              />
-              <ul className='w-full flex justify-between'>
+              <ul className='w-full flex justify-between items-center'>
                 <li>
-                  <Link href='/'>home</Link>
-                </li>
-                <li>
-                  <Link href='/my-page'>My Page</Link>
+                  <Link href='/'>
+                    <img
+                      src='/icons/icon.png'
+                      alt='logo'
+                      width={80}
+                      className='p-2'
+                    />
+                  </Link>
                 </li>
                 <li>
                   <Link href='/exercises'>Exercises</Link>
                 </li>
+                <li>
+                  <Link href='/my-page'>
+                    <img
+                      src='/icons/profile.png'
+                      alt='profile'
+                      width={50}
+                      className='p-2'
+                    />
+                  </Link>
+                </li>
               </ul>
             </nav>
           </header>
-          <main className='w-full'>{children}</main>
+          <main className='px-2 lg:w-[1200px] mx-auto'>{children}</main>
         </Providers>
       </body>
     </html>
