@@ -8,18 +8,24 @@ const Detail = ({ exerciseDetail }: any) => {
       </div>
       <div className='max-w-[400px]'>
         <h1 className='font-semibold text-xl capitalize'>{name}</h1>
-        <div className='w-[200px]'>
+        <div className=''>
           <div className='grid grid-cols-3 items-center gap-2 my-4'>
             <img src='/icons/target.svg' alt='target icon' width={30} />
-            <h4 className='col-span-2'>Body part: {bodyPart}</h4>
+            <h4 className='col-span-2'>
+              Body part: <span className='font-semibold'>{bodyPart}</span>
+            </h4>
           </div>
           <div className='grid grid-cols-3 items-center gap-2 my-4'>
             <img src='/icons/hand2.svg' alt='target icon' width={30} />
-            <h4 className='col-span-2'>Muscule: {target}</h4>
+            <h4 className='col-span-2'>
+              Muscule: <span className='font-semibold'>{target}</span>
+            </h4>
           </div>
           <div className='grid grid-cols-3 items-center gap-2 my-4'>
             <img src='/icons/dumbbell.svg' alt='target icon' width={40} />
-            <h4 className='col-span-2'>Equipment: {equipment}</h4>
+            <h4 className='col-span-2'>
+              Equipment: <span className='font-semibold'>{equipment}</span>
+            </h4>
           </div>
         </div>
       </div>
