@@ -64,7 +64,7 @@ export default function ExercisesClient({
         </h2>
         <SearchExercises
           handleExercisesData={handleExercisesData}
-          exercises={exercises}
+          // exercises={exercises}
         />
         <ul className='py-8 w-full md:px-10 max-w-[550px] flex gap-1 flex-wrap justify-center'>
           {bodyParts.map((item, index) => (

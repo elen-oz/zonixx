@@ -23,27 +23,52 @@ export default function RootLayout({
           <header className='px-10 py-6'>
             <nav className='flex'>
               <ul className='w-full flex justify-between items-center'>
-                <li>
-                  <Link href='/'>
+                <li key='1'>
+                  <Link
+                    href='/'
+                    className='flex justify-center items-center gap-2'
+                  >
                     <img
-                      src='/icons/icon.png'
+                      src='/icons/logo.png'
                       alt='logo'
-                      width={80}
+                      width={50}
                       className='p-2'
                     />
+                    <span className='hidden md:inline-block capitalize'>
+                      home
+                    </span>
                   </Link>
                 </li>
-                <li>
-                  <Link href='/exercises'>Exercises</Link>
+                <li key='2'>
+                  <Link
+                    href='/exercises'
+                    className='flex justify-center items-center gap-2'
+                  >
+                    <img
+                      src='/icons/dumbbell.png'
+                      alt='logo'
+                      width={50}
+                      className='p-2'
+                    />
+                    <span className='hidden md:inline-block capitalize'>
+                      exercises
+                    </span>
+                  </Link>
                 </li>
-                <li>
-                  <Link href='/my-page'>
+                <li key='3'>
+                  <Link
+                    href='/my-page'
+                    className='flex justify-center items-center gap-2'
+                  >
                     <img
                       src='/icons/profile.png'
                       alt='profile'
                       width={50}
                       className='p-2'
                     />
+                    <span className='hidden md:inline-block capitalize'>
+                      profile
+                    </span>
                   </Link>
                 </li>
               </ul>
