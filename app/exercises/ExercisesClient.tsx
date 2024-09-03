@@ -1,4 +1,3 @@
-// File: app/exercises/ExercisesClient.tsx (Client Component)
 'use client';
 
 import { useState, useCallback } from 'react';

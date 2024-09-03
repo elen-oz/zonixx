@@ -1,4 +1,3 @@
-// File: app/exercises/page.tsx (Server Component)
 import { Suspense } from 'react';
 import { exerciseOptions, fetchData } from '@/lib/fetchData';
 import ExercisesClient from './ExercisesClient';

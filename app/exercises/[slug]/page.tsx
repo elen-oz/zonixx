@@ -1,7 +1,6 @@
 import Detail from '@/components/Detail';
 import ExerciseVideo from '@/components/ExerciseVideo';
 import SimilarExercises from '@/components/SimilarExercises';
-import { ExerciseData } from '../page';
 import { exerciseOptions, youtubeOptions, fetchData } from '@/lib/fetchData';
 
 export default async function ExerciseDetailPage({

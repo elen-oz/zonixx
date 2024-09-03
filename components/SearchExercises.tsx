@@ -3,20 +3,13 @@ import { Input } from '@nextui-org/react';
 import { Button } from '@nextui-org/button';
 
 import { exerciseOptions, fetchData } from '@/lib/fetchData';
-import { ExerciseData } from '@/app/exercises/page';
 
 type SearchExerciseProps = {
   handleExercisesData: (data: any) => void;
-  // exercises: ExerciseData[];
 };
 
-const SearchExercises = ({
-  handleExercisesData,
-}: // exercises,
-SearchExerciseProps) => {
+const SearchExercises = ({ handleExercisesData }: SearchExerciseProps) => {
   const [search, setSearch] = useState('');
-
-  // console.log('exercises in SearchExercises', exercises);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
