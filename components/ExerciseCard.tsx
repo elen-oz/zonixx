@@ -27,8 +27,12 @@ type ExerciseCardProps = {
 const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
+  // console.log('exercise in ExerciseCard', exercise);
+
+  // todo: проверить рабо ли ги?
+
   return (
-    <Card className='pb-4'>
+    <Card className='h-full pb-4 justify-between'>
       <CardHeader>
         <IoIosInformationCircleOutline
           onClick={onOpen}
@@ -84,14 +88,24 @@ const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
           </ModalContent>
         </Modal>
       </CardHeader>
-      <Link href={`/exercises/${exercise.id}`}>
+      <Link href={`/exercises/${exercise.id}`} className='h-full'>
         <CardBody className='overflow-visible py-2'>
-          <Image
-            alt={exercise.name}
-            className='object-cover rounded-xl'
-            src={exercise.gifUrl}
-            width={270}
-          />
+          {exercise.gifUrl ? (
+            <Image
+              alt={exercise.name}
+              className='object-cover rounded-xl h-full'
+              src={exercise.gifUrl}
+              width={270}
+            />
+          ) : (
+            <div className='h-full'>No image</div>
+            // <Image
+            //   alt={exercise.name}
+            //   className='object-cover rounded-xl'
+            //   src='public/icons/noimage.png'
+            //   width={270}
+            // />
+          )}
         </CardBody>
         <CardFooter className='flex-col justify-between'>
           <h4 className='text-tiny uppercase font-bold pb-2'>
