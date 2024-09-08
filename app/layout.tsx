@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
-import Link from 'next/link';
+// import Link from 'next/link';
+import Header from '@/components/Header';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,63 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className='light'>
-      <body className={`${inter.className} min-h-screen`}>
+      <body className={`${inter.className} relative min-h-screen`}>
         <Providers>
-          <header className='px-10 py-6'>
-            <nav className='flex'>
-              <ul className='w-full flex justify-between items-center'>
-                <li key='1'>
-                  <Link
-                    href='/'
-                    className='flex justify-center items-center gap-2'
-                  >
-                    <img
-                      src='/icons/logo.png'
-                      alt='logo'
-                      width={50}
-                      className='p-2'
-                    />
-                    <span className='hidden md:inline-block capitalize'>
-                      home
-                    </span>
-                  </Link>
-                </li>
-                <li key='2'>
-                  <Link
-                    href='/exercises'
-                    className='flex justify-center items-center gap-2'
-                  >
-                    <img
-                      src='/icons/dumbbell.png'
-                      alt='logo'
-                      width={50}
-                      className='p-2'
-                    />
-                    <span className='hidden md:inline-block capitalize'>
-                      exercises
-                    </span>
-                  </Link>
-                </li>
-                <li key='3'>
-                  <Link
-                    href='/my-page'
-                    className='flex justify-center items-center gap-2'
-                  >
-                    <img
-                      src='/icons/profile.png'
-                      alt='profile'
-                      width={50}
-                      className='p-2'
-                    />
-                    <span className='hidden md:inline-block capitalize'>
-                      profile
-                    </span>
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </header>
-          <main className='px-2 lg:w-[1200px] mx-auto'>{children}</main>
+          <Header />
+          <main className='px-2 lg:w-[1200px] mx-auto mt-[5rem] bg-white dark:bg-gray-700 rounded-2xl'>
+            {children}
+          </main>
         </Providers>
       </body>
     </html>

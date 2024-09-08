@@ -14,7 +14,7 @@ export default function Home() {
           <Button
             as={Link}
             href='/exercises'
-            color='primary'
+            // color='danger'
             className='font-semibold shadow'
           >
             Get started

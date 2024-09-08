@@ -49,8 +49,8 @@ const SearchExercises = ({ handleExercisesData }: SearchExerciseProps) => {
 
         <div className='md:pt-[calc(theme(fontSize.small)_+_10px)] '>
           <Button
-            color='primary'
-            className='font-semibold shadow w-full'
+            // color='red'
+            className='font-semibold shadow w-full bg-red-500 text-white'
             type='submit'
           >
             Search
