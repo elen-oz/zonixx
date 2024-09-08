@@ -26,7 +26,7 @@ export default function ExerciseListClient({
 
   return (
     <>
-      <ul className='p-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+      <ul className='py-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
         {currentExercises.map((exercise: ExerciseData, index: number) => (
           <li key={index}>
             <ExerciseCard key={index} exercise={exercise} />
