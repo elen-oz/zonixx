@@ -2,7 +2,7 @@ const Detail = ({ exerciseDetail }: any) => {
   const { bodyPart, gifUrl, name, target, equipment } = exerciseDetail;
 
   return (
-    <div className='flex flex-col md:flex-row w-full justify-center items-center'>
+    <div className='flex flex-col md:flex-row w-full justify-center items-center mb-10'>
       <div>
         <img src={gifUrl} alt='exercise gif' className='max-w-[400px]' />
       </div>

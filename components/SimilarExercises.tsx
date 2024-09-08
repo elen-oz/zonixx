@@ -4,27 +4,40 @@ import HorizontalScrollBar from './HorizontalScrollBar';
 type SimilarExercisesProps = {
   targetMuscleExercises: any[];
   equipmentExercises: any[];
+  target: string;
+  equipment: string;
 };
 
 const SimilarExercises = ({
   targetMuscleExercises,
   equipmentExercises,
+  target,
+  equipment,
 }: SimilarExercisesProps) => {
   return (
     <>
-      <h1>Similar Exercises:</h1>
-      <h2>Exercises that target is the same muscle group:</h2>
-      {targetMuscleExercises.length ? (
-        <HorizontalScrollBar data={targetMuscleExercises} />
-      ) : (
-        <Spinner />
-      )}
-      <h2>Exercises with same equipment:</h2>
-      {equipmentExercises.length ? (
-        <HorizontalScrollBar data={equipmentExercises} />
-      ) : (
-        <Spinner />
-      )}
+      <div className='mb-10'>
+        <h2>
+          Other exercises that target is{' '}
+          <span className='font-semibold capitalize'>{target}</span>:
+        </h2>
+        {targetMuscleExercises.length ? (
+          <HorizontalScrollBar data={targetMuscleExercises} />
+        ) : (
+          <Spinner />
+        )}
+      </div>
+      <div className='mb-10'>
+        <h2>
+          Other exercises with{' '}
+          <span className='font-semibold capitalize'>{equipment}</span>:
+        </h2>
+        {equipmentExercises.length ? (
+          <HorizontalScrollBar data={equipmentExercises} />
+        ) : (
+          <Spinner />
+        )}
+      </div>
     </>
   );
 };

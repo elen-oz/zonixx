@@ -40,6 +40,8 @@ export default async function ExerciseDetailPage({
         name={exerciseDetail.name}
       />
       <SimilarExercises
+        target={exerciseDetail.target}
+        equipment={exerciseDetail.equipment}
         targetMuscleExercises={targetMuscleExercises}
         equipmentExercises={equipmentExercises}
       />

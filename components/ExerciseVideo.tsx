@@ -9,7 +9,7 @@ const ExerciseVideo = ({ exerciseVideos, name }: ExerciseVideoProps) => {
   if (!exerciseVideos.length) return <Spinner />;
 
   return (
-    <>
+    <div className='mb-10'>
       <h2>
         Watch <span className='font-semibold capitalize'>{name}</span> exercise
         videos:
@@ -33,7 +33,7 @@ const ExerciseVideo = ({ exerciseVideos, name }: ExerciseVideoProps) => {
           </a>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
