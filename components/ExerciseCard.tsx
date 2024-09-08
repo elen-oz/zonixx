@@ -47,7 +47,13 @@ const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
                   {exercise.name}
                 </ModalHeader>
                 <ModalBody>
-                  <Image
+                  {/* <Image
+                    alt={exercise.name}
+                    className='object-cover rounded-xl'
+                    src={exercise.gifUrl}
+                    width={370}
+                  /> */}
+                  <img
                     alt={exercise.name}
                     className='object-cover rounded-xl'
                     src={exercise.gifUrl}
@@ -91,7 +97,13 @@ const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
       <Link href={`/exercises/${exercise.id}`} className='h-full'>
         <CardBody className='overflow-visible py-2'>
           {exercise.gifUrl ? (
-            <Image
+            // <Image
+            //   alt={exercise.name}
+            //   className='object-cover rounded-xl h-full'
+            //   src={exercise.gifUrl}
+            //   width={270}
+            // />
+            <img
               alt={exercise.name}
               className='object-cover rounded-xl h-full'
               src={exercise.gifUrl}
