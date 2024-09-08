@@ -7,15 +7,15 @@ const Header = () => {
   const pathname = usePathname();
 
   return (
-    <header className='absolute top-[-3rem] left-1/2 transform -translate-x-1/2 lg:w-[1200px]'>
+    <header className='absolute top-[-3rem] left-1/2 transform -translate-x-1/2 xl:w-[1200px]'>
       <nav className='flex'>
         <ul className='w-full flex justify-between items-center'>
           <li
             className={`${
               pathname === '/exercises'
-                ? 'font-semibold bg-white rounded-t-xl pb-3'
+                ? 'font-semibold bg-white rounded-t-xl'
                 : 'text-white'
-            } pr-4 pb-3`}
+            } sm:pr-8 sm:pl-4 pb-3`}
           >
             <Link
               href='/exercises'
@@ -27,7 +27,7 @@ const Header = () => {
                 width={50}
                 className='p-2'
               />
-              <span className='hidden md:inline-block capitalize'>
+              <span className='hidden sm:inline-block capitalize'>
                 exercises
               </span>
             </Link>
@@ -37,7 +37,7 @@ const Header = () => {
               pathname === '/profile'
                 ? 'font-semibold bg-white rounded-t-xl'
                 : 'text-white'
-            } pr-4 pb-3`}
+            } sm:pr-8 sm:pl-4 pb-3`}
           >
             <Link
               href='/profile'
@@ -49,7 +49,7 @@ const Header = () => {
                 width={50}
                 className='p-2'
               />
-              <span className='hidden md:inline-block capitalize'>profile</span>
+              <span className='hidden sm:inline-block capitalize'>profile</span>
             </Link>
           </li>
         </ul>

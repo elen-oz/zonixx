@@ -13,6 +13,9 @@ const config: Config = {
     nextui({
       // addCommonColors: true,
       themes: {
+        // screens: {
+        //   lg: '1240px',
+        // },
         light: {
           colors: {
             background: '#ef4444',

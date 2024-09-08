@@ -19,10 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className='light'>
-      <body className={`${inter.className} relative min-h-screen`}>
+      <body className={`${inter.className} relative min-h-screen px-4`}>
         <Providers>
           <Header />
-          <main className='px-2 lg:w-[1200px] mx-auto mt-[5rem] bg-white dark:bg-gray-700 rounded-2xl'>
+          <main className='py-10 lg:w-[1200px] mx-auto mt-[5rem] bg-white dark:bg-gray-700 rounded-2xl shadow-xl mb-10'>
             {children}
           </main>
         </Providers>
