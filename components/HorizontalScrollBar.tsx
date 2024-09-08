@@ -21,10 +21,10 @@ const HorizontalScrollBar = ({ data }: any) => {
             </>
           )}
 
-          <ul className='flex flex-nowrap ml-10 '>
+          <ul className='flex flex-nowrap'>
             {data.map((item: any) => (
-              <li key={item.id} className='block px-3'>
-                <div className='w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out'>
+              <li key={item.id} className='block'>
+                <div className='w-64 max-w-xs overflow-hidden rounded-lg bg-white duration-300 ease-in-out px-3 py-7'>
                   <ExerciseCard exercise={item} />
                 </div>
               </li>

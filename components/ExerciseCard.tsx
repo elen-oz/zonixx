@@ -26,7 +26,7 @@ const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
   // todo: fix gifs display
 
   return (
-    <Card className='h-full pb-4 justify-between'>
+    <Card className='h-full pb-4 justify-between hover:shadow-xl hover:transition-all ease-in-out hover:border-1'>
       <CardHeader>
         <IoIosInformationCircleOutline
           onClick={onOpen}
