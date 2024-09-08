@@ -1,21 +1,13 @@
 import {
-  Modal,
   ModalContent,
   ModalHeader,
   ModalBody,
   ModalFooter,
   Button,
-  useDisclosure,
   Chip,
-  Card,
-  CardHeader,
-  CardBody,
-  Image,
-  CardFooter,
 } from '@nextui-org/react';
 
 type ModalInfoProps = {
-  // isOpen: boolean;
   exercise: any;
 };
 
@@ -25,16 +17,10 @@ const ModalInfo = ({ exercise }: ModalInfoProps) => {
       <ModalContent>
         {(onClose) => (
           <>
-            <ModalHeader className='flex flex-col gap-1'>
+            <ModalHeader className='flex flex-col gap-1 capitalize'>
               {exercise.name}
             </ModalHeader>
             <ModalBody>
-              {/* <Image
-              alt={exercise.name}
-              className='object-cover rounded-xl'
-              src={exercise.gifUrl}
-              width={370}
-            /> */}
               <img
                 alt={exercise.name}
                 className='object-cover rounded-xl'
@@ -42,15 +28,16 @@ const ModalInfo = ({ exercise }: ModalInfoProps) => {
                 width={370}
               />
               <div>
-                <span className='inline'>Target: </span>
-                <span className='inline font-bold bg-warning-500 text-white rounded-full px-1 '>
+                <span className=''>Target: </span>
+                <Chip className='bg-warning-500 text-white'>
                   {exercise.target}
-                </span>
+                </Chip>
               </div>
 
-              <div className='flex gap-1 justify-center flex-wrap'>
-                {exercise.secondaryMuscles.map((item, index) => (
-                  <Chip key={index} className='bg-warning-500 text-white'>
+              <div className='flex gap-1 flex-wrap'>
+                <span className='inline'>Secondary muscles: </span>
+                {exercise.secondaryMuscles.map((item: string, index: any) => (
+                  <Chip key={index} className='bg-success-500 text-white'>
                     {item}
                   </Chip>
                 ))}
@@ -58,7 +45,7 @@ const ModalInfo = ({ exercise }: ModalInfoProps) => {
 
               <h3 className='font-semibold'>Instructions:</h3>
               <ol className='list-decimal list-inside'>
-                {exercise.instructions.map((item, index) => (
+                {exercise.instructions.map((item: string, index: any) => (
                   <li key={index}>{item}</li>
                 ))}
               </ol>

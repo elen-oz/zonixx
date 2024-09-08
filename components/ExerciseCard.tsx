@@ -3,11 +3,6 @@
 import React from 'react';
 import {
   Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
   useDisclosure,
   Chip,
   Card,
@@ -28,9 +23,7 @@ type ExerciseCardProps = {
 const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  // console.log('exercise in ExerciseCard', exercise);
-
-  // todo: проверить рабо ли ги?
+  // todo: fix gifs display
 
   return (
     <Card className='h-full pb-4 justify-between'>
@@ -41,19 +34,13 @@ const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
           className='p-2 cursor-pointer'
         />
 
-        <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement='top'>
           <ModalInfo exercise={exercise} />
         </Modal>
       </CardHeader>
       <Link href={`/exercises/${exercise.id}`} className='h-full'>
         <CardBody className='overflow-visible py-2'>
           {exercise.gifUrl ? (
-            // <Image
-            //   alt={exercise.name}
-            //   className='object-cover rounded-xl h-full'
-            //   src={exercise.gifUrl}
-            //   width={270}
-            // />
             <img
               alt={exercise.name}
               className='object-cover rounded-xl h-full'
