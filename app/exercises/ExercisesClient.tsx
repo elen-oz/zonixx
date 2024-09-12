@@ -4,10 +4,10 @@ import { useState, useCallback } from 'react';
 import { ExerciseData } from './page';
 import SearchExercises from '@/components/SearchExercises';
 import ExerciseList from '@/components/ExerciseList';
-import { exerciseOptions, fetchData } from '@/lib/fetchData';
 import { Chip } from '@nextui-org/react';
 
 const bodyParts = [
+    'all',
   'back',
   'cardio',
   'chest',
@@ -21,24 +21,30 @@ const bodyParts = [
 ];
 
 export default function ExercisesClient({
-  initialExercises,
+  allExercises,
 }: {
-  initialExercises: ExerciseData[];
+  allExercises: ExerciseData[];
 }) {
   const [bodyPart, setBodyPart] = useState('all');
-  const [exercises, setExercises] = useState<ExerciseData[]>(initialExercises);
+  const [exercises, setExercises] = useState<ExerciseData[]>(allExercises);
 
   const fetchExercisesByBodyPart = useCallback(
     async (selectedBodyPart: string) => {
       try {
         const url =
           selectedBodyPart === 'all'
-            ? 'https://exercisedb.p.rapidapi.com/exercises?limit=1400'
-            : `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${selectedBodyPart}`;
+            ? 'http://localhost:3000/api/exercises'
+            : `http://localhost:3000/api/exercises/body_part/${selectedBodyPart}`;
 
-        const data = await fetchData(url, exerciseOptions);
-        if (data) {
-          setExercises(data);
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          }}
+        );
+
+        if (response) {
+          setExercises(response);
         }
       } catch (error) {
         console.error('Error fetching exercise data:', error);
@@ -79,7 +85,7 @@ export default function ExercisesClient({
           ))}
         </ul>
       </div>
-      <ExerciseList initialExercises={exercises} />
+      <ExerciseList allExercises={exercises} />
     </>
   );
 }

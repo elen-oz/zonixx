@@ -7,22 +7,23 @@ import ExerciseCard from './ExerciseCard';
 import { ExerciseData } from '@/app/exercises/page';
 
 type ExerciseListClientProps = {
-  initialExercises: ExerciseData[];
+    allExercises: ExerciseData[];
 };
 
-export default function ExerciseListClient({
-  initialExercises,
-}: ExerciseListClientProps) {
+export default function ExerciseListClient({ allExercises }: ExerciseListClientProps) {
   const exercisesPerPage = 12;
   const [currentPage, setCurrentPage] = useState(1);
-  const numberPages = Math.ceil(initialExercises.length / exercisesPerPage);
+  const numberPages = Math.ceil(allExercises.length / exercisesPerPage);
+
+    // console.log('++ typeof allExercises:', typeof allExercises);
+    // console.log('-- allExercises:', allExercises);
 
   const indexOfLastExercise = currentPage * exercisesPerPage;
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
-  const currentExercises = initialExercises.slice(
-    indexOfFirstExercise,
-    indexOfLastExercise
-  );
+
+    const currentExercises = Array.isArray(allExercises)
+        ? allExercises.slice(indexOfFirstExercise, indexOfLastExercise)
+        : [];
 
   return (
     <>

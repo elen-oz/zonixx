@@ -3,11 +3,11 @@ import { ExerciseData } from '@/app/exercises/page';
 import ExerciseListClient from './ExerciseListClient';
 
 type ExerciseListServerProps = {
-  initialExercises: ExerciseData[];
+  allExercises: ExerciseData[];
 };
 
 export default function ExerciseListServer({
-  initialExercises,
+                                             allExercises,
 }: ExerciseListServerProps) {
-  return <ExerciseListClient initialExercises={initialExercises} />;
+  return <ExerciseListClient allExercises={allExercises} />;
 }

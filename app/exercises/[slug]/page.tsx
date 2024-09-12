@@ -1,35 +1,56 @@
 import Detail from '@/components/Detail';
+import {ExerciseData, getExercises} from "@/app/exercises/page";
 import ExerciseVideo from '@/components/ExerciseVideo';
 import SimilarExercises from '@/components/SimilarExercises';
-import { exerciseOptions, youtubeOptions, fetchData } from '@/lib/fetchData';
+import { youtubeOptions, fetchData } from '@/lib/fetchData';
+
+export async function getExercise(id): Promise<ExerciseData> {
+    const response = await fetch(`http://localhost:3000/api/exercises/${id}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch exercises');
+    }
+
+    const data = await response.json();
+    return data || [];
+}
+
 
 export default async function ExerciseDetailPage({
   params,
 }: {
   params: { slug: string };
 }) {
-  const slug = params.slug;
-  const exerciseDbUrl = 'https://exercisedb.p.rapidapi.com';
-  const youtubeSearchUrl = 'https://youtube-search-and-download.p.rapidapi.com';
-
-  const exerciseDetail = await fetchData(
-    `${exerciseDbUrl}/exercises/exercise/${slug}`,
-    exerciseOptions
-  );
+    const exerciseDetail = await getExercise(params.slug);
 
   const exerciseVideos = await fetchData(
-    `${youtubeSearchUrl}/search?query=${exerciseDetail.name}`,
+    `https://youtube-search-and-download.p.rapidapi.com/search?query=${exerciseDetail.name}`,
     youtubeOptions
   );
 
-  const targetMuscleExercises = await fetchData(
-    `${exerciseDbUrl}/exercises/target/${exerciseDetail.target}`,
-    exerciseOptions
+  const targetMuscleExercises = await fetch(
+    `http://localhost:3000/api/exercises/target/${exerciseDetail.target}`,
+      {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+      }
   );
 
   const equipmentExercises = await fetchData(
-    `${exerciseDbUrl}/exercises/equipment/${exerciseDetail.equipment}`,
-    exerciseOptions
+    `http://localhost:3000/api/exercises/equipment/${exerciseDetail.equipment}`,
+      {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+      }
   );
 
   return (

@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { Input } from '@nextui-org/react';
 import { Button } from '@nextui-org/button';
-
-import { exerciseOptions, fetchData } from '@/lib/fetchData';
+import {getExercises} from "@/app/exercises/page";
 
 type SearchExerciseProps = {
   handleExercisesData: (data: any) => void;
@@ -15,10 +14,7 @@ const SearchExercises = ({ handleExercisesData }: SearchExerciseProps) => {
     e.preventDefault();
 
     if (search) {
-      const exerciseData = await fetchData(
-        'https://exercisedb.p.rapidapi.com/exercises?limit=1400',
-        exerciseOptions
-      );
+      const exerciseData = await getExercises();
 
       const searchedExercises = exerciseData.filter(
         (exercise: any) =>
@@ -49,7 +45,6 @@ const SearchExercises = ({ handleExercisesData }: SearchExerciseProps) => {
 
         <div className='md:pt-[calc(theme(fontSize.small)_+_10px)] '>
           <Button
-            // color='red'
             className='font-semibold shadow w-full bg-red-500 text-white'
             type='submit'
           >
