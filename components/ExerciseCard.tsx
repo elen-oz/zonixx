@@ -40,8 +40,6 @@ const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
       </CardHeader>
       <Link href={`/exercises/${exercise.id}`} className='h-full'>
         <CardBody className='overflow-visible py-2'>
-          {exercise.gif_url ? ( <>
-                gif_url: {exercise.gif_url}
             <Image
                 isZoomed
               alt={exercise.name}
@@ -50,17 +48,7 @@ const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
               width={270}
               height={270}
                 fallbackSrc="https://via.placeholder.com/300x200"
-                // fallbackSrc="public/icons/noimage.png"
-            /></>
-          ) : (
-            <div className='h-full'>No image</div>
-            // <Image
-            //   alt={exercise.name}
-            //   className='object-cover rounded-xl'
-            //   src='public/icons/noimage.png'
-            //   width={270}
-            // />
-          )}
+            />
         </CardBody>
         <CardFooter className='flex-col justify-between'>
           <h4 className='text-tiny uppercase font-bold pb-2'>
