@@ -40,11 +40,11 @@ const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
       </CardHeader>
       <Link href={`/exercises/${exercise.id}`} className='h-full'>
         <CardBody className='overflow-visible py-2'>
-          {exercise.gifUrl ? (
+          {exercise.gif_url ? (
             <img
               alt={exercise.name}
               className='object-cover rounded-xl h-full'
-              src={exercise.gifUrl}
+              src={exercise.gif_url}
               width={270}
               height={270}
             />
