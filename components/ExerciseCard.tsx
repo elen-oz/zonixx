@@ -8,12 +8,11 @@ import {
   Card,
   CardHeader,
   CardBody,
-  Image,
   CardFooter,
 } from '@nextui-org/react';
 import { IoIosInformationCircleOutline } from 'react-icons/io';
 import Link from 'next/link';
-import { ExerciseData } from '../app/exercises/page';
+import { ExerciseData } from '@/app/exercises/page';
 import ModalInfo from './ModalInfo';
 
 type ExerciseCardProps = {

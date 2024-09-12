@@ -23,13 +23,3 @@ export async function GET(
     }
 }
 
-type responseItemType = {
-    id: string;
-    name: string;
-    body_part: string;
-    equipment: string;
-    gif_url: string;
-    target: string;
-    secondary_muscles: string[];
-    instructions: string[];
-};

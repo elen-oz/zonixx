@@ -1,5 +1,5 @@
 import Detail from '@/components/Detail';
-import {ExerciseData, getExercises} from "@/app/exercises/page";
+import {ExerciseData} from "@/app/exercises/page";
 import ExerciseVideo from '@/components/ExerciseVideo';
 import SimilarExercises from '@/components/SimilarExercises';
 import { youtubeOptions, fetchData } from '@/lib/fetchData';

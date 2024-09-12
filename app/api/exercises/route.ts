@@ -1,17 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import pool from '@/lib/db';
 
-type responseItemType = {
-  id: string;
-  name: string;
-  body_part: string;
-  equipment: string;
-  gif_url: string;
-  target: string;
-  secondary_muscles: string[];
-  instructions: string[];
-};
-
 export async function GET() {
   try {
     const result = await pool.query('SELECT * FROM exercises');

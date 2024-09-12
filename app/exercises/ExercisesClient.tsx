@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { ExerciseData } from './page';
 import SearchExercises from '@/components/SearchExercises';
 import ExerciseList from '@/components/ExerciseList';
