@@ -31,8 +31,6 @@ export async function getExercises(): Promise<ExerciseData[]> {
 export default async function ExercisesPage() {
   const allExercises = await getExercises();
 
-  console.log('allExercises: ', allExercises !== undefined);
-
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <ExercisesClient allExercises={allExercises} />

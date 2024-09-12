@@ -20,42 +20,40 @@ const bodyParts = [
   'waist',
 ];
 
+
+
 export default function ExercisesClient({
   allExercises,
 }: {
   allExercises: ExerciseData[];
 }) {
-  const [bodyPart, setBodyPart] = useState('all');
   const [exercises, setExercises] = useState<ExerciseData[]>(allExercises);
 
-  const fetchExercisesByBodyPart = useCallback(
-    async (selectedBodyPart: string) => {
-      try {
-        const url =
+  const fetchExercisesByBodyPart = async (selectedBodyPart: string = 'all') => {
+    try {
+      const url =
           selectedBodyPart === 'all'
-            ? 'http://localhost:3000/api/exercises'
-            : `http://localhost:3000/api/exercises/body_part/${selectedBodyPart}`;
+              ? 'http://localhost:3000/api/exercises'
+              : `http://localhost:3000/api/exercises/body_part/${selectedBodyPart}`;
 
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          }}
-        );
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }}
+      );
 
-        if (response) {
-          setExercises(response);
-        }
-      } catch (error) {
-        console.error('Error fetching exercise data:', error);
+      if (response.ok) {
+        const data = await response.json();
+        setExercises(data);
       }
-    },
-    []
-  );
+    } catch (error) {
+      console.error('Error fetching exercise data:', error);
+    }
+  };
 
-  const handleBodyPartChange = (newBodyPart: string) => {
-    setBodyPart(newBodyPart);
-    fetchExercisesByBodyPart(newBodyPart);
+  const handleBodyPartChange = async(newBodyPart: string) => {
+    return await fetchExercisesByBodyPart(newBodyPart);
   };
 
   const handleExercisesData = (data: ExerciseData[]) => {
@@ -70,7 +68,6 @@ export default function ExercisesClient({
         </h2>
         <SearchExercises
           handleExercisesData={handleExercisesData}
-          // exercises={exercises}
         />
         <ul className='py-8 w-full md:px-10 max-w-[550px] flex gap-1 flex-wrap justify-center'>
           {bodyParts.map((item, index) => (
