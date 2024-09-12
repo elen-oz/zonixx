@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
+    Image
 } from '@nextui-org/react';
 import { IoIosInformationCircleOutline } from 'react-icons/io';
 import Link from 'next/link';
@@ -39,14 +40,18 @@ const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
       </CardHeader>
       <Link href={`/exercises/${exercise.id}`} className='h-full'>
         <CardBody className='overflow-visible py-2'>
-          {exercise.gif_url ? (
-            <img
+          {exercise.gif_url ? ( <>
+                gif_url: {exercise.gif_url}
+            <Image
+                isZoomed
               alt={exercise.name}
               className='object-cover rounded-xl h-full'
               src={exercise.gif_url}
               width={270}
               height={270}
-            />
+                fallbackSrc="https://via.placeholder.com/300x200"
+                // fallbackSrc="public/icons/noimage.png"
+            /></>
           ) : (
             <div className='h-full'>No image</div>
             // <Image
