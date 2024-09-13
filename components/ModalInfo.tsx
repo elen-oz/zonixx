@@ -6,6 +6,7 @@ import {
   Button,
   Chip,
 } from '@nextui-org/react';
+import Image from "next/image";
 
 type ModalInfoProps = {
   exercise: any;
@@ -21,12 +22,11 @@ const ModalInfo = ({ exercise }: ModalInfoProps) => {
               {exercise.name}
             </ModalHeader>
             <ModalBody>
-              <img
-                alt={exercise.name}
-                className='object-cover rounded-xl'
-                src={exercise.gifUrl}
-                width={370}
-              />
+              <Image alt={exercise.name}
+                     className='object-cover rounded-xl'
+                     src={exercise.gifUrl}
+                     width={370} height={400} />
+
               <div>
                 <span className=''>Target: </span>
                 <Chip className='bg-warning-500 text-white'>

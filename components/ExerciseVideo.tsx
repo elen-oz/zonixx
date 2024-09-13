@@ -1,4 +1,5 @@
-import { Spinner } from '@nextui-org/spinner';
+import { Spinner } from "@nextui-org/spinner";
+import Image from "next/image";
 
 type ExerciseVideoProps = {
   exerciseVideos: any;
@@ -9,27 +10,24 @@ const ExerciseVideo = ({ exerciseVideos, name }: ExerciseVideoProps) => {
   if (!exerciseVideos.length) return <Spinner />;
 
   return (
-    <div className='mb-10'>
+    <div className="mb-10">
       <h2>
-        Watch <span className='font-semibold capitalize'>{name}</span> exercise
+        Watch <span className="font-semibold capitalize">{name}</span> exercise
         videos:
       </h2>
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-x-3 md:gap-y-6'>
-        {exerciseVideos?.slice(0, 6).map((item, index) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-x-3 md:gap-y-6">
+        {exerciseVideos?.slice(0, 6).map((item: any, index: any) => (
           <a
             key={index}
             href={`https://www.youtube.com/watch?v=${item.video.videoId}`}
-            target='_blank'
-            rel='noreferrer'
-            className='flex flex-col justify-between gap-1'
+            target="_blank"
+            rel="noreferrer"
+            className="flex flex-col justify-between gap-1"
           >
-            <img
-              className=''
-              src={item.video.thumbnails[0].url}
-              alt={item.video.title}
-            />
-            <h5 className='font-semibold'>{item.video.title}</h5>
-            <p className='font-thin'>{item.video.channelName}</p>
+            <img src={item.video.thumbnails[0].url} alt={item.video.title} />
+
+            <h5 className="font-semibold">{item.video.title}</h5>
+            <p className="font-thin">{item.video.channelName}</p>
           </a>
         ))}
       </div>

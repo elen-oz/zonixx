@@ -1,4 +1,6 @@
 import { Suspense } from 'react';
+import { getExercises } from '@/lib/fetchData';
+
 import ExercisesClient from './ExercisesClient';
 
 export type ExerciseData = {
@@ -11,22 +13,6 @@ export type ExerciseData = {
   secondary_muscles: string[];
   instructions: string[];
 };
-
-export async function getExercises(): Promise<ExerciseData[]> {
-  const response = await fetch('http://localhost:3000/api/exercises', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error('Failed to fetch exercises');
-  }
-
-  const data = await response.json();
-  return data || [];
-}
 
 export default async function ExercisesPage() {
   const allExercises = await getExercises();

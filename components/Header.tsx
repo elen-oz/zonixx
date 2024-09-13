@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from "next/image";
 
 const Header = () => {
   const pathname = usePathname();
@@ -21,10 +22,11 @@ const Header = () => {
               href='/exercises'
               className='flex justify-center items-center gap-2'
             >
-              <img
+              <Image
                 src='/icons/dumbbell.png'
                 alt='logo'
                 width={50}
+                height={50}
                 className='p-2'
               />
               <span className='hidden sm:inline-block capitalize'>
@@ -43,10 +45,11 @@ const Header = () => {
               href='/profile'
               className='flex justify-center items-center gap-2'
             >
-              <img
+              <Image
                 src='/icons/profile.png'
                 alt='profile'
                 width={50}
+                height={50}
                 className='p-2'
               />
               <span className='hidden sm:inline-block capitalize'>profile</span>
