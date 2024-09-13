@@ -1,43 +1,60 @@
-import Detail from '@/components/Detail';
+import Detail from "@/components/Detail";
 // import {ExerciseData} from "@/app/exercises/page";
-import ExerciseVideo from '@/components/ExerciseVideo';
-import SimilarExercises from '@/components/SimilarExercises';
-import { youtubeOptions, fetchData, getExerciseData } from '@/lib/fetchData';
-
+import ExerciseVideo from "@/components/ExerciseVideo";
+import SimilarExercises from "@/components/SimilarExercises";
+import { youtubeOptions, fetchData, getExerciseData } from "@/lib/fetchData";
 
 export default async function ExerciseDetailPage({
   params,
 }: {
   params: { slug: string };
 }) {
-    const exerciseDetail = await getExerciseData(params.slug);
+  const exerciseDetail = await getExerciseData(params.slug);
 
   const exerciseVideos = await fetchData(
     `https://youtube-search-and-download.p.rapidapi.com/search?query=${exerciseDetail.name}`,
-    youtubeOptions
+    youtubeOptions,
   );
 
-    const targetMuscleExercisesResponse = await fetch(
-        `http://localhost:3000/api/exercises/target/${exerciseDetail.target}`,
-        {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }
-    );
-    const targetMuscleExercises = await targetMuscleExercisesResponse.json();
+  // const targetMuscleExercisesResponse = await fetch(
+  //     `http://localhost:3000/api/exercises/target/${exerciseDetail.target}`,
+  //     {
+  //         method: 'GET',
+  //         headers: {
+  //             'Content-Type': 'application/json',
+  //         },
+  //     }
+  // );
+  const targetMuscleExercisesResponse = await fetch(
+    `/api/exercises/target/${exerciseDetail.target}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    },
+  );
+  const targetMuscleExercises = await targetMuscleExercisesResponse.json();
 
-    const equipmentExercisesResponse = await fetch(
-        `http://localhost:3000/api/exercises/equipment/${exerciseDetail.equipment}`,
-        {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }
-    );
-    const equipmentExercises = await equipmentExercisesResponse.json();
+  // const equipmentExercisesResponse = await fetch(
+  //     `http://localhost:3000/api/exercises/equipment/${exerciseDetail.equipment}`,
+  //     {
+  //         method: 'GET',
+  //         headers: {
+  //             'Content-Type': 'application/json',
+  //         },
+  //     }
+  // );
+  const equipmentExercisesResponse = await fetch(
+    `/api/exercises/equipment/${exerciseDetail.equipment}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    },
+  );
+  const equipmentExercises = await equipmentExercisesResponse.json();
 
   return (
     <>
