@@ -35,13 +35,17 @@ export const fetchData = async (url: string, options: any) => {
 };
 
 export const getExercises = async () => {
+  const baseUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000";
+
   // const response = await fetch('http://localhost:3000/api/exercises', {
   //     method: 'GET',
   //     headers: {
   //         'Content-Type': 'application/json',
   //     },
   // });
-  const response = await fetch("/api/exercises", {
+  const response = await fetch(`${baseUrl}/api/exercises`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -57,13 +61,17 @@ export const getExercises = async () => {
 };
 
 export const getExerciseData = async (id: string) => {
+  const baseUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000";
+
   // const response = await fetch(`http://localhost:3000/api/exercises/${id}`, {
   //     method: 'GET',
   //     headers: {
   //         'Content-Type': 'application/json',
   //     },
   // });
-  const response = await fetch(`/api/exercises/${id}`, {
+  const response = await fetch(`${baseUrl}/api/exercises/${id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
