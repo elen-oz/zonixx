@@ -9,39 +9,39 @@ export default async function ExerciseDetailPage({
 }: {
   params: { slug: string };
 }) {
-  const exerciseVideos = await fetchData(
-    `https://youtube-search-and-download.p.rapidapi.com/search?query=${exerciseDetail.name}`,
-    youtubeOptions,
-  );
-
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3000";
-
-  const targetMuscleExercisesResponse = await fetch(
-    `${baseUrl}/api/exercises/target/${exerciseDetail.target}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    },
-  );
-  const targetMuscleExercises = await targetMuscleExercisesResponse.json();
-
-  const equipmentExercisesResponse = await fetch(
-    `${baseUrl}/api/exercises/equipment/${exerciseDetail.equipment}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    },
-  );
-  const equipmentExercises = await equipmentExercisesResponse.json();
-
   try {
     const exerciseDetail = await getExerciseData(params.slug);
+
+    const exerciseVideos = await fetchData(
+      `https://youtube-search-and-download.p.rapidapi.com/search?query=${exerciseDetail.name}`,
+      youtubeOptions,
+    );
+
+    const baseUrl = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000";
+
+    const targetMuscleExercisesResponse = await fetch(
+      `${baseUrl}/api/exercises/target/${exerciseDetail.target}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    );
+    const targetMuscleExercises = await targetMuscleExercisesResponse.json();
+
+    const equipmentExercisesResponse = await fetch(
+      `${baseUrl}/api/exercises/equipment/${exerciseDetail.equipment}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    );
+    const equipmentExercises = await equipmentExercisesResponse.json();
 
     return (
       <>
