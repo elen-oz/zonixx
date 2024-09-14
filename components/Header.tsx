@@ -8,7 +8,7 @@ const Header = () => {
   const pathname = usePathname();
 
   return (
-    <header className="absolute top-[-4rem] left-1/2 transform -translate-x-1/2 xl:w-[1200px]">
+    <header className="absolute top-[-3rem] sm:top-[-4rem] left-1/2 transform -translate-x-1/2 xl:w-[1200px]">
       <nav className="flex">
         <ul className="w-full flex justify-between items-center">
           <li
@@ -16,7 +16,7 @@ const Header = () => {
               pathname === "/exercises"
                 ? "font-semibold bg-white rounded-t-xl"
                 : "text-white"
-            } sm:pr-8 sm:pl-4 pt-3 pb-6`}
+            } pt-0 pb-6 sm:pt-3 sm:pr-8 sm:pl-4`}
           >
             <Link
               href="/exercises"
@@ -39,7 +39,7 @@ const Header = () => {
               pathname === "/profile"
                 ? "font-semibold bg-white rounded-t-xl"
                 : "text-white"
-            } sm:pr-8 sm:pl-4 pt-3 pb-6`}
+            } pt-0 pb-6 sm:pt-3 sm:pr-8 sm:pl-4`}
           >
             <Link
               href="/profile"
