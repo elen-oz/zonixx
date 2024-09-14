@@ -1,13 +1,13 @@
 // ExerciseListServer.tsx (Server Component)
-import { ExerciseData } from '@/app/exercises/page';
-import ExerciseListClient from './ExerciseListClient';
+import { ExerciseData } from "@/app/exercises/page";
+import ExerciseListClient from "./ExerciseListClient";
 
 type ExerciseListServerProps = {
-  allExercises: ExerciseData[];
+  exercises: ExerciseData[];
 };
 
 export default function ExerciseListServer({
-                                             allExercises,
+  exercises,
 }: ExerciseListServerProps) {
-  return <ExerciseListClient allExercises={allExercises} />;
+  return <ExerciseListClient exercises={exercises} />;
 }

@@ -1,7 +1,6 @@
-import { Suspense } from 'react';
-import { getExercises } from '@/lib/fetchData';
-
-import ExercisesClient from './ExercisesClient';
+import { Suspense } from "react";
+import { getExercises } from "@/lib/fetchData";
+import ExercisesClient from "./ExercisesClient";
 
 export type ExerciseData = {
   id: string;

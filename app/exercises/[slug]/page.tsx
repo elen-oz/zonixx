@@ -12,42 +12,34 @@ export default async function ExerciseDetailPage({
   try {
     const exerciseDetail = await getExerciseData(params.slug);
 
-    const exerciseVideos = await fetchData(
-      `https://youtube-search-and-download.p.rapidapi.com/search?query=${exerciseDetail.name}`,
-      youtubeOptions,
-    );
+    if (!exerciseDetail) {
+      return notFound();
+    }
+
+    const exerciseVideos =
+      (await fetchData(
+        `https://youtube-search-and-download.p.rapidapi.com/search?query=${exerciseDetail.name}`,
+        youtubeOptions,
+      )) || [];
 
     const baseUrl = process.env.VERCEL_URL
       ? `https://${process.env.VERCEL_URL}`
       : "http://localhost:3000";
 
-    const targetMuscleExercisesResponse = await fetch(
-      `${baseUrl}/api/exercises/target/${exerciseDetail.target}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
-    );
-    const targetMuscleExercises = await targetMuscleExercisesResponse.json();
-
-    const equipmentExercisesResponse = await fetch(
-      `${baseUrl}/api/exercises/equipment/${exerciseDetail.equipment}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
-    );
-    const equipmentExercises = await equipmentExercisesResponse.json();
+    const [targetMuscleExercises, equipmentExercises] = await Promise.all([
+      fetch(`${baseUrl}/api/exercises/target/${exerciseDetail.target}`)
+        .then((res) => res.json())
+        .catch(() => []),
+      fetch(`${baseUrl}/api/exercises/equipment/${exerciseDetail.equipment}`)
+        .then((res) => res.json())
+        .catch(() => []),
+    ]);
 
     return (
       <>
         <Detail exerciseDetail={exerciseDetail} />
         <ExerciseVideo
-          exerciseVideos={exerciseVideos.contents}
+          exerciseVideos={exerciseVideos}
           name={exerciseDetail.name}
         />
         <SimilarExercises
@@ -60,6 +52,6 @@ export default async function ExerciseDetailPage({
     );
   } catch (error) {
     console.error("Error fetching exercise details:", error);
-    notFound();
+    return notFound();
   }
 }

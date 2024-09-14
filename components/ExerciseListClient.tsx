@@ -1,40 +1,42 @@
 // ExerciseListClient.tsx (Client Component)
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Pagination } from '@nextui-org/react';
-import ExerciseCard from './ExerciseCard';
-import { ExerciseData } from '@/app/exercises/page';
+import { useState } from "react";
+import { Pagination } from "@nextui-org/react";
+import ExerciseCard from "./ExerciseCard";
+import { ExerciseData } from "@/app/exercises/page";
 
 type ExerciseListClientProps = {
-    allExercises: ExerciseData[];
+  exercises: ExerciseData[];
 };
 
-export default function ExerciseListClient({ allExercises }: ExerciseListClientProps) {
+export default function ExerciseListClient({
+  exercises,
+}: ExerciseListClientProps) {
   const exercisesPerPage = 12;
   const [currentPage, setCurrentPage] = useState(1);
-  const numberPages = Math.ceil(allExercises.length / exercisesPerPage);
+  const numberPages = Math.ceil(exercises.length / exercisesPerPage);
 
-    // console.log('++ typeof allExercises:', typeof allExercises);
-    // console.log('-- allExercises:', allExercises);
+  // console.log('++ typeof exercises:', typeof exercises);
+  // console.log('-- exercises:', exercises);
 
   const indexOfLastExercise = currentPage * exercisesPerPage;
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
 
-    const currentExercises = Array.isArray(allExercises)
-        ? allExercises.slice(indexOfFirstExercise, indexOfLastExercise)
-        : [];
+  const currentExercises = Array.isArray(exercises)
+    ? exercises.slice(indexOfFirstExercise, indexOfLastExercise)
+    : [];
 
   return (
     <>
-      <ul className='py-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+      <ul className="py-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {currentExercises.map((exercise: ExerciseData, index: number) => (
           <li key={index}>
             <ExerciseCard key={index} exercise={exercise} />
           </li>
         ))}
       </ul>
-      <div className='flex justify-center'>
+      <div className="flex justify-center">
         <Pagination
           isCompact
           showControls
