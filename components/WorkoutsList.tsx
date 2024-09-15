@@ -8,8 +8,8 @@ const WorkoutsList = () => {
   return (
     <div>
       <ul>
-        {workouts.map((workout, index) => (
-          <li key={index}>{workout}</li>
+        {workouts.map((workout) => (
+          <li key={workout.id}>{workout.name}</li>
         ))}
       </ul>
     </div>
