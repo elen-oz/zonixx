@@ -1,15 +1,16 @@
 import Image from "next/image";
 import { Button } from "@nextui-org/react";
 import { simplifyExerciseUrl } from "@/lib/utils";
+import { AddWorkoutButton } from "@/components/AddWorkoutButton";
 
 const Detail = ({ exerciseDetail }: any) => {
   const { id, bodyPart, gif_url, name, target, equipment } = exerciseDetail;
   const newGifUrl = simplifyExerciseUrl(gif_url);
 
-  console.log("--id: ", id);
-  console.log("--name: ", name);
-  console.log("--gif_url: ", gif_url);
-  console.log("--newGifUrl: ", newGifUrl);
+  // console.log("--id: ", id);
+  // console.log("--name: ", name);
+  // console.log("--gif_url: ", gif_url);
+  // console.log("--newGifUrl: ", newGifUrl);
 
   return (
     <div className="flex flex-col md:flex-row w-full justify-center items-center mb-10">
@@ -62,11 +63,7 @@ const Detail = ({ exerciseDetail }: any) => {
             </h4>
           </div>
 
-          <div className="p-4">
-            <Button color="primary" className="px-4">
-              Add to my training
-            </Button>
-          </div>
+          <AddWorkoutButton exercise={exerciseDetail} />
         </div>
       </div>
     </div>
