@@ -36,11 +36,11 @@ const ExerciseCard = ({exercise}: ExerciseCardProps) => {
                 />
 
                 <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement='top'>
-                    <ModalInfo exercise={exercise}/>
+                    <ModalInfo exercise={exercise} isFavorite={false}/>
                 </Modal>
 
                 <div className=''>
-                    <AddWorkoutButton exercise={exercise} additionStyle={'border-2 border-primary bg-white text-primary text-sm hover:bg-primary hover:text-white'}>Add</AddWorkoutButton>
+                    <AddWorkoutButton exercise={exercise} secondary={true}>Add</AddWorkoutButton>
                 </div>
             </CardHeader>
             <Link href={`/exercises/${exercise.id}`} className='h-full'>

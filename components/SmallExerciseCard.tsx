@@ -26,7 +26,7 @@ const SmallExerciseCard = ({exercise}: ExerciseCardProps) => {
         <Card className='h-full pb-4 justify-between hover:shadow-xl hover:transition-all ease-in-out hover:border-1'>
             <CardHeader className='flex items-center justify-between'>
                 <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement='top'>
-                    <ModalInfo exercise={exercise}/>
+                    <ModalInfo exercise={exercise} isFavorite={true}/>
                 </Modal>
                 <span className='border-b-4 border-primary capitalize px-2'>{exercise.body_part}</span>
 
