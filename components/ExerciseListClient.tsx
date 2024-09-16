@@ -1,4 +1,3 @@
-// ExerciseListClient.tsx (Client Component)
 "use client";
 
 import { useState } from "react";
@@ -16,9 +15,6 @@ export default function ExerciseListClient({
   const exercisesPerPage = 12;
   const [currentPage, setCurrentPage] = useState(1);
   const numberPages = Math.ceil(exercises.length / exercisesPerPage);
-
-  // console.log('++ typeof exercises:', typeof exercises);
-  // console.log('-- exercises:', exercises);
 
   const indexOfLastExercise = currentPage * exercisesPerPage;
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
