@@ -12,10 +12,8 @@ export default function DayExerciseList({ day }: DayExerciseListProps) {
 
     return (
         <>
-            <h3 className="text-center">{day === 'day1' && 'Day 1'}</h3>
-            <h3 className="text-center">{day === 'day2' && 'Day 2'}</h3>
-            <h3 className="text-center">{day === 'day3' && 'Day 3'}</h3>
-
+            <h3 className="text-center">{day === 'day1' ? 'Day 1': day === 'day2'? 'Day 2' :'Day 3'}</h3>
+            
             <ul>
                 {exercises.map((exercise) => (
                     <li key={exercise.id}>{exercise.name}</li>
