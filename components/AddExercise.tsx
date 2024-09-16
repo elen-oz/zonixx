@@ -2,7 +2,7 @@
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
 
 import {useFavoriteWorkouts} from '@/store/useFavoriteWorkouts';
-import {useExerciseStore, ExerciseData} from '@/store/useExerciseStore';
+import {useExerciseStore} from '@/store/useExerciseStore';
 
 interface AddExerciseProps {
     day: 'day1' | 'day2' | 'day3';
@@ -21,27 +21,25 @@ export default function AddExercise({day}: AddExerciseProps) {
     };
 
     return (
-        <>
-
-            <Dropdown>
-                <DropdownTrigger>
-                    <Button
-                        variant="bordered"
-                    >
-                        Add exercise
-                    </Button>
-                </DropdownTrigger>
-                <DropdownMenu aria-label="Dynamic Actions" items={favoriteExercises} onAction={(key) => handleSelect(key)}
+        <Dropdown>
+            <DropdownTrigger>
+                <Button
+                    variant="bordered"
                 >
-                    {(exercise) => (
-                        <DropdownItem
-                            key={exercise.id}
-                        >
-                            {exercise.name}
-                        </DropdownItem>
-                    )}
-                </DropdownMenu>
-            </Dropdown></>
-
+                    Add more
+                </Button>
+            </DropdownTrigger>
+            <DropdownMenu aria-label="Dynamic Actions" items={favoriteExercises}
+                          onAction={(key) => handleSelect(String(key))}
+            >
+                {(exercise) => (
+                    <DropdownItem
+                        key={exercise.id}
+                    >
+                        {exercise.name}
+                    </DropdownItem>
+                )}
+            </DropdownMenu>
+        </Dropdown>
     );
 }

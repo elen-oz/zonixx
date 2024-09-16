@@ -11,17 +11,18 @@ export default function DayExerciseList({ day }: DayExerciseListProps) {
     const exercises = useExerciseStore((state) => state[day]);
 
     return (
-        <>
-            <h3 className="text-center">{day === 'day1' ? 'Day 1': day === 'day2'? 'Day 2' :'Day 3'}</h3>
-            
-            <ul>
+        <div className=''>
+            <h3 className="text-center">{day === 'day1' ? 'Day 1' : day === 'day2' ? 'Day 2' : 'Day 3'}</h3>
+
+            <ol className='list-decimal px-4'>
                 {exercises.map((exercise) => (
-                    <li key={exercise.id}>{exercise.name}</li>
+                    <li key={exercise.id} className='capitalize'>{exercise.name}</li>
                 ))}
-                <li>
-                    <AddExercise day={day}/>
-                </li>
-            </ul>
-        </>
+
+            </ol>
+            <div className='mx-auto'>
+                <AddExercise day={day}/>
+            </div>
+        </div>
     );
 }
