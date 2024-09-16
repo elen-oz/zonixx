@@ -1,7 +1,7 @@
 "use client";
 
 import { useExerciseStore } from '../store/useExerciseStore';
-import AddExercise from './AddExercise';
+import AddExerciseToDay from "./AddExerciseToDay";
 
 interface DayExerciseListProps {
     day: 'day1' | 'day2' | 'day3';
@@ -21,7 +21,7 @@ export default function DayExerciseList({ day }: DayExerciseListProps) {
 
             </ol>
             <div className='mx-auto'>
-                <AddExercise day={day}/>
+                <AddExerciseToDay day={day}/>
             </div>
         </div>
     );

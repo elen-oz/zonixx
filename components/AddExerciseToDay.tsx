@@ -8,7 +8,7 @@ interface AddExerciseProps {
     day: 'day1' | 'day2' | 'day3';
 }
 
-export default function AddExercise({day}: AddExerciseProps) {
+export default function AddExerciseToDay({day}: AddExerciseProps) {
     const {workouts: favoriteExercises} = useFavoriteWorkouts();
 
     const addExerciseToDay = useExerciseStore((state) => state.addExerciseToDay);
@@ -35,8 +35,9 @@ export default function AddExercise({day}: AddExerciseProps) {
                 {(exercise) => (
                     <DropdownItem
                         key={exercise.id}
+                        className='capitalize'
                     >
-                        {exercise.name}
+                        {exercise.name} ({exercise.body_part})
                     </DropdownItem>
                 )}
             </DropdownMenu>
