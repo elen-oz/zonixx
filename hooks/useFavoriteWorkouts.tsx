@@ -13,7 +13,7 @@ type ExerciseData = {
   instructions: string[];
 };
 
-export function useWorkouts() {
+export function useFavoriteWorkouts() {
   const [workouts, setWorkouts] = useState<ExerciseData[]>([]);
 
   useEffect(() => {

@@ -1,9 +1,17 @@
 "use client";
+import { useEffect } from 'react';
+// import { useFavoriteWorkouts } from "@/hooks/useFavoriteWorkouts";
+import { useFavoriteWorkouts } from '@/store/useFavoriteWorkouts';
 
-import { useWorkouts } from "@/hooks/useWorkouts";
 
 const WorkoutsList = () => {
-  const { workouts } = useWorkouts();
+  const { workouts, addWorkout, loadWorkouts  } = useFavoriteWorkouts();
+    // const { workouts: favoriteExercises,loadWorkouts } = useFavoriteWorkouts(); // Получаем любимые упражнения из хука
+
+
+    useEffect(() => {
+        loadWorkouts(); // Загружаем тренировки из localStorage при монтировании компонента
+    }, [loadWorkouts]);
 
   return (
     <div>
