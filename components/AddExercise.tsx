@@ -6,8 +6,7 @@ interface AddExerciseProps {
 }
 
 export default function AddExercise({ day }: AddExerciseProps) {
-    // const favoriteExercises = useExerciseStore((state) => state.favoriteExercises);
-    const { workouts: favoriteExercises } = useFavoriteWorkouts(); // Получаем любимые упражнения из хука
+    const { workouts: favoriteExercises } = useFavoriteWorkouts();
 
     const addExerciseToDay = useExerciseStore((state) => state.addExerciseToDay);
 

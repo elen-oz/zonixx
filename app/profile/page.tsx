@@ -1,60 +1,39 @@
 import DayExerciseList from "@/components/DayExerciseList";
-import WorkoutsList from "@/components/WorkoutsList";
+import FavoriteWorkoutsList from "@/components/FavoriteWorkoutsList";
 
 const MyPage = () => {
-  return (
-      <>
-        <div>
-          <h2>My Favorite Workouts</h2>
-          <WorkoutsList/>
-        </div>
+    return (
+        <>
+            <h1 className='text-center font-bold'>Profile Page</h1>
 
-        <div>
-          <h1>Workout Plan</h1>
-          <div style={{display: 'flex', justifyContent: 'space-around'}}>
-            <DayExerciseList day="day1"/>
-            <DayExerciseList day="day2"/>
-            <DayExerciseList day="day3"/>
-          </div>
-        </div>
+            <section>
+                <h2 className=''>My Favorite Workouts</h2>
+                <FavoriteWorkoutsList/>
+            </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-2 border-primary rounded-lg p-4">
-          <div className="border-2 rounded-lg p-4">
-            <h3 className="text-center">1 workout day</h3>
-            <ul>
-              <li>exercise 1</li>
-              <li>exercise 2</li>
-              <li>exercose 3</li>
-              <li>exercise 4</li>
-            </ul>
-          </div>
-          <div className="border-2 rounded-lg p-4">
-            <h3 className="text-center">2 workout day</h3>
-            <ul>
-              <li>exercise 1</li>
-              <li>exercise 2</li>
-              <li>exercose 3</li>
-              <li>exercise 4</li>
-              <li>exercise 5</li>
-            </ul>
-          </div>
-          <div className="border-2 rounded-lg p-4">
-            <h3 className="text-center">3 workout day</h3>
-            <ul>
-              <li>exercise 1</li>
-              <li>exercise 2</li>
-            </ul>
-          </div>
+            <section>
+                <h2>Workout Plan</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-2 border-primary rounded-lg p-4">
+                    <div className="border-2 rounded-lg p-4">
+                        <DayExerciseList day="day1"/>
+                    </div>
+                    <div className="border-2 rounded-lg p-4">
+                        <DayExerciseList day="day2"/>
+                    </div>
+                    <div className="border-2 rounded-lg p-4">
+                        <DayExerciseList day="day3"/>
+                    </div>
 
-          {/*<div>*/}
-          {/*  <h2>My mesurments</h2>*/}
-          {/*  <a href="https://www.youtube.com/watch?v=15qMh8C1Wzo" target="_blank">*/}
-          {/*    Youtube tutorial: How To Make Beautiful Charts In Next.js*/}
-          {/*  </a>*/}
-          {/*</div>*/}
-        </div>
-      </>
-  );
+                    {/*<div>*/}
+                    {/*  <h2>My mesurments</h2>*/}
+                    {/*  <a href="https://www.youtube.com/watch?v=15qMh8C1Wzo" target="_blank">*/}
+                    {/*    Youtube tutorial: How To Make Beautiful Charts In Next.js*/}
+                    {/*  </a>*/}
+                    {/*</div>*/}
+                </div>
+            </section>
+        </>
+    );
 };
 
 export default MyPage;

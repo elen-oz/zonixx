@@ -1,16 +1,13 @@
 "use client";
 import { Button } from "@nextui-org/react";
-// import { useWorkouts } from "@/hooks/useWorkouts";
 import { useFavoriteWorkouts } from '@/store/useFavoriteWorkouts';
-
 
 interface AddWorkoutButtonProps {
   exercise: any;
 }
 
 export const AddWorkoutButton = ({ exercise }: AddWorkoutButtonProps) => {
-  // const { addWorkout } = useWorkouts();
-  const { workouts, addWorkout, loadWorkouts } = useFavoriteWorkouts();
+  const { addWorkout } = useFavoriteWorkouts();
 
   return (
     <Button

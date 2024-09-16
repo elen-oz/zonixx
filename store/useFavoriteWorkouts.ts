@@ -1,6 +1,5 @@
-// store/useFavoriteWorkouts.ts
 import { create } from 'zustand';
-import { ExerciseData } from './useExerciseStore'; // Импортируем тип данных
+import { ExerciseData } from './useExerciseStore';
 
 interface WorkoutStore {
     workouts: ExerciseData[];
@@ -11,7 +10,6 @@ interface WorkoutStore {
 export const useFavoriteWorkouts = create<WorkoutStore>((set, get) => ({
     workouts: [],
 
-    // Метод для загрузки тренировок из localStorage при инициализации
     loadWorkouts: () => {
         const storedWorkouts = localStorage.getItem('workouts');
         if (storedWorkouts) {
@@ -19,7 +17,6 @@ export const useFavoriteWorkouts = create<WorkoutStore>((set, get) => ({
         }
     },
 
-    // Метод для добавления новой тренировки
     addWorkout: (workout: ExerciseData) => {
         const { workouts } = get();
         const workoutExists = workouts.some(
