@@ -5,9 +5,7 @@ import SimilarExercises from "@/components/SimilarExercises";
 import {exerciseOptions, youtubeOptions, fetchData} from "@/lib/fetchData";
 import type {Exercise, YoutubeVideo} from "@/types/api";
 
-export default async function ExerciseDetailPage({
-                                                     params,
-                                                 }: {
+export default async function ExerciseDetailPage({params}: {
     params: { slug: string };
 }) {
     try {
