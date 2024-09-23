@@ -15,12 +15,12 @@ export const useFavoriteWorkouts = create<WorkoutStore>((set, get) => ({
     workouts: [...initialExercises],
 
     loadWorkouts: () => {
-        const storedWorkouts = localStorage.getItem('workouts');
+        const storedWorkouts = localStorage.getItem('favoriteWorkouts');
         if (storedWorkouts) {
             set({workouts: JSON.parse(storedWorkouts)});
         } else {
             set({workouts: initialExercises});
-            localStorage.setItem('workouts', JSON.stringify(initialExercises));
+            localStorage.setItem('favoriteWorkouts', JSON.stringify(initialExercises));
         }
     },
 
@@ -33,7 +33,7 @@ export const useFavoriteWorkouts = create<WorkoutStore>((set, get) => ({
         if (!workoutExists) {
             const newWorkouts = [...workouts, workout];
             set({workouts: newWorkouts});
-            localStorage.setItem('workouts', JSON.stringify(newWorkouts));
+            localStorage.setItem('favoriteWorkouts', JSON.stringify(newWorkouts));
             console.info('Workout added');
         } else {
             console.info('Workout already exists');
@@ -44,13 +44,13 @@ export const useFavoriteWorkouts = create<WorkoutStore>((set, get) => ({
         const {workouts} = get();
         const newWorkouts = workouts.filter((workout) => workout.id !== workoutId);
         set({workouts: newWorkouts});
-        localStorage.setItem('workouts', JSON.stringify(newWorkouts));
+        localStorage.setItem('favoriteWorkouts', JSON.stringify(newWorkouts));
         console.info('Workout removed');
     },
 
     clearAllWorkouts: () => {
         set({workouts: []});
-        localStorage.removeItem('workouts');
+        localStorage.removeItem('favoriteWorkouts');
         console.info('All workouts cleared');
     },
 }));
