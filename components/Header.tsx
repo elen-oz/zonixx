@@ -18,36 +18,66 @@ const Header = () => {
                         >
                             zonixx
                         </Link></li>
-                    <li
-                        className={`${
-                            pathname === "/exercises"
-                                ? "active-nav-link"
-                                : "nav-link"
-                        } px-2`}
-                    >
-                        <Link
-                            href="/exercises"
-                            className="flex justify-center items-center gap-2"
+                    <div className=' md:w-[500px] flex justify-end items-center gap-2 md:gap-6'>
+                        <li
+                            className={`${
+                                pathname === "/profile"
+                                    ? "active-nav-link"
+                                    : "nav-link"
+                            } px-2`}
                         >
-              <span className="hidden sm:inline-block capitalize">
+                            <Link
+                                href="/about"
+                                className="flex justify-center items-center gap-2"
+                            >
+                                <span className="hidden md:inline-block capitalize">About</span>
+                            </Link>
+                        </li>
+                        <li
+                            className={`${
+                                pathname === "/exercises"
+                                    ? "active-nav-link"
+                                    : "nav-link"
+                            } px-2`}
+                        >
+                            <Link
+                                href="/exercises"
+                                className="flex justify-center items-center gap-2"
+                            >
+              <span className=" capitalize">
                 exercises
               </span>
-                        </Link>
-                    </li>
-                    <li
-                        className={`${
-                            pathname === "/profile"
-                                ? "active-nav-link"
-                                : "nav-link"
-                        } px-2`}
-                    >
-                        <Link
-                            href="/profile"
-                            className="flex justify-center items-center gap-2"
+                            </Link>
+                        </li>
+                        <li
+                            className={`${
+                                pathname === "/profile"
+                                    ? "active-nav-link"
+                                    : "nav-link"
+                            } px-2`}
                         >
-                            <span className="hidden sm:inline-block capitalize">profile</span>
-                        </Link>
-                    </li>
+                            <Link
+                                href="/profile"
+                                className="flex justify-center items-center gap-2"
+                            >
+                                <span className="capitalize">profile</span>
+                            </Link>
+                        </li>
+                        <li
+                            className={`${
+                                pathname === "/profile"
+                                    ? "active-nav-link"
+                                    : "nav-link"
+                            } px-2`}
+                        >
+                            <Link
+                                href="/contacts"
+                                className="flex justify-center items-center gap-2"
+                            >
+                                <span className="hidden md:inline-block capitalize">Contacts</span>
+                            </Link>
+                        </li>
+                    </div>
                 </ul>
             </nav>
         </header>
