@@ -38,7 +38,7 @@ const ExerciseCard = ({exercise}: ExerciseCardProps) => {
                 className='h-full'
             >
                 <CardHeader className="absolute z-10 top-1 flex-col items-start">
-                    <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement='top'>
+                    <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement='top' backdrop='blur'>
                         <ModalInfo
                             exercise={exercise}
                             isFavorite={false}/>
