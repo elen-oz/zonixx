@@ -16,6 +16,7 @@ import Link from 'next/link';
 import {ExerciseData} from '@/app/exercises/page';
 import ModalInfo from './ModalInfo';
 import {AddWorkoutButton} from './AddWorkoutButton';
+import NoImage from 'noimage.png';
 
 type ExerciseCardProps = {
     exercise: ExerciseData;
@@ -40,20 +41,31 @@ const ExerciseCard = ({exercise}: ExerciseCardProps) => {
                 </Modal>
 
                 <div className=''>
-                    <AddWorkoutButton exercise={exercise} secondary={true} >Add</AddWorkoutButton>
+                    <AddWorkoutButton exercise={exercise} secondary={true}>Add</AddWorkoutButton>
                 </div>
             </CardHeader>
             <Link href={`/exercises/${exercise.id}`} className='h-full'>
                 <CardBody className='overflow-visible py-2'>
-                <Image
-                        isZoomed
+                    {/*<Image*/}
+                    {/*        isZoomed*/}
+                    {/*        alt={exercise.name}*/}
+                    {/*        className='object-cover rounded-xl h-full'*/}
+                    {/*        src={exercise.gifUrl}*/}
+                    {/*        width={270}*/}
+                    {/*        height={270}*/}
+                    {/*        fallbackSrc="https://via.placeholder.com/270x270"*/}
+                    {/*    />*/}
+                    {exercise.gifUrl ? <img
                         alt={exercise.name}
                         className='object-cover rounded-xl h-full'
                         src={exercise.gifUrl}
-                        width={270}
+                    /> : <Image
+                        src="/noimage.png"
+                        alt="No image available"
+                        className='w-full h-auto object-contain'
+                        width={450}
                         height={270}
-                        fallbackSrc="https://via.placeholder.com/270x270"
-                    />
+                    />}
                 </CardBody>
                 <CardFooter className='flex-col justify-between'>
                     <h4 className='text-tiny uppercase font-bold pb-2'>
