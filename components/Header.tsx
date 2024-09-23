@@ -21,7 +21,7 @@ const Header = () => {
                     <div className=' md:w-[500px] flex justify-end items-center gap-2 md:gap-6'>
                         <li
                             className={`${
-                                pathname === "/profile"
+                                pathname === "/about"
                                     ? "active-nav-link"
                                     : "nav-link"
                             } px-2`}
@@ -65,7 +65,7 @@ const Header = () => {
                         </li>
                         <li
                             className={`${
-                                pathname === "/profile"
+                                pathname === "/contacts"
                                     ? "active-nav-link"
                                     : "nav-link"
                             } px-2`}

@@ -24,7 +24,7 @@ export default function AddExerciseToDay({day}: AddExerciseProps) {
         <Dropdown>
             <DropdownTrigger>
                 <Button
-                    variant="bordered"
+                    variant="bordered" radius="none"
                 >
                     Add more
                 </Button>

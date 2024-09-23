@@ -45,8 +45,10 @@ const SearchExercises = ({ handleExercisesData }: SearchExerciseProps) => {
 
         <div className="md:pt-[calc(theme(fontSize.small)_+_10px)] ">
           <Button
-            className="font-semibold shadow w-full bg-red-500 text-white"
+            className="font-semibold "
             type="submit"
+            variant="ghost"
+            radius="none"
           >
             Search
           </Button>

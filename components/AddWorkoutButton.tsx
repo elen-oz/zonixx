@@ -24,6 +24,7 @@ export const AddWorkoutButton = ({
             onClick={() => addWorkout(exercise)}
             color="primary"
             className={`px-4 ${secondary && secondaryStyles}`}
+            radius="none"
         >
             {children}
         </Button>

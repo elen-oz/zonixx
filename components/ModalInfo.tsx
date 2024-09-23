@@ -68,7 +68,7 @@ const ModalInfo = ({exercise, isFavorite = false}: ModalInfoProps) => {
                             </ol>
                         </ModalBody>
                         <ModalFooter>
-                            <Button color='danger' variant='light' onPress={onClose}>
+                            <Button color='danger' variant='light' radius="none" onPress={onClose}>
                                 Close
                             </Button>
                             {!isFavorite && <AddWorkoutButton exercise={exercise}/>}

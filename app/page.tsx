@@ -18,7 +18,9 @@ export default function Home() {
                     <Button
                         as={Link}
                         href='/exercises'
-                        className='button font-semibold shadow'
+                        className='font-semibold'
+                        variant="ghost"
+                        radius="none"
                     >
                         Get started
                     </Button>

@@ -14,7 +14,7 @@ export default function DayExerciseList({ day }: DayExerciseListProps) {
         <div className=''>
             <h3 className="text-center">{day === 'day1' ? 'Day 1' : day === 'day2' ? 'Day 2' : 'Day 3'}</h3>
 
-            <ol className='list-decimal px-4'>
+            <ol className='list-decimal px-4 mb-4'>
                 {exercises.map((exercise) => (
                     <li key={exercise.id} className='capitalize'>{exercise.name}</li>
                 ))}

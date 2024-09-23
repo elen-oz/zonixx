@@ -40,7 +40,7 @@ const ExerciseCard = ({exercise}: ExerciseCardProps) => {
                 </Modal>
 
                 <div className=''>
-                    <AddWorkoutButton exercise={exercise} secondary={true}>Add</AddWorkoutButton>
+                    <AddWorkoutButton exercise={exercise} secondary={true} >Add</AddWorkoutButton>
                 </div>
             </CardHeader>
             <Link href={`/exercises/${exercise.id}`} className='h-full'>
