@@ -50,7 +50,8 @@ export default function ExercisesClient({
       //   const data = await response.json();
       //   setExercises(data);
       // }
-      const response = await fetchData(url, exerciseOptions);
+      const data = await fetchData(url, exerciseOptions);
+      setExercises(data);
 
     } catch (error) {
       console.error("Error fetching exercise data:", error);
