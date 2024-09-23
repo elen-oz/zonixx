@@ -14,9 +14,11 @@ type ExerciseData = {
     name: string;
     body_part: string;
     equipment: string;
-    gif_url: string;
+    // gif_url: string;
+    gifUrl: string;
     target: string;
-    secondary_muscles: string[];
+    // secondary_muscles: string[];
+    secondaryMuscles: string[];
     instructions: string[];
 };
 
@@ -41,7 +43,7 @@ const ModalInfo = ({exercise, isFavorite = false}: ModalInfoProps) => {
                             {/*       width={370} height={400}/>*/}
                             <img alt={exercise.name}
                                    className='object-cover rounded-xl'
-                                   src={exercise.gif_url}
+                                   src={exercise.gifUrl}
                                    width={370} height={400}/>
 
                             <div>
@@ -53,7 +55,7 @@ const ModalInfo = ({exercise, isFavorite = false}: ModalInfoProps) => {
 
                             <div className='flex gap-1 flex-wrap'>
                                 <span className='inline'>Secondary muscles: </span>
-                                {exercise.secondary_muscles.map((item: string, index: any) => (
+                                {exercise.secondaryMuscles.map((item: string, index: any) => (
                                     <Chip key={index} className='capitalize'>
                                         {item}
                                     </Chip>

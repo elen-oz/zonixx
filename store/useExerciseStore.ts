@@ -5,9 +5,11 @@ export type ExerciseData = {
     name: string;
     body_part: string;
     equipment: string;
-    gif_url: string;
+    // gif_url: string;
+    gifUrl: string;
     target: string;
-    secondary_muscles: string[];
+    // secondary_muscles: string[];
+    secondaryMuscles: string[];
     instructions: string[];
 };
 

@@ -44,7 +44,7 @@ const SmallExerciseCard = ({exercise}: ExerciseCardProps) => {
 
                     <Chip className='bg-success-500 text-white'>{exercise.target}</Chip>
                     <div className='mt-2 flex gap-1'>
-                        {exercise.secondary_muscles.map(item => (
+                        {exercise.secondaryMuscles.map(item => (
                             <Chip key={item} className='bg-warning-500 text-white'>{item}</Chip>
                         ))}
                     </div>

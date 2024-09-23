@@ -21,20 +21,22 @@ export async function POST(req: NextRequest) {
       name,
       body_part,
       equipment,
-      gif_url,
+      // gif_url,
+      gifUrl,
       target,
-      secondary_muscles,
+      // secondary_muscles,
+      secondaryMuscles,
       instructions,
     } = body;
 
-    if (!id || !name || !body_part || !equipment || !gif_url || !target || !secondary_muscles || !instructions) {
+    if (!id || !name || !body_part || !equipment || !gifUrl || !target || !secondaryMuscles || !instructions) {
       return NextResponse.json({ error: 'All fields are required' }, { status: 400 });
     }
 
     const result = await pool.query(
-        `INSERT INTO exercises (id, name, body_part, equipment, gif_url, target, secondary_muscles, instructions)
+        `INSERT INTO exercises (id, name, body_part, equipment, gif_url, target, secondaryMuscles, instructions)
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
-        [id, name, body_part, equipment, gif_url, target, secondary_muscles, instructions]
+        [id, name, body_part, equipment, gifUrl, target, secondaryMuscles, instructions]
     );
 
     return NextResponse.json(result.rows[0], { status: 201 });

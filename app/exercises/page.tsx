@@ -1,24 +1,29 @@
-import { Suspense } from "react";
-import { getExercises } from "@/lib/fetchData";
+import {Suspense} from "react";
 import ExercisesClient from "./ExercisesClient";
+// import {getExercises} from "@/lib/getExercises";
+import {fetchData, exerciseOptions} from "@/lib/fetchData";
 
 export type ExerciseData = {
-  id: string;
-  name: string;
-  body_part: string;
-  equipment: string;
-  gif_url: string;
-  target: string;
-  secondary_muscles: string[];
-  instructions: string[];
+    id: string;
+    name: string;
+    body_part: string;
+    equipment: string;
+    // gif_url: string;
+    gifUrl: string;
+    target: string;
+    // secondary_muscles: string[];
+    secondaryMuscles: string[];
+    instructions: string[];
 };
 
 export default async function ExercisesPage() {
-  const allExercises = await getExercises();
+    // const exercisesData = await getExercises();
 
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <ExercisesClient allExercises={allExercises} />
-    </Suspense>
-  );
+    let exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises?limit=2000&offset=0', exerciseOptions);
+
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <ExercisesClient allExercises={exercisesData}/>
+        </Suspense>
+    );
 }

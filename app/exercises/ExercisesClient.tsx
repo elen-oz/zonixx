@@ -5,6 +5,7 @@ import { ExerciseData } from "./page";
 import SearchExercises from "@/components/SearchExercises";
 import ExerciseList from "@/components/ExerciseList";
 import { Chip } from "@nextui-org/react";
+import {fetchData, exerciseOptions} from "@/lib/fetchData";
 
 const bodyParts = [
   "all",
@@ -29,22 +30,28 @@ export default function ExercisesClient({
 
   const fetchExercisesByBodyPart = async (selectedBodyPart: string = "all") => {
     try {
+      // const url =
+      //   selectedBodyPart === "all"
+      //     ? "http://localhost:3000/api/exercises"
+      //     : `http://localhost:3000/api/exercises/body_part/${selectedBodyPart}`;
       const url =
-        selectedBodyPart === "all"
-          ? "http://localhost:3000/api/exercises"
-          : `http://localhost:3000/api/exercises/body_part/${selectedBodyPart}`;
+          selectedBodyPart === "all"
+              ? "https://exercisedb.p.rapidapi.com/exercises?limit=2000&offset=0"
+              : `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${selectedBodyPart}?limit=2000&offset=0`;
 
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
 
-      if (response.ok) {
-        const data = await response.json();
-        setExercises(data);
-      }
+      // const response = await fetch(url, {
+      //   method: "GET",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      // });
+      // if (response.ok) {
+      //   const data = await response.json();
+      //   setExercises(data);
+      // }
+      const response = await fetchData(url, exerciseOptions);
+
     } catch (error) {
       console.error("Error fetching exercise data:", error);
     }

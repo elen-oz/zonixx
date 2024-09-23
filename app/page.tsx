@@ -15,7 +15,7 @@ export default function Home() {
                     </h1>
                     <h2 className='big-title max-w-[500px] md:max-w-[700px] mx-auto'>find your strength</h2>
                     <div className='relative'>
-                        <Image src={ImgSection2} alt='Hero image' width={1112} height={742}
+                        <Image src={ImgSection2} alt='Hero image' width={1112}
                                className="w-full h-[300px] md:h-[600px] object-cover rounded-[4rem]" />
                         <div
                             className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center gap-9">
@@ -68,7 +68,7 @@ export default function Home() {
                     </div>
 
                     <div className='relative'>
-                        <Image src={HeroImg} alt='image' width={1112} height={742}
+                        <Image src={HeroImg} alt='image' width={1112}
                                className="w-full h-[300px] md:h-[600px] object-cover rounded-[4rem]" />
                         <div
                             className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center gap-9">
@@ -112,7 +112,7 @@ export default function Home() {
                     </div>
 
                     <div className='relative'>
-                        <Image src={ImgSection3} alt='image' width={1112} height={742}
+                        <Image src={ImgSection3} alt='image' width={1112}
                                className="w-full h-[300px] md:h-[600px] object-cover rounded-[4rem]" />
                         <div
                             className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center gap-9">

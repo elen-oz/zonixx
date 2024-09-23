@@ -27,9 +27,9 @@ export const useFavoriteWorkouts = create<WorkoutStore>((set, get) => ({
             const newWorkouts = [...workouts, workout];
             set({ workouts: newWorkouts });
             localStorage.setItem('workouts', JSON.stringify(newWorkouts));
-            console.log('Workout added');
+            console.info('Workout added');
         } else {
-            console.log('Workout already exists');
+            console.info('Workout already exists');
         }
     },
 }));

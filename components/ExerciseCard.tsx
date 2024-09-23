@@ -49,7 +49,7 @@ const ExerciseCard = ({exercise}: ExerciseCardProps) => {
                         isZoomed
                         alt={exercise.name}
                         className='object-cover rounded-xl h-full'
-                        src={exercise.gif_url}
+                        src={exercise.gifUrl}
                         width={270}
                         height={270}
                         fallbackSrc="https://via.placeholder.com/270x270"

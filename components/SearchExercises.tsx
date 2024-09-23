@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Input } from "@nextui-org/react";
 import { Button } from "@nextui-org/button";
-import { getExercises } from "@/lib/fetchData";
+
+import {getExercises} from "@/lib/getExercises";
 
 type SearchExerciseProps = {
   handleExercisesData: (data: any) => void;
