@@ -2,7 +2,7 @@ import {notFound} from "next/navigation";
 import Detail from "@/components/Detail";
 import ExerciseVideo from "@/components/ExerciseVideo";
 import SimilarExercises from "@/components/SimilarExercises";
-import {exerciseOptions, youtubeOptions, fetchData, getExerciseData} from "@/lib/fetchData";
+import {exerciseOptions, youtubeOptions, fetchData} from "@/lib/fetchData";
 import type {Exercise, YoutubeVideo} from "@/types/api";
 
 export default async function ExerciseDetailPage({

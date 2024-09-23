@@ -31,7 +31,6 @@ export interface YoutubeVideo {
 }
 
 export interface ApiOptions {
-    method: string;
     headers: {
         [key: string]: string;
     };
