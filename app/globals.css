@@ -12,13 +12,13 @@
 
 @layer components {
   h1 {
-    @apply my-3 font-heading uppercase;
+    @apply my-5 font-heading uppercase;
   }
   h2 {
-    @apply my-3 font-heading uppercase;
+    @apply my-5 font-heading uppercase;
   }
   h3 {
-    @apply my-2 font-heading uppercase;
+    @apply my-5 font-heading uppercase;
   }
   .big-title {
     @apply text-9xl font-extrabold leading-none;
