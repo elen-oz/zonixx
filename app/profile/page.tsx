@@ -29,9 +29,10 @@ const MyPage = () => {
             <section>
                 <h2 className='big-title text-2xl'>Workout Plan</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-2 border-primary rounded-lg p-4">
-                    {days.map((day: day) => (<div className="border-2 rounded-lg p-4">
-                        <DayExerciseList day={day}/>
-                    </div>))}
+                    {days.map((day: day) => (
+                        <div key={day} className="border-2 rounded-lg p-4">
+                            <DayExerciseList day={day}/>
+                        </div>))}
 
                     {/*<div>*/}
                     {/*  <h2>My mesurments</h2>*/}

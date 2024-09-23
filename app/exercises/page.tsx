@@ -20,7 +20,24 @@ import type {Exercise} from "@/types/api";
 
 export default async function ExercisesPage() {
     // const exercisesData = await getExercises();
-    const exercisesData: Exercise[] = await fetchData('https://exercisedb.p.rapidapi.com/exercises?limit=2000&offset=0', exerciseOptions);
+    // const exercisesData: Exercise[] = await fetchData('https://exercisedb.p.rapidapi.com/exercises?limit=2000&offset=0', exerciseOptions);
+
+    let exercisesData: Exercise[] = [];
+
+    try {
+        const response = await fetchData('https://exercisedb.p.rapidapi.com/exercises?limit=2000&offset=0', exerciseOptions);
+        if (Array.isArray(response)) {
+            exercisesData = response;
+        } else {
+            console.error('Unexpected response format:', response);
+        }
+    } catch (error) {
+        console.error('Error fetching exercises:', error);
+    }
+
+    if (exercisesData.length === 0) {
+        return <div>No exercises found. Please try again later.</div>;
+    }
 
     return (
         <Suspense fallback={<div>Loading...</div>}>

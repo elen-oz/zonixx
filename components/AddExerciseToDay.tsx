@@ -37,7 +37,7 @@ export default function AddExerciseToDay({day}: AddExerciseProps) {
                         key={exercise.id}
                         className='capitalize'
                     >
-                        {exercise.name} ({exercise.body_part})
+                        {exercise.name} ({exercise.bodyPart})
                     </DropdownItem>
                 )}
             </DropdownMenu>
