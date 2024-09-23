@@ -1,15 +1,16 @@
-interface Thumbnail {
-    url: string;
-    width?: number;
-    height?: number;
-}
-
-interface Video {
-    videoId: string;
-    id: string;
-    title: string;
-    channelName: string;
-    thumbnails: Thumbnail[];
+export interface YoutubeVideo {
+    video: {
+        thumbnails: {
+            url: string;
+            width?: number;
+            height?: number;
+        }[];
+        id?: string;
+        title: string;
+        description?: string;
+        videoId: string;
+        channelName: string;
+    };
 }
 
 export interface Exercise {
@@ -24,10 +25,6 @@ export interface Exercise {
     // secondary_muscles: string[];
     secondaryMuscles: string[];
     instructions: string[];
-}
-
-export interface YoutubeVideo {
-    video: Video;
 }
 
 export interface ApiOptions {

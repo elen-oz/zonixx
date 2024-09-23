@@ -23,7 +23,14 @@ export default async function ExerciseDetailPage({
         //     `https://youtube-search-and-download.p.rapidapi.com/search?query=${exerciseDetail.name}`,
         //     youtubeOptions,
         //   )) || [];
-        const exerciseVideos: YoutubeVideo[] = await fetchData(
+
+        interface YouTubeSearchResult {
+            contents: YoutubeVideo[];
+            estimatedResults: string;
+            next: string;
+        }
+
+        const {contents: exerciseVideos}: YouTubeSearchResult = await fetchData(
             `https://youtube-search-and-download.p.rapidapi.com/search?query=${exerciseDetail.name}`,
             youtubeOptions,
         );
