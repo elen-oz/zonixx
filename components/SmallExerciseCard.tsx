@@ -10,21 +10,29 @@ import {
     CardBody,
     CardFooter,
 } from '@nextui-org/react';
-import {IoIosInformationCircleOutline} from 'react-icons/io';
+import {IoIosInformationCircleOutline, IoIosRemoveCircle} from 'react-icons/io';
 import Link from 'next/link';
 import type {Exercise} from "@/types/api";
 import ModalInfo from './ModalInfo';
 
 type ExerciseCardProps = {
     exercise: Exercise;
+    removeWorkout: (id: string) => void;
 };
 
-const SmallExerciseCard = ({exercise}: ExerciseCardProps) => {
+const SmallExerciseCard = ({exercise, removeWorkout}: ExerciseCardProps) => {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
     const handleInfoClick = (e: React.MouseEvent) => {
         e.preventDefault();
+        e.stopPropagation();
         onOpen();
+    };
+
+    const handleRemoveClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        removeWorkout(exercise.id);
     };
 
     return (
@@ -37,18 +45,24 @@ const SmallExerciseCard = ({exercise}: ExerciseCardProps) => {
                     </Modal>
                     <span className='border-b-4 border-primary capitalize px-2'>{exercise.bodyPart}</span>
 
-                    <IoIosInformationCircleOutline
-                        onClick={handleInfoClick}
-                        size={40}
-                        className='p-2 cursor-pointer'
-                    />
+                    <IoIosRemoveCircle onClick={handleRemoveClick} size={30}
+                                       className='p-2 cursor-pointer'/>
                 </CardHeader>
 
                 {/*<Link href={`/exercises/${exercise.id}`} className='h-full'>*/}
                 <CardBody className='overflow-visible py-2'>
-                    <h4 className='text-tiny uppercase font-bold pb-2'>
-                        {exercise.name}
-                    </h4>
+                    <div className='flex items-center  pb-2'>
+                        <h4 className='text-tiny uppercase text-xl'>
+                            {exercise.name}
+                        </h4>
+
+                        <IoIosInformationCircleOutline
+                            onClick={handleInfoClick}
+                            size={30}
+                            className='p-2 cursor-pointer'
+                        />
+                    </div>
+
 
                     <Chip isDisabled color="primary">{exercise.target}</Chip>
                     <div className='mt-2 flex gap-1 flex-wrap'>
