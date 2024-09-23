@@ -15,7 +15,7 @@ const MyPage = () => {
     return (
         <div className='pb-4'>
             <section className='w-full py-12 text-center mx-auto px-4 sm:px-6 lg:px-8 z-20'>
-                <h1 className='big-title text-2xl'>
+                <h1 className='big-title'>
                     Profile
                 </h1>
                 <div className='relative'>
@@ -31,7 +31,7 @@ const MyPage = () => {
 
 
             <section>
-                <h2 className='big-title text-2xl'>Workout Plan</h2>
+                <h2 className='big-title text-3xl md:text-5xl'>Workout Plan</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-2 border-primary rounded-lg p-4">
                     {days.map((day: day) => (
                         <div key={day} className="border-2 rounded-lg p-4">

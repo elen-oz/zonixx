@@ -13,7 +13,7 @@ const FavoriteWorkoutsSection = () => {
     return (
         <section>
             <div className="flex items-center justify-between">
-                <h2 className='big-title text-2xl'>My Favorite Workouts</h2>
+                <h2 className='big-title text-3xl md:text-5xl'>My Favorite Workouts</h2>
                 {(workouts.length !== 0) && <Button radius='none' onClick={clearAllWorkouts} className='uppercase'>Clear</Button>}
             </div>
             {(workouts.length !== 0) ? <FavoriteWorkoutsList/> :

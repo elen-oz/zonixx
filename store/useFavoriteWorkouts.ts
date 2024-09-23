@@ -1,5 +1,7 @@
 import { create } from 'zustand';
 import type {Exercise} from "@/types/api";
+import { exercises as initialExercises } from '@/data/exercisesData';
+
 
 interface WorkoutStore {
     workouts: Exercise[];
@@ -9,24 +11,16 @@ interface WorkoutStore {
     loadWorkouts: () => void;
 }
 
-const initialWorkouts: Exercise[] = [
-    // { id: '501', name: "Отжимания", description: "Классическое упражнение для груди и трицепсов" },
-    // { id: '502', name: "Приседания", description: "Базовое упражнение для ног" },
-    // { id: '503', name: "Планка", description: "Статическое упражнение для мышц кора" }
-];
-
 export const useFavoriteWorkouts = create<WorkoutStore>((set, get) => ({
-    workouts: [...initialWorkouts],
-
-    // todo: add removing by 1 exercise & clear all favorite exercises
+    workouts: [...initialExercises],
 
     loadWorkouts: () => {
         const storedWorkouts = localStorage.getItem('workouts');
         if (storedWorkouts) {
             set({ workouts: JSON.parse(storedWorkouts) });
         } else {
-            set({ workouts: initialWorkouts });
-            localStorage.setItem('workouts', JSON.stringify(initialWorkouts));
+            set({ workouts: initialExercises });
+            localStorage.setItem('workouts', JSON.stringify(initialExercises));
         }
     },
 
