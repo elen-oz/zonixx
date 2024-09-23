@@ -7,7 +7,7 @@ const Detail = ({ exerciseDetail }: any) => {
   const { id, bodyPart, gif_url, name, target, equipment } = exerciseDetail;
   const newGifUrl = simplifyExerciseUrl(gif_url);
 
-  // console.log("--id: ", id);
+  console.log("--bodyPart: ", bodyPart);
   // console.log("--name: ", name);
   // console.log("--gif_url: ", gif_url);
   // console.log("--newGifUrl: ", newGifUrl);
@@ -24,7 +24,7 @@ const Detail = ({ exerciseDetail }: any) => {
         />
       </div>
       <div className="max-w-[400px]">
-        <h1 className="font-semibold text-xl capitalize">{name}</h1>
+        <h1 className="text-xl capitalize">{name}</h1>
         <div className="">
           <div className="grid grid-cols-4 items-center gap-2 my-4">
             <Image

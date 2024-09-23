@@ -46,7 +46,7 @@ const ModalInfo = ({exercise, isFavorite = false}: ModalInfoProps) => {
 
                             <div>
                                 <span className=''>Target: </span>
-                                <Chip className='bg-warning-500 text-white'>
+                                <Chip className='uppercase' isDisabled color="primary">
                                     {exercise.target}
                                 </Chip>
                             </div>
@@ -54,13 +54,13 @@ const ModalInfo = ({exercise, isFavorite = false}: ModalInfoProps) => {
                             <div className='flex gap-1 flex-wrap'>
                                 <span className='inline'>Secondary muscles: </span>
                                 {exercise.secondary_muscles.map((item: string, index: any) => (
-                                    <Chip key={index} className='bg-success-500 text-white'>
+                                    <Chip key={index} className='capitalize'>
                                         {item}
                                     </Chip>
                                 ))}
                             </div>
 
-                            <h3 className='font-semibold'>Instructions:</h3>
+                            <h3>Instructions:</h3>
                             <ol className='list-decimal list-inside'>
                                 {exercise.instructions.map((item: string, index: any) => (
                                     <li key={index}>{item}</li>

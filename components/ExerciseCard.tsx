@@ -59,7 +59,7 @@ const ExerciseCard = ({exercise}: ExerciseCardProps) => {
                     <h4 className='text-tiny uppercase font-bold pb-2'>
                         {exercise.name}
                     </h4>
-                    <Chip className='bg-warning-500 text-white'>{exercise.target}</Chip>
+                    <Chip className='uppercase' isDisabled color="primary">{exercise.target}</Chip>
                 </CardFooter>
             </Link>
         </Card>
