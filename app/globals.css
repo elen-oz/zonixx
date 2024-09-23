@@ -24,7 +24,11 @@
     @apply text-9xl font-extrabold  tracking-tighter leading-none;
   }
   .active-nav-link{
-    @apply font-extrabold underline;
+    /*@apply font-extrabold underline;*/
+    @apply border-b-2 border-black;
+  }
+  .nav-link{
+    @apply border-b-2 border-white;
   }
 }
 

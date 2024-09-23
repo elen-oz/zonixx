@@ -22,7 +22,7 @@ const Header = () => {
                         className={`${
                             pathname === "/exercises"
                                 ? "active-nav-link"
-                                : ""
+                                : "nav-link"
                         } px-2`}
                     >
                         <Link
@@ -38,7 +38,7 @@ const Header = () => {
                         className={`${
                             pathname === "/profile"
                                 ? "active-nav-link"
-                                : ""
+                                : "nav-link"
                         } px-2`}
                     >
                         <Link
