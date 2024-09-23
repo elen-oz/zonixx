@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Input } from "@nextui-org/react";
 import { Button } from "@nextui-org/button";
-
-import {getExercises} from "@/lib/getExercises";
+import {fetchData, exerciseOptions} from "@/lib/fetchData";
+import type {Exercise} from "@/types/api";
 
 type SearchExerciseProps = {
-  handleExercisesData: (data: any) => void;
+  handleExercisesData: (data: Exercise[]) => void;
 };
 
 const SearchExercises = ({ handleExercisesData }: SearchExerciseProps) => {
@@ -15,9 +15,9 @@ const SearchExercises = ({ handleExercisesData }: SearchExerciseProps) => {
     e.preventDefault();
 
     if (search) {
-      const exerciseData = await getExercises();
+      const exercisesData: Exercise[] = await fetchData('https://exercisedb.p.rapidapi.com/exercises?limit=2000&offset=0', exerciseOptions);
 
-      const searchedExercises = exerciseData.filter(
+      const searchedExercises = exercisesData.filter(
         (exercise: any) =>
           exercise.name.toLowerCase().includes(search) ||
           exercise.target.toLowerCase().includes(search) ||

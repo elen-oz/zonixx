@@ -40,22 +40,22 @@ export const fetchData = async (url: string, options: any) => {
     }
 };
 
-export const getExerciseData = async (id: string) => {
-    const baseUrl = process.env.VERCEL_URL
-        ? `https://${process.env.VERCEL_URL}`
-        : "http://localhost:3000";
-
-    const response = await fetch(`${baseUrl}/api/exercises/${id}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
-
-    if (!response.ok) {
-        throw new Error("Failed to fetch exercise data");
-    }
-
-    const data = await response.json();
-    return data || [];
-};
+// export const getExerciseData = async (id: string) => {
+//     const baseUrl = process.env.VERCEL_URL
+//         ? `https://${process.env.VERCEL_URL}`
+//         : "http://localhost:3000";
+//
+//     const response = await fetch(`${baseUrl}/api/exercises/${id}`, {
+//         method: "GET",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//     });
+//
+//     if (!response.ok) {
+//         throw new Error("Failed to fetch exercise data");
+//     }
+//
+//     const data = await response.json();
+//     return data || [];
+// };

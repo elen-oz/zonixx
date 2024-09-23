@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-// import { ExerciseData } from "./page";
 import type {Exercise} from "@/types/api";
 import SearchExercises from "@/components/SearchExercises";
 import ExerciseList from "@/components/ExerciseList";

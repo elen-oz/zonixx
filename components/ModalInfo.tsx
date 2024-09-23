@@ -10,21 +10,6 @@ import {
 import {AddWorkoutButton} from './AddWorkoutButton';
 import type {Exercise} from "@/types/api";
 
-
-// type ExerciseData = {
-//     id: string;
-//     name: string;
-//     // body_part: string;
-//     bodyPart: string;
-//     equipment: string;
-//     // gif_url: string;
-//     gifUrl: string;
-//     target: string;
-//     // secondary_muscles: string[];
-//     secondaryMuscles: string[];
-//     instructions: string[];
-// };
-
 type ModalInfoProps = {
     exercise: Exercise;
     isFavorite?: boolean;

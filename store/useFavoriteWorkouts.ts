@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-// import { ExerciseData } from './useExerciseStore';
 import type {Exercise} from "@/types/api";
 
 interface WorkoutStore {

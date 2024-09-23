@@ -1,4 +1,3 @@
-// import { ExerciseData } from "@/app/exercises/page";
 import ExerciseListClient from "./ExerciseListClient";
 import type {Exercise} from "@/types/api";
 

@@ -12,7 +12,6 @@ import {
 } from '@nextui-org/react';
 import {IoIosInformationCircleOutline} from 'react-icons/io';
 import Link from 'next/link';
-// import {ExerciseData} from '@/app/exercises/page';
 import type {Exercise} from "@/types/api";
 import ModalInfo from './ModalInfo';
 

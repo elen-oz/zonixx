@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Pagination } from "@nextui-org/react";
 import ExerciseCard from "./ExerciseCard";
-// import { ExerciseData } from "@/app/exercises/page";
 import type {Exercise} from "@/types/api";
 
 type ExerciseListClientProps = {
@@ -27,7 +26,7 @@ export default function ExerciseListClient({
   return (
     <>
       <ul className="py-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {currentExercises.map((exercise: ExerciseData, index: number) => (
+        {currentExercises.map((exercise: Exercise, index: number) => (
           <li key={index}>
             <ExerciseCard key={index} exercise={exercise} />
           </li>

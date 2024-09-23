@@ -1,6 +1,3 @@
-// export type ExerciseData = {
-//
-// };
 interface Thumbnail {
     url: string;
     width?: number;
