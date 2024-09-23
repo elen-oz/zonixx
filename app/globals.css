@@ -21,7 +21,7 @@
     @apply my-5 font-heading uppercase;
   }
   .big-title {
-    @apply text-9xl font-extrabold leading-none;
+    @apply text-4xl sm:text-7xl md:text-9xl font-extrabold leading-none;
   }
   .active-nav-link{
     /*@apply font-extrabold underline;*/
