@@ -20,7 +20,7 @@ const FavoriteWorkoutsSection = () => {
                 <>
                     <div className='w-full text-center text-md py-5'>List is empty.</div>
                     <div className='w-full text-center'>
-                        <Link href="/exercises" className=' uppercase text-2xl underline'>Let's add some exercises!
+                        <Link href="/exercises" className=' uppercase text-2xl underline'>Let&apos;s add some exercises!
                         </Link>
                     </div>
                 </>}
