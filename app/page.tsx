@@ -40,7 +40,7 @@ export default function Home() {
                             classes
                             to suit your individual needs and goals. Our comprehensive app is designed to provide you
                             with a
-                            complete and personalized workout experience. </p>
+                            complete and personalized workout experience.</p>
                         <Button
                             as={Link}
                             href='/exercises'
@@ -63,7 +63,7 @@ export default function Home() {
                             variant="light"
                             radius="full"
                         >
-                            See all...
+                            See all
                         </Button>
                     </div>
 
@@ -84,6 +84,26 @@ export default function Home() {
                             </Button>
                         </div>
                     </div>
+
+                    <div className='mt-12 w-[500px] ml-auto pr-20'>
+                        <h3 className="text-5xl my-7 text-right">Customized<br/> for every level.</h3>
+                        <p className='mb-7 text-right'>
+                            Dive into our extensive library of exercises, tailored to meet the needs of beginners and
+                            elite athletes alike. From high-intensity interval training to yoga and strength building,
+                            our diverse range of workouts ensures you'll never hit a plateau. With expert guidance and
+                            detailed instructions, you can confidently tackle new challenges and continuously evolve
+                            your fitness routine.
+                        </p>
+                        {/*<Button*/}
+                        {/*    as={Link}*/}
+                        {/*    href='/exercises'*/}
+                        {/*    className='font-semibold capitalize'*/}
+                        {/*    variant="ghost"*/}
+                        {/*    radius="full"*/}
+                        {/*>*/}
+                        {/*    Join today*/}
+                        {/*</Button>*/}
+                    </div>
                 </section>
 
                 <section className='mb-10'>
@@ -96,7 +116,7 @@ export default function Home() {
                             variant="light"
                             radius="full"
                         >
-                            See all...
+                            Start here
                         </Button>
                     </div>
 
@@ -116,6 +136,24 @@ export default function Home() {
                                 join today
                             </Button>
                         </div>
+                    </div>
+
+                    <div className='mt-12 w-[500px] mr-auto pl-20'>
+                        <h3 className="text-5xl my-7 text-left">Achieve <br/>your milestones.</h3>
+                        <p className='mb-7 text-left'>Your fitness journey is unique, and our personal profile feature is designed
+                            to reflect that. Easily monitor your workouts, set achievable goals, and celebrate your
+                            successes along the way. With intuitive progress tracking and insightful analytics, you'll
+                            have a clear view of your fitness evolution. Stay motivated as you watch your strength
+                            increase, endurance improve, and overall well-being flourish.</p>
+                        {/*<Button*/}
+                        {/*    as={Link}*/}
+                        {/*    href='/exercises'*/}
+                        {/*    className='font-semibold capitalize'*/}
+                        {/*    variant="ghost"*/}
+                        {/*    radius="full"*/}
+                        {/*>*/}
+                        {/*    Join today*/}
+                        {/*</Button>*/}
                     </div>
                 </section>
             </div>
