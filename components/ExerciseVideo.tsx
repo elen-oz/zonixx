@@ -1,8 +1,9 @@
 import { Spinner } from "@nextui-org/spinner";
 import Image from "next/image";
+import type {YoutubeVideo} from '@/types/api'
 
 type ExerciseVideoProps = {
-  exerciseVideos: any;
+  exerciseVideos: YoutubeVideo[];
   name: string;
 };
 

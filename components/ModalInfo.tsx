@@ -8,22 +8,25 @@ import {
 } from '@nextui-org/react';
 // import Image from "next/image";
 import {AddWorkoutButton} from './AddWorkoutButton';
+import type {Exercise} from "@/types/api";
 
-type ExerciseData = {
-    id: string;
-    name: string;
-    body_part: string;
-    equipment: string;
-    // gif_url: string;
-    gifUrl: string;
-    target: string;
-    // secondary_muscles: string[];
-    secondaryMuscles: string[];
-    instructions: string[];
-};
+
+// type ExerciseData = {
+//     id: string;
+//     name: string;
+//     // body_part: string;
+//     bodyPart: string;
+//     equipment: string;
+//     // gif_url: string;
+//     gifUrl: string;
+//     target: string;
+//     // secondary_muscles: string[];
+//     secondaryMuscles: string[];
+//     instructions: string[];
+// };
 
 type ModalInfoProps = {
-    exercise: ExerciseData;
+    exercise: Exercise;
     isFavorite?: boolean;
 };
 
@@ -42,9 +45,9 @@ const ModalInfo = ({exercise, isFavorite = false}: ModalInfoProps) => {
                             {/*       src={exercise.gif_url}*/}
                             {/*       width={370} height={400}/>*/}
                             <img alt={exercise.name}
-                                   className='object-cover rounded-xl'
-                                   src={exercise.gifUrl}
-                                   width={370} height={400}/>
+                                 className='object-cover rounded-xl'
+                                 src={exercise.gifUrl}
+                                 width={370} height={400}/>
 
                             <div>
                                 <span className=''>Target: </span>

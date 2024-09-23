@@ -12,11 +12,12 @@ import {
 } from '@nextui-org/react';
 import {IoIosInformationCircleOutline} from 'react-icons/io';
 import Link from 'next/link';
-import {ExerciseData} from '@/app/exercises/page';
+// import {ExerciseData} from '@/app/exercises/page';
+import type {Exercise} from "@/types/api";
 import ModalInfo from './ModalInfo';
 
 type ExerciseCardProps = {
-    exercise: ExerciseData;
+    exercise: Exercise;
 };
 
 const SmallExerciseCard = ({exercise}: ExerciseCardProps) => {
@@ -28,7 +29,7 @@ const SmallExerciseCard = ({exercise}: ExerciseCardProps) => {
                 <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement='top'>
                     <ModalInfo exercise={exercise} isFavorite={true}/>
                 </Modal>
-                <span className='border-b-4 border-primary capitalize px-2'>{exercise.body_part}</span>
+                <span className='border-b-4 border-primary capitalize px-2'>{exercise.bodyPart}</span>
 
                 <IoIosInformationCircleOutline
                     onClick={onOpen}
@@ -36,8 +37,9 @@ const SmallExerciseCard = ({exercise}: ExerciseCardProps) => {
                     className='p-2 cursor-pointer'
                 />
             </CardHeader>
+
             <Link href={`/exercises/${exercise.id}`} className='h-full'>
-            <CardBody className='overflow-visible py-2'>
+                <CardBody className='overflow-visible py-2'>
                     <h4 className='text-tiny uppercase font-bold pb-2'>
                         {exercise.name}
                     </h4>

@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { Pagination } from "@nextui-org/react";
 import ExerciseCard from "./ExerciseCard";
-import { ExerciseData } from "@/app/exercises/page";
+// import { ExerciseData } from "@/app/exercises/page";
+import type {Exercise} from "@/types/api";
 
 type ExerciseListClientProps = {
-  exercises: ExerciseData[];
+  exercises: Exercise[];
 };
 
 export default function ExerciseListClient({

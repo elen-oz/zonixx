@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ExerciseData } from "./page";
+// import { ExerciseData } from "./page";
+import type {Exercise} from "@/types/api";
 import SearchExercises from "@/components/SearchExercises";
 import ExerciseList from "@/components/ExerciseList";
 import { Chip } from "@nextui-org/react";
@@ -24,9 +25,9 @@ const bodyParts = [
 export default function ExercisesClient({
   allExercises,
 }: {
-  allExercises: ExerciseData[];
+  allExercises: Exercise[];
 }) {
-  const [exercises, setExercises] = useState<ExerciseData[]>(allExercises);
+  const [exercises, setExercises] = useState<Exercise[]>(allExercises);
 
   const fetchExercisesByBodyPart = async (selectedBodyPart: string = "all") => {
     try {
@@ -61,7 +62,7 @@ export default function ExercisesClient({
     return await fetchExercisesByBodyPart(newBodyPart);
   };
 
-  const handleExercisesData = (data: ExerciseData[]) => {
+  const handleExercisesData = (data: Exercise[]) => {
     setExercises(data);
   };
 

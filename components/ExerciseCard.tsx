@@ -13,13 +13,14 @@ import {
 } from '@nextui-org/react';
 import {IoIosInformationCircleOutline} from 'react-icons/io';
 import Link from 'next/link';
-import {ExerciseData} from '@/app/exercises/page';
+// import {ExerciseData} from '@/app/exercises/page';
+import type {Exercise} from "@/types/api";
 import ModalInfo from './ModalInfo';
 import {AddWorkoutButton} from './AddWorkoutButton';
 import NoImage from 'noimage.png';
 
 type ExerciseCardProps = {
-    exercise: ExerciseData;
+    exercise: Exercise;
 };
 
 const ExerciseCard = ({exercise}: ExerciseCardProps) => {

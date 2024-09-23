@@ -1,9 +1,10 @@
 import { create } from 'zustand';
-import { ExerciseData } from './useExerciseStore';
+// import { ExerciseData } from './useExerciseStore';
+import type {Exercise} from "@/types/api";
 
 interface WorkoutStore {
-    workouts: ExerciseData[];
-    addWorkout: (workout: ExerciseData) => void;
+    workouts: Exercise[];
+    addWorkout: (workout: Exercise) => void;
     loadWorkouts: () => void;
 }
 
@@ -17,7 +18,7 @@ export const useFavoriteWorkouts = create<WorkoutStore>((set, get) => ({
         }
     },
 
-    addWorkout: (workout: ExerciseData) => {
+    addWorkout: (workout: Exercise) => {
         const { workouts } = get();
         const workoutExists = workouts.some(
             (existingWorkout) => existingWorkout.id === workout.id

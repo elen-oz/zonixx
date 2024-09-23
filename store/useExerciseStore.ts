@@ -1,23 +1,11 @@
-import { create } from 'zustand';
-
-export type ExerciseData = {
-    id: string;
-    name: string;
-    body_part: string;
-    equipment: string;
-    // gif_url: string;
-    gifUrl: string;
-    target: string;
-    // secondary_muscles: string[];
-    secondaryMuscles: string[];
-    instructions: string[];
-};
+import {create} from 'zustand';
+import type {Exercise} from "@/types/api";
 
 interface ExerciseStore {
-    day1: ExerciseData[];
-    day2: ExerciseData[];
-    day3: ExerciseData[];
-    addExerciseToDay: (day: 'day1' | 'day2' | 'day3', exercise: ExerciseData) => void;
+    day1: Exercise[];
+    day2: Exercise[];
+    day3: Exercise[];
+    addExerciseToDay: (day: 'day1' | 'day2' | 'day3', exercise: Exercise) => void;
 }
 
 export const useExerciseStore = create<ExerciseStore>((set, get) => ({
@@ -29,7 +17,7 @@ export const useExerciseStore = create<ExerciseStore>((set, get) => ({
             const dayExercises = state[day];
             const exists = dayExercises.some((ex) => ex.id === exercise.id);
             if (!exists) {
-                return { [day]: [...dayExercises, exercise] };
+                return {[day]: [...dayExercises, exercise]};
             }
             return state;
         });

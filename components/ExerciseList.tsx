@@ -1,8 +1,9 @@
-import { ExerciseData } from "@/app/exercises/page";
+// import { ExerciseData } from "@/app/exercises/page";
 import ExerciseListClient from "./ExerciseListClient";
+import type {Exercise} from "@/types/api";
 
 type ExerciseListServerProps = {
-  exercises: ExerciseData[];
+  exercises: Exercise[];
 };
 
 export default function ExerciseListServer({
