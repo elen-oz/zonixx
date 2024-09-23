@@ -12,16 +12,19 @@
 
 @layer components {
   h1 {
-    @apply my-3 font-heading font-extrabold uppercase;
+    @apply my-3 font-heading uppercase;
   }
   h2 {
-    @apply my-3 font-heading font-extrabold uppercase;
+    @apply my-3 font-heading uppercase;
   }
   h3 {
-    @apply my-2 font-heading font-extrabold uppercase;
+    @apply my-2 font-heading uppercase;
   }
   .big-title {
-    @apply text-8xl tracking-tighter;
+    @apply text-9xl font-extrabold  tracking-tighter leading-none;
+  }
+  .active-nav-link{
+    @apply font-extrabold underline;
   }
 }
 
