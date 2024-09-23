@@ -1,13 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@200..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  * {
+    @apply font-body text-base;
+  }
+}
+
 @layer components {
+  h1 {
+    @apply my-3 font-heading font-extrabold uppercase;
+  }
   h2 {
-    @apply my-3 text-xl;
+    @apply my-3 font-heading font-extrabold uppercase;
   }
   h3 {
-    @apply my-2 text-lg;
+    @apply my-2 font-heading font-extrabold uppercase;
+  }
+  .big-title {
+    @apply text-8xl tracking-tighter;
   }
 }
 

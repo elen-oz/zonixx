@@ -9,6 +9,14 @@ const config: Config = {
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: {
+        heading: ['Anton', 'sans-serif'],
+        body: ['Oswald', 'system-ui'],
+      },
+    },
+  },
   plugins: [
     nextui({
       // addCommonColors: true,
@@ -18,16 +26,12 @@ const config: Config = {
         // },
         light: {
           colors: {
-            background: '#ef4444',
+            background: '#000',
             foreground: '#0a001d',
             primary: {
               foreground: '#FFFFFF',
-              DEFAULT: '#ef4444',
+              DEFAULT: '#2e1065',
             },
-            // second: {
-            //   foreground: '#FFFFFF',
-            //   DEFAULT: '#8a8cf5',
-            // },
           },
         },
         dark: {
