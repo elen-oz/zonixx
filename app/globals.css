@@ -8,6 +8,10 @@
   * {
     @apply font-body text-base;
   }
+
+  section {
+    @apply mb-5;
+  }
 }
 
 @layer components {

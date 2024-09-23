@@ -5,7 +5,7 @@ import SmallExerciseCard from './SmallExerciseCard';
 
 
 const FavoriteWorkoutsList = () => {
-    const {workouts, loadWorkouts} = useFavoriteWorkouts();
+    const {workouts, loadWorkouts, removeWorkout, clearAllWorkouts} = useFavoriteWorkouts();
 
     useEffect(() => {
         loadWorkouts();

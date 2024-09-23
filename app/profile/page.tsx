@@ -1,8 +1,11 @@
 import Image from 'next/image';
 import DayExerciseList from "@/components/DayExerciseList";
 import FavoriteWorkoutsList from "@/components/FavoriteWorkoutsList";
-// import HeroImage from "@/app/assets/images/hero3.webp";
 import HeroImage from "@/app/assets/images/hero1.webp";
+import {useFavoriteWorkouts} from "@/store/useFavoriteWorkouts";
+import FavoriteWorkoutsSection from "@/app/profile/FavoriteWorkoutsSection";
+
+// todo: add dummy training data to localStorage and use it by default in favorites exercises
 
 
 const MyPage = () => {
@@ -26,6 +29,7 @@ const MyPage = () => {
                 </div>
             </section>
 
+
             <section>
                 <h2 className='big-title text-2xl'>Workout Plan</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-2 border-primary rounded-lg p-4">
@@ -34,19 +38,16 @@ const MyPage = () => {
                             <DayExerciseList day={day}/>
                         </div>))}
 
-                    {/*<div>*/}
-                    {/*  <h2>My mesurments</h2>*/}
-                    {/*  <a href="https://www.youtube.com/watch?v=15qMh8C1Wzo" target="_blank">*/}
-                    {/*    Youtube tutorial: How To Make Beautiful Charts In Next.js*/}
-                    {/*  </a>*/}
-                    {/*</div>*/}
+
                 </div>
             </section>
 
-            <section>
-                <h2 className='big-title text-2xl'>My Favorite Workouts</h2>
-                <FavoriteWorkoutsList/>
-            </section>
+            <FavoriteWorkoutsSection />
+
+            {/*<section>*/}
+            {/*    <h2 className='big-title text-2xl'>My Favorite Workouts</h2>*/}
+            {/*    <FavoriteWorkoutsList/>*/}
+            {/*</section>*/}
         </div>
     );
 };
