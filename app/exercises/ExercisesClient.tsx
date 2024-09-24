@@ -25,12 +25,12 @@ export default function ExercisesClient({allExercises}: { allExercises: Exercise
     const [exercises, setExercises] = useState<Exercise[]>(allExercises);
 
     useEffect(() => {
-        console.log("[Client] Component mounted");
-        console.log(`[Client] Initialized with ${allExercises.length} exercises`);
+        console.info("[Client] Component mounted");
+        console.info(`[Client] Initialized with ${allExercises.length} exercises`);
     }, [allExercises]);
 
     const fetchExercisesByBodyPart = async (selectedBodyPart: string = "all") => {
-        console.log(`[Client] Fetching exercises for body part: ${selectedBodyPart}`);
+        console.info(`[Client] Fetching exercises for body part: ${selectedBodyPart}`);
         try {
             const url =
                 selectedBodyPart === "all"
@@ -38,7 +38,7 @@ export default function ExercisesClient({allExercises}: { allExercises: Exercise
                     : `/api/exercises/${selectedBodyPart}`;
 
             const data = await fetchData(url, exerciseOptions);
-            console.log(`[Client] Fetched ${data?.length || 0} exercises for ${selectedBodyPart}`);
+            console.info(`[Client] Fetched ${data?.length || 0} exercises for ${selectedBodyPart}`);
             setExercises(data);
         } catch (error) {
             console.error("[Client] Error fetching exercise data:", error);
@@ -46,12 +46,12 @@ export default function ExercisesClient({allExercises}: { allExercises: Exercise
     };
 
     const handleBodyPartChange = async (newBodyPart: string) => {
-        console.log(`[Client] Body part changed to: ${newBodyPart}`);
+        console.info(`[Client] Body part changed to: ${newBodyPart}`);
         await fetchExercisesByBodyPart(newBodyPart);
     };
 
     const handleExercisesData = (data: Exercise[]) => {
-        console.log(`[Client] Search results: ${data.length} exercises`);
+        console.info(`[Client] Search results: ${data.length} exercises`);
         setExercises(data);
     };
 

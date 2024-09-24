@@ -24,7 +24,7 @@ const getFromCache = (key: string) => {
     if (item) {
         const {data, timestamp} = JSON.parse(item);
         if (Date.now() - timestamp < 3600000) { // 1 hour
-            console.log(`[Cache] Using cached data for: ${key}`);
+            console.info(`[Cache] Using cached data for: ${key}`);
             return data;
         }
     }
@@ -35,22 +35,22 @@ const setToCache = (key: string, data: any) => {
     if (!isClient) return;
     const item = JSON.stringify({data, timestamp: Date.now()});
     localStorage.setItem(key, item);
-    console.log(`[Cache] Stored data in cache for: ${key}`);
+    console.info(`[Cache] Stored data in cache for: ${key}`);
 };
 
 export const fetchData = async (url: string, options: ApiOptions) => {
-    console.log(`[Fetch] Attempting to fetch data for URL: ${url}`);
+    console.info(`[Fetch] Attempting to fetch data for URL: ${url}`);
 
     if (isClient) {
         const cachedData = getFromCache(url);
         if (cachedData) {
-            console.log(`[Fetch] Returning cached data for: ${url}`);
+            console.info(`[Fetch] Returning cached data for: ${url}`);
             return cachedData;
         }
     }
 
     try {
-        console.log(`[Fetch] No cache hit, fetching from API: ${url}`);
+        console.info(`[Fetch] No cache hit, fetching from API: ${url}`);
         const response = await fetch(url, options);
 
         if (!response.ok) {
@@ -58,7 +58,7 @@ export const fetchData = async (url: string, options: ApiOptions) => {
         }
 
         const data = await response.json();
-        console.log(`[Fetch] Received data from API. Data length: ${JSON.stringify(data).length}`);
+        console.info(`[Fetch] Received data from API. Data length: ${JSON.stringify(data).length}`);
 
         if (isClient) {
             setToCache(url, data);
