@@ -5,9 +5,10 @@ import type {Exercise} from "@/types/api";
 import SearchExercises from "@/components/SearchExercises";
 import ExerciseList from "@/components/ExerciseList";
 import {Chip} from "@nextui-org/react";
-import {fetchData, exerciseOptions} from "@/lib/fetchData";
 import Image from "next/image";
 import HeroImg from "@/app/assets/images/hero5.webp";
+import { fetchExercises } from '@/lib/api';
+
 
 const bodyParts = [
     "all",
@@ -24,27 +25,28 @@ const bodyParts = [
 ];
 
 export default function ExercisesClient() {
-    // const [exercises, setExercises] = useState<Exercise[]>(allExercises);
     const [exercises, setExercises] = useState<Exercise[]>([]);
-
-    // useEffect(() => {
-    //     console.info("[Client] Component mounted");
-    //     console.info(`[Client] Initialized with ${allExercises.length} exercises`);
-    // }, [allExercises]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     const fetchExercisesByBodyPart = async (selectedBodyPart: string = "all") => {
-        console.info(`[Client] Fetching exercises for body part: ${selectedBodyPart}`);
+        setIsLoading(true);
+        setError(null);
         try {
-            const url =
-                selectedBodyPart === "all"
-                    ? "/api/exercises"
-                    : `/api/exercises/${selectedBodyPart}`;
-
-            const data = await fetchData(url, exerciseOptions);
-            console.info(`[Client] Fetched ${data?.length || 0} exercises for > ${selectedBodyPart} <`);
-            setExercises(data);
-        } catch (error) {
-            console.error("[Client] Error fetching exercise data:", error);
+            console.log(`[Client] Fetching exercises for body part: ${selectedBodyPart}`);
+            const data = await fetchExercises(selectedBodyPart);
+            if (Array.isArray(data) && data.length > 0) {
+                setExercises(data);
+                console.log(`[Client] Fetched ${data.length} exercises for ${selectedBodyPart}`);
+            } else {
+                throw new Error('No exercises found or invalid data received from API');
+            }
+        } catch (err) {
+            console.error("[Client] Error fetching exercise data:", err);
+            setError('Failed to fetch exercises. Please try again.');
+            setExercises([]);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -60,6 +62,9 @@ export default function ExercisesClient() {
 
     return (
         <>
+            {isLoading && <p>Loading exercises...</p>}
+            {error && <p className="error">{error}</p>}
+
             <div className="w-full flex flex-col items-center justify-between">
                 <h2 className="text-3xl font-extrabold text-black dark:text-white sm:text-4xl">
                     Exercises

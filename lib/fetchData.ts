@@ -3,16 +3,16 @@ import type {ApiOptions} from '@/types/api'
 export const exerciseOptions = {
     method: 'GET',
     headers: {
-        "x-rapidapi-key": process.env.NEXT_PUBLIC_API_KEY || '',
-        "x-rapidapi-host": "exercisedb.p.rapidapi.com",
+        "x-rapidapi-key": process.env.NEXT_PUBLIC_API_KEY || "",
+        "x-rapidapi-host": process.env.NEXT_PUBLIC_API_HOST_EXDB || "",
     },
 };
 
 export const youtubeOptions = {
     method: "GET",
     headers: {
-        "x-rapidapi-key": process.env.NEXT_PUBLIC_API_KEY || '',
-        "x-rapidapi-host": "youtube-search-and-download.p.rapidapi.com",
+        "x-rapidapi-key": process.env.NEXT_PUBLIC_API_KEY || "",
+        "x-rapidapi-host": process.env.NEXT_PUBLIC_API_HOST_YT || "",
     },
 };
 
