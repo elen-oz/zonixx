@@ -51,10 +51,9 @@ const SmallExerciseCard = ({exercise, removeWorkout}: ExerciseCardProps) => {
                                        className='p-1 cursor-pointer'/>
                 </CardHeader>
 
-                {/*<Link href={`/exercises/${exercise.id}`} className='h-full'>*/}
                 <CardBody className='overflow-visible py-2'>
                     <div className='flex items-center gap-2 pb-2'>
-                        <h4 className='text-tiny uppercase text-xl'>
+                        <h4 className='uppercase text-xl'>
                             {exercise.name}
                         </h4>
 
