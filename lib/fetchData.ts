@@ -54,7 +54,8 @@ export const fetchData = async (url: string, options: ApiOptions) => {
         const response = await fetch(url, options);
 
         if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            console.error(`[Fetch] HTTP error! Status: ${response.status}`);
+            return null;
         }
 
         const data = await response.json();

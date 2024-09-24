@@ -2,7 +2,7 @@ import Image from "next/image";
 import { AddWorkoutButton } from "@/components/AddWorkoutButton";
 
 const Detail = ({ exerciseDetail }: any) => {
-  const { id, bodyPart, gifUrl, name, target, equipment } = exerciseDetail;
+  const { bodyPart, gifUrl, name, target, equipment } = exerciseDetail;
 
   return (
     <div className="flex flex-col md:flex-row w-full justify-center items-center mb-10">
