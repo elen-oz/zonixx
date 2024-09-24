@@ -1,7 +1,7 @@
 "use client";
 
 import DayExerciseList from "@/components/DayExerciseList";
-import type {Day} from "@/types/api"
+import type {TrainingDay} from "@/types/api"
 
 {/* const { day1, day2, day3, addExerciseToDay, removeExerciseFromDay, loadExercises } = useExerciseStore();
 
@@ -18,13 +18,13 @@ import type {Day} from "@/types/api"
 }
 
 const TrainingDaysSection = () => {
-    const days: Day[] = ['day1', 'day2', 'day3'];
+    const days: TrainingDay[] = ['trainingDay1', 'trainingDay2', 'trainingDay3'];
 
     return (
         <section>
             <h2 className='big-title text-3xl md:text-5xl'>Workout Plan</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-2 border-primary rounded-lg p-4">
-                {days.map((day: Day) => (
+                {days.map((day: TrainingDay) => (
                     <div key={day} className="border-2 rounded-lg p-4">
                         <DayExerciseList day={day}/>
                     </div>))}
