@@ -2,6 +2,39 @@
 
 ## Next.js 14 Project with NextUI, TypeScript, and Zustand
 
+### Project Description
+
+This application is designed to help users create and manage personalized workout plans. The core functionality is centered around the user's profile page, where they can:
+
+1) Create Custom Workout Plans:
+
+* Add exercises to favorites
+* Incorporate favorite exercises into specific training days
+* Default training days include basic CrossFit exercises
+
+
+2) Exercise Information:
+
+* Each exercise card displays an animation demonstrating proper technique
+* Users can open a modal for quick information
+* Detailed view available with:
+
+   * Complete exercise information
+   * YouTube videos on proper form
+   * List of similar exercises
+   * List of exercises using the same equipment
+
+
+
+
+3) Exercise Browsing and Filtering:
+
+* On the main exercises page, users can filter exercises by body part
+
+
+
+The application aims to provide a comprehensive and user-friendly platform for fitness enthusiasts to plan and track their workouts effectively.
+
 ## Technologies Used
 
 - **Next.js 14**
