@@ -1,21 +1,8 @@
 "use client";
 
+import {useEffect} from "react";
 import DayExerciseList from "@/components/DayExerciseList";
 import type {TrainingDay} from "@/types/api"
-
-{/* const { day1, day2, day3, addExerciseToDay, removeExerciseFromDay, loadExercises } = useExerciseStore();
-
-                // Загрузить упражнения при инициализации приложения
-                useEffect(() => {
-                    loadExercises();
-                }, []);
-
-                // Добавить новое упражнение
-                addExerciseToDay('day1', { id: 7, name: "Берпи", description: "3 подхода по 10 повторений" });
-
-                // Удалить упражнение
-                removeExerciseFromDay('day2', 3); */
-}
 
 const TrainingDaysSection = () => {
     const days: TrainingDay[] = ['trainingDay1', 'trainingDay2', 'trainingDay3'];

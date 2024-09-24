@@ -4,10 +4,10 @@ import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@ne
 import {useFavoriteWorkouts} from '@/store/useFavoriteWorkouts';
 import {useExerciseStore} from '@/store/useExerciseStore';
 
-import type {Day} from '@/types/api'
+import type {TrainingDay} from '@/types/api'
 
 interface AddExerciseProps {
-    day: Day;
+    day: TrainingDay;
 }
 
 export default function AddExerciseToDayDropdown({day}: AddExerciseProps) {

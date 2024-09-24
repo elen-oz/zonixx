@@ -1,17 +1,38 @@
 import {create} from 'zustand';
-import type {Exercise} from "@/types/api";
+import type {Exercise, TrainingDay} from "@/types/api";
+import {defaultTrainingDaysExercises as defaultExercises} from '@/data/trainingDaysData'
 
 interface ExerciseStore {
-    day1: Exercise[];
-    day2: Exercise[];
-    day3: Exercise[];
-    addExerciseToDay: (day: 'day1' | 'day2' | 'day3', exercise: Exercise) => void;
+    trainingDay1: Exercise[];
+    trainingDay2: Exercise[];
+    trainingDay3: Exercise[];
+    addExerciseToDay: (day: TrainingDay, exercise: Exercise) => void;
+    removeExerciseFromDay: (day: TrainingDay, exerciseId: string) => void;
+    loadExercises: () => void;
 }
 
 export const useExerciseStore = create<ExerciseStore>((set, get) => ({
-    day1: [],
-    day2: [],
-    day3: [],
+    trainingDay1: [],
+    trainingDay2: [],
+    trainingDay3: [],
+
+    loadExercises: () => {
+        const TrainingDays: TrainingDay[] = ['trainingDay1', 'trainingDay2', 'trainingDay3'];
+        const loadedExercises: { [key: string]: Exercise[] } = {};
+
+        TrainingDays.forEach(day => {
+            const storedExercises = localStorage.getItem(`exercises_${day}`);
+            if (storedExercises) {
+                loadedExercises[day] = JSON.parse(storedExercises);
+            } else {
+                loadedExercises[day] = defaultExercises[day];
+                localStorage.setItem(`exercises_${day}`, JSON.stringify(defaultExercises[day]));
+            }
+        });
+
+        set(loadedExercises);
+    },
+
     addExerciseToDay: (day, exercise) => {
         set((state) => {
             const dayExercises = state[day];
@@ -20,6 +41,14 @@ export const useExerciseStore = create<ExerciseStore>((set, get) => ({
                 return {[day]: [...dayExercises, exercise]};
             }
             return state;
+        });
+    },
+
+    removeExerciseFromDay: (day, exerciseId) => {
+        set((state) => {
+            const updatedExercises = state[day].filter(ex => ex.id !== exerciseId);
+            localStorage.setItem(`exercises_${day}`, JSON.stringify(updatedExercises));
+            return {[day]: updatedExercises};
         });
     },
 }));
