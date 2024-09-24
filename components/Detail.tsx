@@ -1,28 +1,16 @@
 import Image from "next/image";
-import { Button } from "@nextui-org/react";
-import { simplifyExerciseUrl } from "@/lib/utils";
 import { AddWorkoutButton } from "@/components/AddWorkoutButton";
 
 const Detail = ({ exerciseDetail }: any) => {
   const { id, bodyPart, gifUrl, name, target, equipment } = exerciseDetail;
-  // const newGifUrl = simplifyExerciseUrl(gif_url);
 
   return (
     <div className="flex flex-col md:flex-row w-full justify-center items-center mb-10">
       <div>
-        {/*<Image*/}
-        {/*  src={gifUrl}*/}
-        {/*  alt="exercise gif"*/}
-        {/*  className="max-w-[400px]"*/}
-        {/*  width={400}*/}
-        {/*  height={400}*/}
-        {/*/>*/}
-
         <img
           src={gifUrl}
           alt="exercise gif"
           className="max-w-[400px]"
-
         />
       </div>
       <div className="max-w-[400px]">
