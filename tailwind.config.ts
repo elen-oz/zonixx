@@ -40,7 +40,7 @@ const config: Config = {
             foreground: '#e7e7ff',
             primary: {
               foreground: '#FFFFFF',
-              DEFAULT: '#6366f1',
+              DEFAULT: '#2e1065',
             },
           },
         },

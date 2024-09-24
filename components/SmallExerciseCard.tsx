@@ -10,7 +10,10 @@ import {
     CardBody,
     CardFooter,
 } from '@nextui-org/react';
-import {IoIosInformationCircleOutline, IoIosRemoveCircle} from 'react-icons/io';
+import {IoIosInformation} from 'react-icons/io';
+import { IoTrashOutline } from "react-icons/io5";
+
+
 import Link from 'next/link';
 import type {Exercise} from "@/types/api";
 import ModalInfo from './ModalInfo';
@@ -45,21 +48,21 @@ const SmallExerciseCard = ({exercise, removeWorkout}: ExerciseCardProps) => {
                     </Modal>
                     <span className='border-b-4 border-primary capitalize px-2'>{exercise.bodyPart}</span>
 
-                    <IoIosRemoveCircle onClick={handleRemoveClick} size={30}
-                                       className='p-2 cursor-pointer'/>
+                    <IoTrashOutline onClick={handleRemoveClick} size={20}
+                                       className='p-1 cursor-pointer'/>
                 </CardHeader>
 
                 {/*<Link href={`/exercises/${exercise.id}`} className='h-full'>*/}
                 <CardBody className='overflow-visible py-2'>
-                    <div className='flex items-center  pb-2'>
+                    <div className='flex items-center gap-2 pb-2'>
                         <h4 className='text-tiny uppercase text-xl'>
                             {exercise.name}
                         </h4>
 
-                        <IoIosInformationCircleOutline
+                        <IoIosInformation
                             onClick={handleInfoClick}
-                            size={30}
-                            className='p-2 cursor-pointer'
+                            size={15}
+                            className='cursor-pointer bg-primary-100 hover:bg-primary-50 rounded-full'
                         />
                     </div>
 

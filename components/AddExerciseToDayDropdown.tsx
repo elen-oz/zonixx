@@ -2,7 +2,7 @@
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
 
 import {useFavoriteWorkouts} from '@/store/useFavoriteWorkouts';
-import {useExerciseStore} from '@/store/useExerciseStore';
+import {useTrainingDaysStore} from '@/store/useTrainingDaysStore';
 
 import type {TrainingDay} from '@/types/api'
 
@@ -13,7 +13,7 @@ interface AddExerciseProps {
 export default function AddExerciseToDayDropdown({day}: AddExerciseProps) {
     const {workouts: favoriteExercises} = useFavoriteWorkouts();
 
-    const addExerciseToDay = useExerciseStore((state) => state.addExerciseToDay);
+    const addExerciseToDay = useTrainingDaysStore((state) => state.addExerciseToDay);
 
     const handleSelect = (id: string) => {
         const selectedExercise = favoriteExercises.find(ex => ex.id === id);
