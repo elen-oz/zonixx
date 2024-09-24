@@ -38,3 +38,4 @@ export interface ApiOptions {
     };
 }
 
+export type Day = 'day1' | 'day2' | 'day3';

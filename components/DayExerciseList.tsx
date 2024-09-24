@@ -2,9 +2,10 @@
 
 import { useExerciseStore } from '../store/useExerciseStore';
 import AddExerciseToDay from "./AddExerciseToDay";
+import type {Day} from "@/types/api"
 
 interface DayExerciseListProps {
-    day: 'day1' | 'day2' | 'day3';
+    day: Day;
 }
 
 export default function DayExerciseList({ day }: DayExerciseListProps) {

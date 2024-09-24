@@ -4,13 +4,13 @@ import FavoriteWorkoutsList from "@/components/FavoriteWorkoutsList";
 import HeroImage from "@/app/assets/images/hero1.webp";
 import {useFavoriteWorkouts} from "@/store/useFavoriteWorkouts";
 import FavoriteWorkoutsSection from "@/app/profile/FavoriteWorkoutsSection";
+import TrainingDaysSection from "@/app/profile/TrainingDaysSection";
 
 // todo: add dummy training data to localStorage and use it by default in favorites exercises
 
 
 const MyPage = () => {
-    type day = 'day1' | 'day2' | 'day3';
-    const days: day[] = ['day1', 'day2', 'day3'];
+
 
     return (
         <div className='pb-4'>
@@ -30,19 +30,9 @@ const MyPage = () => {
             </section>
 
 
-            <section>
-                <h2 className='big-title text-3xl md:text-5xl'>Workout Plan</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-2 border-primary rounded-lg p-4">
-                    {days.map((day: day) => (
-                        <div key={day} className="border-2 rounded-lg p-4">
-                            <DayExerciseList day={day}/>
-                        </div>))}
+            <TrainingDaysSection />
 
-
-                </div>
-            </section>
-
-            <FavoriteWorkoutsSection />
+            <FavoriteWorkoutsSection/>
 
             {/*<section>*/}
             {/*    <h2 className='big-title text-2xl'>My Favorite Workouts</h2>*/}

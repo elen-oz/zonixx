@@ -4,8 +4,10 @@ import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@ne
 import {useFavoriteWorkouts} from '@/store/useFavoriteWorkouts';
 import {useExerciseStore} from '@/store/useExerciseStore';
 
+import type {Day} from '@/types/api'
+
 interface AddExerciseProps {
-    day: 'day1' | 'day2' | 'day3';
+    day: Day;
 }
 
 export default function AddExerciseToDay({day}: AddExerciseProps) {
