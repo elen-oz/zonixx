@@ -1,6 +1,5 @@
 "use client";
 
-import {useEffect} from "react";
 import DayExerciseList from "@/components/DayExerciseList";
 import type {TrainingDay} from "@/types/api"
 

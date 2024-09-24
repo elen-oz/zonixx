@@ -8,7 +8,6 @@ import {
     Card,
     CardHeader,
     CardBody,
-    CardFooter,
 } from '@nextui-org/react';
 import {IoIosInformation} from 'react-icons/io';
 import { IoTrashOutline } from "react-icons/io5";

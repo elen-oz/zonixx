@@ -11,7 +11,7 @@ interface ExerciseStore {
     loadExercises: () => void;
 }
 
-export const useTrainingDaysStore = create<ExerciseStore>((set, get) => ({
+export const useTrainingDaysStore = create<ExerciseStore>((set, _get) => ({
     trainingDay1: [],
     trainingDay2: [],
     trainingDay3: [],
