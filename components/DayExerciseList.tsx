@@ -1,7 +1,7 @@
 "use client";
 
-import { useExerciseStore } from '../store/useExerciseStore';
-import AddExerciseToDay from "./AddExerciseToDay";
+import { useExerciseStore } from '@/store/useExerciseStore';
+import AddExerciseToDayDropdown from "./AddExerciseToDayDropdown";
 import type {Day} from "@/types/api"
 
 interface DayExerciseListProps {
@@ -22,7 +22,7 @@ export default function DayExerciseList({ day }: DayExerciseListProps) {
 
             </ol>
             <div className='mx-auto'>
-                <AddExerciseToDay day={day}/>
+                <AddExerciseToDayDropdown day={day}/>
             </div>
         </div>
     );

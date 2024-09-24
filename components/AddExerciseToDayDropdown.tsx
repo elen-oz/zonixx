@@ -10,7 +10,7 @@ interface AddExerciseProps {
     day: Day;
 }
 
-export default function AddExerciseToDay({day}: AddExerciseProps) {
+export default function AddExerciseToDayDropdown({day}: AddExerciseProps) {
     const {workouts: favoriteExercises} = useFavoriteWorkouts();
 
     const addExerciseToDay = useExerciseStore((state) => state.addExerciseToDay);
