@@ -62,9 +62,6 @@ export default function ExercisesClient() {
 
     return (
         <>
-            {isLoading && <p>Loading exercises...</p>}
-            {error && <p className="error">{error}</p>}
-
             <div className="w-full flex flex-col items-center justify-between">
                 <h2 className="text-3xl font-extrabold text-black dark:text-white sm:text-4xl">
                     Exercises
@@ -83,6 +80,10 @@ export default function ExercisesClient() {
                     ))}
                 </ul>
             </div>
+
+            {isLoading && <p>Loading exercises...</p>}
+            {error && <p className="error">{error}</p>}
+
             {exercises.length > 0 ? (<ExerciseList exercises={exercises}/>)
             : (<section className='mb-10'>
                     <div className='flex items-center justify-center'>
