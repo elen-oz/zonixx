@@ -48,7 +48,7 @@ const SmallExerciseCard = ({exercise, removeWorkout}: ExerciseCardProps) => {
                     <span className='border-b-4 border-primary capitalize px-2'>{exercise.bodyPart}</span>
 
                     <IoTrashOutline onClick={handleRemoveClick} size={20}
-                                       className='p-1 cursor-pointer'/>
+                                       className='p-1 cursor-pointer hover:bg-primary-50 rounded-full'/>
                 </CardHeader>
 
                 <CardBody className='overflow-visible py-2'>
@@ -60,7 +60,7 @@ const SmallExerciseCard = ({exercise, removeWorkout}: ExerciseCardProps) => {
                         <IoIosInformation
                             onClick={handleInfoClick}
                             size={15}
-                            className='cursor-pointer bg-primary-100 hover:bg-primary-50 rounded-full'
+                            className='cursor-pointer bg-primary-50 hover:bg-primary-100 rounded-full'
                         />
                     </div>
 

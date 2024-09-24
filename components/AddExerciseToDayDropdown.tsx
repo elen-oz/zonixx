@@ -26,9 +26,9 @@ export default function AddExerciseToDayDropdown({day}: AddExerciseProps) {
         <Dropdown>
             <DropdownTrigger>
                 <Button
-                    variant="bordered" radius="none"
+                    variant="bordered" radius="none" className='uppercase'
                 >
-                    Add more
+                    Add
                 </Button>
             </DropdownTrigger>
             <DropdownMenu aria-label="Dynamic Actions" items={favoriteExercises}

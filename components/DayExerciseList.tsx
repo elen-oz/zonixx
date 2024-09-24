@@ -50,7 +50,7 @@ export default function DayExerciseList({day}: DayExerciseListProps) {
                             <IoIosInformation
                                 onClick={handleInfoClick}
                                 size={15}
-                                className='cursor-pointer bg-primary-100 hover:bg-primary-50 rounded-full'
+                                className='cursor-pointer bg-primary-50 hover:bg-primary-100 rounded-full'
                             />
                             <span>{exercise.name}</span>
                         </div>
@@ -60,7 +60,7 @@ export default function DayExerciseList({day}: DayExerciseListProps) {
                 ))}
 
             </ol>
-            <div className='mx-auto'>
+            <div className='flex items-center justify-center pt-5'>
                 <AddExerciseToDayDropdown day={day}/>
             </div>
         </div>
