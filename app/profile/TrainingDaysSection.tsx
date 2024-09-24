@@ -10,7 +10,7 @@ const TrainingDaysSection = () => {
         <section>
             <h2 className='big-title text-3xl md:text-5xl text-center md:text-left'>Workout Plan</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-0 p-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:p-4">
                 {days.map((day: TrainingDay, index: number) => (
                     <div
                         key={day}
