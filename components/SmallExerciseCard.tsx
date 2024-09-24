@@ -65,10 +65,10 @@ const SmallExerciseCard = ({exercise, removeWorkout}: ExerciseCardProps) => {
                     </div>
 
 
-                    <Chip isDisabled color="primary">{exercise.target}</Chip>
+                    <Chip isDisabled color="primary" size="sm" className='uppercase'>{exercise.target}</Chip>
                     <div className='mt-2 flex gap-1 flex-wrap'>
                         {exercise.secondaryMuscles.map(item => (
-                            <Chip variant="bordered" key={item}>{item}</Chip>
+                            <Chip variant="bordered" key={item} size="sm">{item}</Chip>
                         ))}
                     </div>
 
