@@ -1,3 +1,7 @@
+
+// note: the folder of this file renamed from [id] to id!
+// during work on get data from localStorage / cache
+
 import { NextRequest, NextResponse } from 'next/server';
 import pool from '@/lib/db';
 
