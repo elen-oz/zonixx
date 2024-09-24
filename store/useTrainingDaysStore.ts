@@ -11,7 +11,7 @@ interface ExerciseStore {
     loadExercises: () => void;
 }
 
-export const useExerciseStore = create<ExerciseStore>((set, get) => ({
+export const useTrainingDaysStore = create<ExerciseStore>((set, get) => ({
     trainingDay1: [],
     trainingDay2: [],
     trainingDay3: [],
@@ -38,7 +38,9 @@ export const useExerciseStore = create<ExerciseStore>((set, get) => ({
             const dayExercises = state[day];
             const exists = dayExercises.some((ex) => ex.id === exercise.id);
             if (!exists) {
-                return {[day]: [...dayExercises, exercise]};
+                const updatedExercises = [...dayExercises, exercise];
+                localStorage.setItem(`exercises_${day}`, JSON.stringify(updatedExercises));
+                return { [day]: updatedExercises };
             }
             return state;
         });
