@@ -40,6 +40,7 @@ export default function ExerciseListClient({
           initialPage={1}
           page={currentPage}
           onChange={setCurrentPage}
+          radius={'full'}
         />
       </div>
     </>
