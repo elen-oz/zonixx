@@ -14,14 +14,13 @@ interface DayExerciseListProps {
 
 export default function DayExerciseList({day}: DayExerciseListProps) {
     const {
-        trainingDay1,
-        trainingDay2,
-        trainingDay3,
+        // trainingDay1,
+        // trainingDay2,
+        // trainingDay3,
         removeExerciseFromDay,
         loadExercises
     } = useTrainingDaysStore();
     const exercises = useTrainingDaysStore((state) => state[day]);
-    // console.log('-=-=-= exercises', exercises);
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
 
@@ -30,15 +29,6 @@ export default function DayExerciseList({day}: DayExerciseListProps) {
         e.stopPropagation();
         onOpen();
     };
-
-    const handleRemoveExerciseClick = (e: React.MouseEvent) => {
-        // e.preventDefault();
-        // e.stopPropagation();
-        // removeExerciseFromDay(day, exercise.id);
-    };
-
-
-    // removeExerciseFromDay('day2', 3);
 
     useEffect(() => {
         loadExercises();
