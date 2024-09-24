@@ -19,9 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className='light'>
-      <body className={`${inter.className} relative min-h-screen px-4`}>
+      <body className={`${inter.className} relative min-h-screen p-0 md:px-4`}>
         <Providers>
-          <div className='p-3 lg:w-[1200px] mx-auto mt-[2rem] bg-white dark:bg-gray-700 shadow-xl mb-10'>
+          <div className='p-3 lg:w-[1200px] mx-auto mt-0 md:mt-[2rem] bg-white dark:bg-gray-700 shadow-xl mb-10'>
             <Header />
             <main>{children}</main>
           </div>

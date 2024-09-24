@@ -32,7 +32,7 @@ export default function DayExerciseList({day}: DayExerciseListProps) {
 
     useEffect(() => {
         loadExercises();
-    }, []);
+    }, [loadExercises]);
 
     return (
         <div className=''>

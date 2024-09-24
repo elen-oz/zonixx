@@ -6,7 +6,7 @@ import TrainingDaysSection from "@/app/profile/TrainingDaysSection";
 const MyPage = () => {
     return (
         <div className='pb-4'>
-            <section className='w-full py-12 text-center mx-auto px-4 sm:px-6 lg:px-8 z-20'>
+            <section className='hidden sm:block sm:w-[400px] md:w-full py-12 text-center mx-auto px-4 sm:px-6 lg:px-8 z-20'>
                 <h1 className='big-title'>
                     Profile
                 </h1>
@@ -22,7 +22,6 @@ const MyPage = () => {
             </section>
 
             <TrainingDaysSection />
-
             <FavoriteWorkoutsSection/>
         </div>
     );
