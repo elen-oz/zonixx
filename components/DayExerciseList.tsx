@@ -36,7 +36,9 @@ export default function DayExerciseList({day}: DayExerciseListProps) {
 
     return (
         <div className=''>
-            <h3 className="text-center">{day === 'trainingDay1' ? 'Day 1' : day === 'trainingDay2' ? 'Day 2' : 'Day 3'}</h3>
+            <div className='text-center'>
+            <h3 className="inline-block px-4 border-b-2 border-primary">{day === 'trainingDay1' ? 'Day 1' : day === 'trainingDay2' ? 'Day 2' : 'Day 3'}</h3>
+            </div>
 
             <ol className='list-decimal px-4 mb-4'>
                 {exercises.map((exercise) => (
@@ -52,7 +54,6 @@ export default function DayExerciseList({day}: DayExerciseListProps) {
                             />
                             <span>{exercise.name}</span>
                         </div>
-
 
                         <IoIosRemove onClick={()=>removeExerciseFromDay(day, exercise.id)} className='cursor-pointer hover:bg-primary-50 rounded-full'/>
                     </li>
