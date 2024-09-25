@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import HeroImg from '@/app/assets/images/hero5.webp';
+import HeroImage from '@/app/assets/images/hero7.webp';
 
 const StartSection = () => (
-  <section className="mb-10">
+  <section className="w-full py-6 text-center mx-auto px-4 sm:px-6 lg:px-8 z-20">
     <div className="flex items-center justify-center">
       <h2 className="text-xl sm:text-3xl md:text-4xl mt-7">
         push yourself harder to become better
