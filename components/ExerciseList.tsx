@@ -1,12 +1,12 @@
-import ExerciseListClient from "./ExerciseListClient";
-import type {Exercise} from "@/types/api";
+import type { Exercise } from '@/types/api';
+import ExerciseListClient from './ExerciseListClient';
 
 type ExerciseListServerProps = {
   exercises: Exercise[];
 };
 
-export default function ExerciseListServer({
-  exercises,
-}: ExerciseListServerProps) {
-  return <ExerciseListClient exercises={exercises} />;
-}
+const ExerciseListServer = ({ exercises }: ExerciseListServerProps) => (
+  <ExerciseListClient exercises={exercises} />
+);
+
+export default ExerciseListServer;

@@ -1,6 +1,5 @@
-import ExercisesClient from "./ExercisesClient";
+import ExercisesClient from './ExercisesClient';
 
+const ExercisesPage = async () => <ExercisesClient />;
 
-export default async function ExercisesPage() {
-    return <ExercisesClient />;
-}
+export default ExercisesPage;

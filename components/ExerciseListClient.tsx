@@ -1,17 +1,15 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Pagination } from "@nextui-org/react";
-import ExerciseCard from "./ExerciseCard";
-import type {Exercise} from "@/types/api";
+import { useState } from 'react';
+import { Pagination } from '@nextui-org/react';
+import type { Exercise } from '@/types/api';
+import ExerciseCard from './ExerciseCard';
 
 type ExerciseListClientProps = {
   exercises: Exercise[];
 };
 
-export default function ExerciseListClient({
-  exercises,
-}: ExerciseListClientProps) {
+const ExerciseListClient = ({ exercises }: ExerciseListClientProps) => {
   const exercisesPerPage = 12;
   const [currentPage, setCurrentPage] = useState(1);
   const numberPages = Math.ceil(exercises.length / exercisesPerPage);
@@ -27,8 +25,8 @@ export default function ExerciseListClient({
     <>
       <ul className="py-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {currentExercises.map((exercise: Exercise, index: number) => (
-          <li key={index}>
-            <ExerciseCard key={index} exercise={exercise} />
+          <li key={exercise.id}>
+            <ExerciseCard exercise={exercise} />
           </li>
         ))}
       </ul>
@@ -40,9 +38,11 @@ export default function ExerciseListClient({
           initialPage={1}
           page={currentPage}
           onChange={setCurrentPage}
-          radius={'full'}
+          radius="full"
         />
       </div>
     </>
   );
-}
+};
+
+export default ExerciseListClient;

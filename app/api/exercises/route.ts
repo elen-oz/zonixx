@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { fetchData, exerciseOptions } from "@/lib/fetchData";
+import { fetchData, exerciseOptions } from '@/lib/fetchData';
 
 export async function GET() {
-  const url = "https://exercisedb.p.rapidapi.com/exercises?limit=2000&offset=0";
+  const url = 'https://exercisedb.p.rapidapi.com/exercises?limit=2000&offset=0';
   const data = await fetchData(url, exerciseOptions);
   return NextResponse.json(data);
 }
