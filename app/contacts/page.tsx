@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import HeroImage from '@/app/assets/images/hero7.webp';
 
-const About = () => (
+const Page = () => (
   <section className="w-full py-12 text-center mx-auto px-4 sm:px-6 lg:px-8 z-20">
     <h1 className="big-title uppercase">Achieve your fitness goals</h1>
     <div className="relative">
@@ -21,4 +21,4 @@ const About = () => (
   </section>
 );
 
-export default About;
+export default Page;
