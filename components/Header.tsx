@@ -19,8 +19,8 @@ const Header = () => {
             </Link>
           </li>
           <div className=" md:w-[500px] flex justify-end items-center gap-2 md:gap-6">
-            <li className={`${pathname === '/about' ? 'active-nav-link' : 'nav-link'} px-2`}>
-              <Link href="/about" className="flex justify-center items-center gap-2">
+            <li className={`${pathname === '/' ? 'active-nav-link' : 'nav-link'} px-2`}>
+              <Link href="/" className="flex justify-center items-center gap-2">
                 <span className="hidden md:inline-block capitalize">About</span>
               </Link>
             </li>
