@@ -24,7 +24,7 @@ const ExerciseListClient = ({ exercises }: ExerciseListClientProps) => {
   return (
     <>
       <ul className="py-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {currentExercises.map((exercise: Exercise, index: number) => (
+        {currentExercises.map((exercise: Exercise) => (
           <li key={exercise.id}>
             <ExerciseCard exercise={exercise} />
           </li>

@@ -12,14 +12,21 @@ interface DayExerciseListProps {
   day: TrainingDay;
 }
 
+const getDayTitle = (day: TrainingDay): string => {
+  switch (day) {
+    case 'trainingDay1':
+      return 'Day 1';
+    case 'trainingDay2':
+      return 'Day 2';
+    case 'trainingDay3':
+      return 'Day 3';
+    default:
+      return 'Unknown Day';
+  }
+};
+
 const DayExerciseList = ({ day }: DayExerciseListProps) => {
-  const {
-    // trainingDay1,
-    // trainingDay2,
-    // trainingDay3,
-    removeExerciseFromDay,
-    loadExercises,
-  } = useTrainingDaysStore();
+  const { removeExerciseFromDay, loadExercises } = useTrainingDaysStore();
   const exercises = useTrainingDaysStore((state) => state[day]);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
@@ -36,9 +43,7 @@ const DayExerciseList = ({ day }: DayExerciseListProps) => {
   return (
     <div className="">
       <div className="text-center">
-        <h3 className="inline-block px-4 border-b-2 border-primary">
-          {day === 'trainingDay1' ? 'Day 1' : day === 'trainingDay2' ? 'Day 2' : 'Day 3'}
-        </h3>
+        <h3 className="inline-block px-4 border-b-2 border-primary">{getDayTitle(day)}</h3>
       </div>
 
       <ol className="list-decimal px-4 mb-4">

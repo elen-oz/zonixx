@@ -15,7 +15,7 @@ const ExerciseVideo = ({ exerciseVideos, name }: ExerciseVideoProps) => {
         Watch <span className="font-semibold capitalize">{name}</span> exercise videos:
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-x-3 md:gap-y-6">
-        {exerciseVideos?.slice(0, 6).map((item: any, index: any) => (
+        {exerciseVideos?.slice(0, 6).map((item: any) => (
           <a
             key={item.video.videoId}
             href={`https://www.youtube.com/watch?v=${item.video.videoId}`}

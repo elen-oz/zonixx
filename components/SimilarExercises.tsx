@@ -14,31 +14,25 @@ const SimilarExercises = ({
   equipmentExercises,
   target,
   equipment,
-}: SimilarExercisesProps) => {
-  return (
-    <>
-      <div className="mb-10">
-        <h2>
-          Other exercises that target is <span className="font-semibold capitalize">{target}</span>:
-        </h2>
-        {targetMuscleExercises.length ? (
-          <HorizontalScrollBar data={targetMuscleExercises} />
-        ) : (
-          <Spinner />
-        )}
-      </div>
-      <div className="mb-10">
-        <h2>
-          Other exercises with <span className="font-semibold capitalize">{equipment}</span>:
-        </h2>
-        {equipmentExercises.length ? (
-          <HorizontalScrollBar data={equipmentExercises} />
-        ) : (
-          <Spinner />
-        )}
-      </div>
-    </>
-  );
-};
+}: SimilarExercisesProps) => (
+  <>
+    <div className="mb-10">
+      <h2>
+        Other exercises that target is <span className="font-semibold capitalize">{target}</span>:
+      </h2>
+      {targetMuscleExercises.length ? (
+        <HorizontalScrollBar data={targetMuscleExercises} />
+      ) : (
+        <Spinner />
+      )}
+    </div>
+    <div className="mb-10">
+      <h2>
+        Other exercises with <span className="font-semibold capitalize">{equipment}</span>:
+      </h2>
+      {equipmentExercises.length ? <HorizontalScrollBar data={equipmentExercises} /> : <Spinner />}
+    </div>
+  </>
+);
 
 export default SimilarExercises;
