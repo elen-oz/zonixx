@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\" --ignore-path .gitignore",
-    "check-format": "prettier --check ."
+    "check-format": "prettier --check .",
+    "ngrok": "ngrok http http://localhost:3000"
   },
   "dependencies": {
     "@nextui-org/button": "^2.0.38",
