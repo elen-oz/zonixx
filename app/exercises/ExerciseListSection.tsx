@@ -3,13 +3,13 @@
 import { useState } from 'react';
 import { Pagination } from '@nextui-org/react';
 import type { Exercise } from '@/types/api';
-import ExerciseCard from './ExerciseCard';
+import ExerciseCard from '../../components/ExerciseCard';
 
-type ExerciseListClientProps = {
+type ExerciseListSectionProps = {
   exercises: Exercise[];
 };
 
-const ExerciseListClient = ({ exercises }: ExerciseListClientProps) => {
+const ExerciseListSection = ({ exercises }: ExerciseListSectionProps) => {
   const exercisesPerPage = 12;
   const [currentPage, setCurrentPage] = useState(1);
   const numberPages = Math.ceil(exercises.length / exercisesPerPage);
@@ -45,4 +45,4 @@ const ExerciseListClient = ({ exercises }: ExerciseListClientProps) => {
   );
 };
 
-export default ExerciseListClient;
+export default ExerciseListSection;
