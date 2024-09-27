@@ -12,7 +12,7 @@ const ExerciseVideo = ({ exerciseVideos, name }: ExerciseVideoProps) => {
   return (
     <div className="mb-10">
       <h2>
-        Watch <span className="font-semibold capitalize">{name}</span> exercise videos:
+        Watch <span className="font-heading underline">{name}</span> exercise videos:
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-x-3 md:gap-y-6">
         {exerciseVideos?.slice(0, 6).map((item: any) => (

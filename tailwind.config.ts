@@ -19,11 +19,7 @@ const config: Config = {
   },
   plugins: [
     nextui({
-      // addCommonColors: true,
       themes: {
-        // screens: {
-        //   lg: '1240px',
-        // },
         light: {
           colors: {
             background: '#e5e5e5',

@@ -31,7 +31,8 @@ const SmallExerciseCard = ({ exercise, removeWorkout }: ExerciseCardProps) => {
 
   return (
     <Card className="h-full pb-4 justify-between hover:shadow-xl hover:transition-all ease-in-out hover:border-1">
-      <Link href={`/exercises/${exercise.id}`} className="h-full">
+      {/* <Link href={`/exercises/${exercise.id}`} className="h-full"> */}
+      <div className="h-full">
         <CardHeader className="flex items-center justify-between">
           <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top" backdrop="blur">
             <ModalInfo exercise={exercise} isFavorite />
@@ -67,7 +68,7 @@ const SmallExerciseCard = ({ exercise, removeWorkout }: ExerciseCardProps) => {
             ))}
           </div>
         </CardBody>
-      </Link>
+      </div>
     </Card>
   );
 };

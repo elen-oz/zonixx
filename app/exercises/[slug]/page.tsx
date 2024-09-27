@@ -7,7 +7,6 @@ import type { Exercise, YoutubeVideo } from '@/types/api';
 
 export default async function ExerciseDetailPage({ params }: { params: { slug: string } }) {
   try {
-    // const exerciseDetail = await getExerciseData(params.slug);
     const exerciseDetail: Exercise = await fetchData(
       `https://exercisedb.p.rapidapi.com/exercises/exercise/${params.slug}`,
       exerciseOptions,
@@ -16,12 +15,6 @@ export default async function ExerciseDetailPage({ params }: { params: { slug: s
     if (!exerciseDetail) {
       return notFound();
     }
-
-    // const exerciseVideos =
-    //   (await fetchData(
-    //     `https://youtube-search-and-download.p.rapidapi.com/search?query=${exerciseDetail.name}`,
-    //     youtubeOptions,
-    //   )) || [];
 
     interface YouTubeSearchResult {
       contents: YoutubeVideo[];
@@ -33,19 +26,6 @@ export default async function ExerciseDetailPage({ params }: { params: { slug: s
       `https://youtube-search-and-download.p.rapidapi.com/search?query=${exerciseDetail.name}`,
       youtubeOptions,
     );
-
-    // const baseUrl = process.env.VERCEL_URL
-    //   ? `https://${process.env.VERCEL_URL}`
-    //   : "http://localhost:3000";
-
-    // const [targetMuscleExercises, equipmentExercises] = await Promise.all([
-    //   fetch(`${baseUrl}/api/exercises/target/${exerciseDetail.target}`)
-    //     .then((res) => res.json())
-    //     .catch(() => []),
-    //   fetch(`${baseUrl}/api/exercises/equipment/${exerciseDetail.equipment}`)
-    //     .then((res) => res.json())
-    //     .catch(() => []),
-    // ]);
 
     const targetMuscleExercises: Exercise[] = await fetchData(
       `https://exercisedb.p.rapidapi.com/exercises/target/${exerciseDetail.target}?limit=2000&offset=0`,

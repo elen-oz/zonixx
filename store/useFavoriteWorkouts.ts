@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import type { Exercise } from '@/types/api';
-import { exercises as initialExercises } from '@/data/exercisesData';
+import { exercises as initialExercises } from '@/data/initialFavoriteExercisesData';
 
 interface WorkoutStore {
   workouts: Exercise[];

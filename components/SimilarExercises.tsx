@@ -18,7 +18,7 @@ const SimilarExercises = ({
   <>
     <div className="mb-10">
       <h2>
-        Other exercises that target is <span className="font-semibold capitalize">{target}</span>:
+        Other exercises that target is <span className="font-heading underline">{target}</span>:
       </h2>
       {targetMuscleExercises.length ? (
         <HorizontalScrollBar data={targetMuscleExercises} />
@@ -28,7 +28,7 @@ const SimilarExercises = ({
     </div>
     <div className="mb-10">
       <h2>
-        Other exercises with <span className="font-semibold capitalize">{equipment}</span>:
+        Other exercises with <span className="font-heading underline">{equipment}</span>:
       </h2>
       {equipmentExercises.length ? <HorizontalScrollBar data={equipmentExercises} /> : <Spinner />}
     </div>
