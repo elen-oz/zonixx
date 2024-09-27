@@ -5,7 +5,6 @@ import { Modal, useDisclosure, Chip, Card, CardHeader, CardBody } from '@nextui-
 import { IoIosInformation } from 'react-icons/io';
 import { IoTrashOutline } from 'react-icons/io5';
 
-import Link from 'next/link';
 import type { Exercise } from '@/types/api';
 import ModalInfo from './ModalInfo';
 

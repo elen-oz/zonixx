@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import HeroImg from '@/app/assets/images/hero5.webp';
-import HeroImage from '@/app/assets/images/hero7.webp';
 
 const StartSection = () => (
   <section className="w-full py-6 text-center mx-auto px-4 sm:px-6 lg:px-8 z-20">
