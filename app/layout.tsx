@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Providers } from './providers';
+import { registerServiceWorker } from '@/utils/serviceWorkerRegistration';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,11 +19,16 @@ export const metadata: Metadata = {
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
     ],
   },
-  manifest: '/site.webmanifest',
+  manifest: '/manifest.json',
+  // viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
 };
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
   <html lang="en" className="light">
+    <head>
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      <title>ZONIXX</title>
+    </head>
     <body className={`${inter.className} relative min-h-screen p-0 md:px-4`}>
       <Providers>
         <div className="p-3 lg:w-[1200px] mx-auto mt-0 md:mt-[2rem] bg-white dark:bg-gray-700 shadow-xl md:mb-4">

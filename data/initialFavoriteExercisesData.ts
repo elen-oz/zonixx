@@ -232,21 +232,6 @@ export const exercises: Exercise[] = [
     ],
   },
   {
-    id: '5015',
-    name: 'Handstand Push-up',
-    bodyPart: 'shoulders',
-    equipment: 'body weight',
-    gifUrl: '',
-    target: 'delts',
-    secondaryMuscles: ['triceps', 'traps', 'abs'],
-    instructions: [
-      'Kick up into a handstand against a wall',
-      'Lower body by bending elbows',
-      'Push body back up to starting position',
-      'Repeat',
-    ],
-  },
-  {
     id: '5016',
     name: 'Toes-to-Bar',
     bodyPart: 'waist',
@@ -259,20 +244,6 @@ export const exercises: Exercise[] = [
       'Lift legs and touch toes to the bar',
       'Lower legs back down with control',
       'Repeat',
-    ],
-  },
-  {
-    id: '5017',
-    name: 'Assault Bike',
-    bodyPart: 'cardio',
-    equipment: 'stationary bike',
-    gifUrl: '',
-    target: 'cardiovascular system',
-    secondaryMuscles: ['quads', 'shoulders', 'abs'],
-    instructions: [
-      'Sit on assault bike and grab handles',
-      'Start pedaling while pushing and pulling the handles',
-      'Maintain a steady pace or follow interval protocol',
     ],
   },
   {
