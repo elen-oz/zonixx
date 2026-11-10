@@ -1,53 +1,44 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 import type { Exercise } from '@/types/api';
 import { exercises as initialExercises } from '@/data/initialFavoriteExercisesData';
+import { createPersistStorage, readLegacyJson } from './storage';
 
 interface WorkoutStore {
   workouts: Exercise[];
   addWorkout: (workout: Exercise) => void;
   removeWorkout: (workoutId: string) => void;
   clearAllWorkouts: () => void;
-  loadWorkouts: () => void;
 }
 
-export const useFavoriteWorkouts = create<WorkoutStore>((set, get) => ({
-  workouts: [...initialExercises],
+type PersistedWorkouts = Pick<WorkoutStore, 'workouts'>;
 
-  loadWorkouts: () => {
-    const storedWorkouts = localStorage.getItem('favoriteWorkouts');
-    if (storedWorkouts) {
-      set({ workouts: JSON.parse(storedWorkouts) });
-    } else {
-      set({ workouts: initialExercises });
-      localStorage.setItem('favoriteWorkouts', JSON.stringify(initialExercises));
-    }
-  },
+export const useFavoriteWorkouts = create<WorkoutStore>()(
+  persist(
+    (set, get) => ({
+      workouts: initialExercises,
 
-  addWorkout: (workout: Exercise) => {
-    const { workouts } = get();
-    const workoutExists = workouts.some((existingWorkout) => existingWorkout.id === workout.id);
+      addWorkout: (workout) => {
+        const { workouts } = get();
+        if (workouts.some((existing) => existing.id === workout.id)) return;
+        set({ workouts: [...workouts, workout] });
+      },
 
-    if (!workoutExists) {
-      const newWorkouts = [...workouts, workout];
-      set({ workouts: newWorkouts });
-      localStorage.setItem('favoriteWorkouts', JSON.stringify(newWorkouts));
-      console.info('Workout added');
-    } else {
-      console.info('Workout already exists');
-    }
-  },
+      removeWorkout: (workoutId) => {
+        set({ workouts: get().workouts.filter((workout) => workout.id !== workoutId) });
+      },
 
-  removeWorkout: (workoutId: string) => {
-    const { workouts } = get();
-    const newWorkouts = workouts.filter((workout) => workout.id !== workoutId);
-    set({ workouts: newWorkouts });
-    localStorage.setItem('favoriteWorkouts', JSON.stringify(newWorkouts));
-    console.info('Workout removed');
-  },
-
-  clearAllWorkouts: () => {
-    set({ workouts: [] });
-    localStorage.removeItem('favoriteWorkouts');
-    console.info('All workouts cleared');
-  },
-}));
+      clearAllWorkouts: () => set({ workouts: [] }),
+    }),
+    {
+      name: 'zonixx-favorite-workouts',
+      storage: createPersistStorage<PersistedWorkouts>(() => {
+        const workouts = readLegacyJson<Exercise[]>('favoriteWorkouts');
+        return workouts ? { workouts } : null;
+      }),
+      partialize: (state) => ({ workouts: state.workouts }),
+      // Rehydrated on the client in <Providers> so server and first client render match.
+      skipHydration: true,
+    },
+  ),
+);

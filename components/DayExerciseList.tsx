@@ -3,7 +3,7 @@
 import { IoIosInformation, IoIosRemove } from 'react-icons/io';
 import { useTrainingDaysStore } from '@/store/useTrainingDaysStore';
 import type { TrainingDay } from '@/types/api';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Modal, useDisclosure } from '@nextui-org/react';
 import ModalInfo from '@/components/ModalInfo';
 import AddExerciseToDayDropdown from './AddExerciseToDayDropdown';
@@ -26,7 +26,7 @@ const getDayTitle = (day: TrainingDay): string => {
 };
 
 const DayExerciseList = ({ day }: DayExerciseListProps) => {
-  const { removeExerciseFromDay, loadExercises } = useTrainingDaysStore();
+  const removeExerciseFromDay = useTrainingDaysStore((state) => state.removeExerciseFromDay);
   const exercises = useTrainingDaysStore((state) => state[day]);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
@@ -35,10 +35,6 @@ const DayExerciseList = ({ day }: DayExerciseListProps) => {
     e.stopPropagation();
     onOpen();
   };
-
-  useEffect(() => {
-    loadExercises();
-  }, [loadExercises]);
 
   return (
     <div className="">
