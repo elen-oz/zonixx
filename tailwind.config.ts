@@ -12,8 +12,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        heading: ['Anton', 'sans-serif'],
-        body: ['Oswald', 'system-ui'],
+        heading: ['var(--font-anton)', 'sans-serif'],
+        body: ['var(--font-oswald)', 'system-ui'],
       },
     },
   },
