@@ -3,8 +3,8 @@
 import { IoIosInformation, IoIosRemove } from 'react-icons/io';
 import { useTrainingDaysStore } from '@/store/useTrainingDaysStore';
 import type { Exercise, TrainingDay } from '@/types/api';
-import React, { useState } from 'react';
-import { Modal, useDisclosure } from '@nextui-org/react';
+import { useState } from 'react';
+import { Button, Modal, useDisclosure } from '@nextui-org/react';
 import ModalInfo from '@/components/ModalInfo';
 import AddExerciseToDayDropdown from './AddExerciseToDayDropdown';
 
@@ -32,9 +32,7 @@ const DayExerciseList = ({ day }: DayExerciseListProps) => {
   // One modal for the whole day, showing whichever exercise was clicked.
   const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(null);
 
-  const handleInfoClick = (e: React.MouseEvent, exercise: Exercise) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleInfoClick = (exercise: Exercise) => {
     setSelectedExercise(exercise);
     onOpen();
   };
@@ -53,18 +51,31 @@ const DayExerciseList = ({ day }: DayExerciseListProps) => {
         {exercises.map((exercise) => (
           <li key={exercise.id} className="flex items-center justify-between capitalize">
             <div className="flex items-center justify-between gap-2">
-              <IoIosInformation
-                onClick={(e) => handleInfoClick(e, exercise)}
-                size={15}
-                className="cursor-pointer bg-primary-50 hover:bg-primary-100 rounded-full"
-              />
+              <Button
+                isIconOnly
+                size="sm"
+                radius="full"
+                variant="light"
+                aria-label={`Quick info about ${exercise.name}`}
+                onPress={() => handleInfoClick(exercise)}
+                className="min-w-6 w-6 h-6"
+              >
+                <IoIosInformation size={15} className="bg-primary-50 rounded-full" />
+              </Button>
               <span>{exercise.name}</span>
             </div>
 
-            <IoIosRemove
-              onClick={() => removeExerciseFromDay(day, exercise.id)}
-              className="cursor-pointer hover:bg-primary-50 rounded-full"
-            />
+            <Button
+              isIconOnly
+              size="sm"
+              radius="full"
+              variant="light"
+              aria-label={`Remove ${exercise.name} from ${getDayTitle(day)}`}
+              onPress={() => removeExerciseFromDay(day, exercise.id)}
+              className="min-w-6 w-6 h-6"
+            >
+              <IoIosRemove />
+            </Button>
           </li>
         ))}
       </ol>

@@ -1,7 +1,6 @@
 'use client';
 
-import React from 'react';
-import { Modal, useDisclosure, Chip, Card, CardHeader, CardBody } from '@nextui-org/react';
+import { Button, Modal, useDisclosure, Chip, Card, CardHeader, CardBody } from '@nextui-org/react';
 import { IoIosInformation } from 'react-icons/io';
 import { IoTrashOutline } from 'react-icons/io5';
 
@@ -16,21 +15,8 @@ type ExerciseCardProps = {
 const SmallExerciseCard = ({ exercise, removeWorkout }: ExerciseCardProps) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  const handleInfoClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    onOpen();
-  };
-
-  const handleRemoveClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    removeWorkout(exercise.id);
-  };
-
   return (
     <Card className="h-full pb-4 justify-between hover:shadow-xl hover:transition-all ease-in-out hover:border-1">
-      {/* <Link href={`/exercises/${exercise.id}`} className="h-full"> */}
       <div className="h-full">
         <CardHeader className="flex items-center justify-between">
           <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top" backdrop="blur">
@@ -38,22 +24,34 @@ const SmallExerciseCard = ({ exercise, removeWorkout }: ExerciseCardProps) => {
           </Modal>
           <span className="border-b-4 border-primary capitalize px-2">{exercise.bodyPart}</span>
 
-          <IoTrashOutline
-            onClick={handleRemoveClick}
-            size={20}
-            className="p-1 cursor-pointer hover:bg-primary-50 rounded-full"
-          />
+          <Button
+            isIconOnly
+            size="sm"
+            radius="full"
+            variant="light"
+            aria-label={`Remove ${exercise.name} from favorites`}
+            onPress={() => removeWorkout(exercise.id)}
+            className="min-w-7 w-7 h-7"
+          >
+            <IoTrashOutline size={16} />
+          </Button>
         </CardHeader>
 
         <CardBody className="overflow-visible py-2">
           <div className="flex items-center gap-2 pb-2">
             <h4 className="uppercase text-xl">{exercise.name}</h4>
 
-            <IoIosInformation
-              onClick={handleInfoClick}
-              size={15}
-              className="cursor-pointer bg-primary-50 hover:bg-primary-100 rounded-full"
-            />
+            <Button
+              isIconOnly
+              size="sm"
+              radius="full"
+              variant="light"
+              aria-label={`Quick info about ${exercise.name}`}
+              onPress={onOpen}
+              className="min-w-6 w-6 h-6"
+            >
+              <IoIosInformation size={15} className="bg-primary-50 rounded-full" />
+            </Button>
           </div>
 
           <Chip isDisabled color="primary" size="sm" className="uppercase">
