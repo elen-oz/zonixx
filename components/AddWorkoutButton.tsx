@@ -2,9 +2,10 @@
 
 import { Button } from '@nextui-org/react';
 import { useFavoriteWorkouts } from '@/store/useFavoriteWorkouts';
+import type { Exercise } from '@/types/api';
 
 interface AddWorkoutButtonProps {
-  exercise: any;
+  exercise: Exercise;
   children?: string;
   secondary?: boolean;
 }

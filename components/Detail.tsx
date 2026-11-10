@@ -1,7 +1,12 @@
 import Image from 'next/image';
 import { AddWorkoutButton } from '@/components/AddWorkoutButton';
+import type { Exercise } from '@/types/api';
 
-const Detail = ({ exerciseDetail }: any) => {
+type DetailProps = {
+  exerciseDetail: Exercise;
+};
+
+const Detail = ({ exerciseDetail }: DetailProps) => {
   const { bodyPart, gifUrl, name, target, equipment } = exerciseDetail;
 
   return (
