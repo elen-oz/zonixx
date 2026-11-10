@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { fetchAllExercises } from '@/lib/api';
 
 export async function GET(request: NextRequest) {
-  const query = request.nextUrl.searchParams.get('q') ?? '';
+  const query = (request.nextUrl.searchParams.get('q') ?? '').trim().toLowerCase();
   const data = await fetchAllExercises();
 
   if (!data) {

@@ -1,24 +1,21 @@
 import { useState } from 'react';
 import { Input } from '@nextui-org/react';
 import { Button } from '@nextui-org/button';
-import { searchExercises } from '@/lib/exercisesClient';
-import type { Exercise } from '@/types/api';
 
 type SearchExerciseProps = {
-  handleExercisesData: (data: Exercise[]) => void;
+  onSearch: (query: string) => void;
 };
 
-const SearchExercises = ({ handleExercisesData }: SearchExerciseProps) => {
+const SearchExercises = ({ onSearch }: SearchExerciseProps) => {
   const [search, setSearch] = useState('');
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (search) {
-      const searchedExercises = await searchExercises(search);
-
+    const query = search.trim();
+    if (query) {
+      onSearch(query);
       setSearch('');
-      handleExercisesData(searchedExercises);
     }
   };
 
@@ -32,7 +29,9 @@ const SearchExercises = ({ handleExercisesData }: SearchExerciseProps) => {
         type="text"
         label="Search exercises"
         labelPlacement="outside"
-        onChange={(e) => setSearch(e.target.value)}
+        value={search}
+        onValueChange={setSearch}
+        onClear={() => setSearch('')}
       />
 
       <div className="md:pt-[calc(theme(fontSize.small)_+_10px)] ">
