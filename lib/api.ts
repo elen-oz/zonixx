@@ -1,23 +1,16 @@
+import type { Exercise } from '@/types/api';
 import { fetchData, exerciseOptions } from './fetchData';
 
-export const fetchExercises = async (bodyPart: string) => {
-  console.info(`Fetching exercises for body part: ${bodyPart}`);
+const EXERCISEDB_URL = 'https://exercisedb.p.rapidapi.com/exercises';
 
-  try {
-    let url;
-    if (bodyPart === 'all') {
-      url = 'https://exercisedb.p.rapidapi.com/exercises?limit=1400&offset=0';
-    } else {
-      url = `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}?limit=1400&offset=0`;
-    }
+export const fetchAllExercises = () =>
+  fetchData<Exercise[]>(`${EXERCISEDB_URL}?limit=1400&offset=0`, exerciseOptions);
 
-    const data = await fetchData(url, exerciseOptions);
+export const fetchExercises = (bodyPart: string) => {
+  if (bodyPart === 'all') return fetchAllExercises();
 
-    console.info(`Received data for ${bodyPart}: ${JSON.stringify(data).slice(0, 100)}...`);
-
-    return data;
-  } catch (error) {
-    console.error('Error fetching exercises:', error);
-    throw error;
-  }
+  return fetchData<Exercise[]>(
+    `${EXERCISEDB_URL}/bodyPart/${encodeURIComponent(bodyPart)}?limit=1400&offset=0`,
+    exerciseOptions,
+  );
 };

@@ -1,10 +1,25 @@
-import { NextResponse } from 'next/server';
-import { fetchData, exerciseOptions } from '@/lib/fetchData';
+import { NextRequest, NextResponse } from 'next/server';
+import { fetchAllExercises } from '@/lib/api';
 
-export async function GET() {
-  const url = 'https://exercisedb.p.rapidapi.com/exercises?limit=2000&offset=0';
-  const data = await fetchData(url, exerciseOptions);
-  return NextResponse.json(data);
+export async function GET(request: NextRequest) {
+  const query = request.nextUrl.searchParams.get('q') ?? '';
+  const data = await fetchAllExercises();
+
+  if (!data) {
+    return NextResponse.json({ error: 'Failed to fetch exercises' }, { status: 502 });
+  }
+
+  if (!query) return NextResponse.json(data);
+
+  const results = data.filter(
+    (exercise) =>
+      exercise.name.toLowerCase().includes(query) ||
+      exercise.target.toLowerCase().includes(query) ||
+      exercise.equipment.toLowerCase().includes(query) ||
+      exercise.bodyPart.toLowerCase().includes(query),
+  );
+
+  return NextResponse.json(results);
 }
 
 // import { NextRequest, NextResponse } from 'next/server';

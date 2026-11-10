@@ -7,7 +7,7 @@ import type { Exercise, YoutubeVideo } from '@/types/api';
 
 export default async function ExerciseDetailPage({ params }: { params: { slug: string } }) {
   try {
-    const exerciseDetail: Exercise = await fetchData(
+    const exerciseDetail = await fetchData<Exercise>(
       `https://exercisedb.p.rapidapi.com/exercises/exercise/${params.slug}`,
       exerciseOptions,
     );
@@ -22,19 +22,19 @@ export default async function ExerciseDetailPage({ params }: { params: { slug: s
       next: string;
     }
 
-    const { contents: exerciseVideos }: YouTubeSearchResult = await fetchData(
+    const { contents: exerciseVideos } = (await fetchData<YouTubeSearchResult>(
       `https://youtube-search-and-download.p.rapidapi.com/search?query=${exerciseDetail.name}`,
       youtubeOptions,
-    );
+    )) as YouTubeSearchResult;
 
-    const targetMuscleExercises: Exercise[] = await fetchData(
+    const targetMuscleExercises = (await fetchData<Exercise[]>(
       `https://exercisedb.p.rapidapi.com/exercises/target/${exerciseDetail.target}?limit=2000&offset=0`,
       exerciseOptions,
-    );
-    const equipmentExercises: Exercise[] = await fetchData(
+    )) as Exercise[];
+    const equipmentExercises = (await fetchData<Exercise[]>(
       `https://exercisedb.p.rapidapi.com/exercises/equipment/${exerciseDetail.equipment}?limit=2000&offset=0`,
       exerciseOptions,
-    );
+    )) as Exercise[];
 
     return (
       <>

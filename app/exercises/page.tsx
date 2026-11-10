@@ -5,7 +5,7 @@ import type { Exercise } from '@/types/api';
 import SearchExercises from '@/components/SearchExercises';
 import ExerciseListSection from '@/app/exercises/ExerciseListSection';
 import { Chip } from '@nextui-org/react';
-import { fetchExercises } from '@/lib/api';
+import { getExercisesByBodyPart } from '@/lib/exercisesClient';
 import StartSection from '@/app/exercises/StartSection';
 
 const bodyParts = [
@@ -32,7 +32,7 @@ const Page = () => {
     setError(null);
     try {
       console.info(`[Client] Fetching exercises for body part: ${selectedBodyPart}`);
-      const data = await fetchExercises(selectedBodyPart);
+      const data = await getExercisesByBodyPart(selectedBodyPart);
       if (Array.isArray(data) && data.length > 0) {
         setExercises(data);
         console.info(`[Client] Fetched ${data.length} exercises for ${selectedBodyPart}`);
