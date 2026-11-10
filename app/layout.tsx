@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Anton, Oswald } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
@@ -20,15 +20,14 @@ export const metadata: Metadata = {
     ],
   },
   manifest: '/manifest.json',
-  // viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+};
+
+export const viewport: Viewport = {
+  themeColor: '#2e1065',
 };
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
   <html lang="en" className={`light ${anton.variable} ${oswald.variable}`}>
-    <head>
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-      <title>ZONIXX</title>
-    </head>
     <body className="relative min-h-screen p-0 md:px-4">
       <Providers>
         <div className="p-3 lg:w-[1200px] mx-auto mt-0 md:mt-[2rem] bg-white dark:bg-gray-700 shadow-xl md:mb-4">
