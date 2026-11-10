@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import ImgSection2 from '@/app/assets/images/hero4.webp';
-import { Button } from '@nextui-org/button';
+import { Button } from '@nextui-org/react';
 import Link from 'next/link';
 import HeroImg from '@/app/assets/images/hero.webp';
 import ImgSection3 from '@/app/assets/images/hero6.webp';

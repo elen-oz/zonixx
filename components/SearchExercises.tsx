@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Input } from '@nextui-org/react';
-import { Button } from '@nextui-org/button';
+import { Button, Input } from '@nextui-org/react';
 
 type SearchExerciseProps = {
   onSearch: (query: string) => void;

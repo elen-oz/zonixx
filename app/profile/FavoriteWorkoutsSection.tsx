@@ -2,7 +2,7 @@
 
 import { useFavoriteWorkouts } from '@/store/useFavoriteWorkouts';
 import FavoriteWorkoutsList from '@/components/FavoriteWorkoutsList';
-import { Button } from '@nextui-org/button';
+import { Button } from '@nextui-org/react';
 import Link from 'next/link';
 
 const FavoriteWorkoutsSection = () => {
