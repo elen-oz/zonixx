@@ -27,6 +27,7 @@ const Page = () => {
   const [exercises, setExercises] = useState<Exercise[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [selectedBodyPart, setSelectedBodyPart] = useState<string | null>(null);
   const latestRequest = useRef(0);
 
   const loadExercises = async (request: () => Promise<Exercise[]>) => {
@@ -50,10 +51,15 @@ const Page = () => {
     }
   };
 
-  const handleBodyPartChange = (bodyPart: string) =>
+  const handleBodyPartChange = (bodyPart: string) => {
+    setSelectedBodyPart(bodyPart);
     loadExercises(() => getExercisesByBodyPart(bodyPart));
+  };
 
-  const handleSearch = (query: string) => loadExercises(() => searchExercises(query));
+  const handleSearch = (query: string) => {
+    setSelectedBodyPart(null);
+    loadExercises(() => searchExercises(query));
+  };
 
   const renderResults = () => {
     if (exercises === null) return <StartSection />;
@@ -74,8 +80,12 @@ const Page = () => {
           {bodyParts.map((item) => (
             <li key={item}>
               <Chip
+                as="button"
+                aria-pressed={selectedBodyPart === item}
                 onClick={() => handleBodyPartChange(item)}
-                className="bg-blue-50 hover:cursor-pointer active:bg-primary active:text-white"
+                className={`hover:cursor-pointer active:bg-primary active:text-white ${
+                  selectedBodyPart === item ? 'bg-primary text-white' : 'bg-blue-50'
+                }`}
               >
                 {item}
               </Chip>
