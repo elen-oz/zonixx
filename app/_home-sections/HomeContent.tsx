@@ -114,7 +114,7 @@ const HomeContent = () => (
           <h2 className="text-4xl sm:text-5xl my-7">Personal profile</h2>
           <Button
             as={Link}
-            href="/exercises"
+            href="/profile"
             className="font-semibold uppercase"
             variant="light"
             radius="full"
