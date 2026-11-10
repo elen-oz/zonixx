@@ -3,43 +3,41 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+const navLinks = [
+  { href: '/', label: 'About' },
+  { href: '/exercises', label: 'exercises' },
+  { href: '/profile', label: 'profile' },
+  // Hidden on small screens to save space.
+  { href: '/contacts', label: 'Contacts', className: 'hidden md:block' },
+];
+
 const Header = () => {
   const pathname = usePathname();
 
   return (
     <header>
-      <nav>
-        <ul className="w-full flex justify-between items-center">
-          <li>
-            <Link
-              href="/"
-              className="text-3xl font-extrabold text-black sm:text-5xl font-heading uppercase"
+      <nav className="w-full flex justify-between items-center">
+        <Link
+          href="/"
+          className="text-3xl font-extrabold text-black sm:text-5xl font-heading uppercase"
+        >
+          zonixx
+        </Link>
+        <ul className=" md:w-[500px] flex justify-end items-center gap-2 md:gap-6">
+          {navLinks.map(({ href, label, className = '' }) => (
+            <li
+              key={href}
+              className={`${pathname === href ? 'active-nav-link' : 'nav-link'} px-2 ${className}`}
             >
-              zonixx
-            </Link>
-          </li>
-          <div className=" md:w-[500px] flex justify-end items-center gap-2 md:gap-6">
-            <li className={`${pathname === '/' ? 'active-nav-link' : 'nav-link'} px-2`}>
-              <Link href="/" className="flex justify-center items-center gap-2">
-                <span className="capitalize">About</span>
+              <Link
+                href={href}
+                aria-current={pathname === href ? 'page' : undefined}
+                className="flex justify-center items-center gap-2"
+              >
+                <span className="capitalize">{label}</span>
               </Link>
             </li>
-            <li className={`${pathname === '/exercises' ? 'active-nav-link' : 'nav-link'} px-2`}>
-              <Link href="/exercises" className="flex justify-center items-center gap-2">
-                <span className=" capitalize">exercises</span>
-              </Link>
-            </li>
-            <li className={`${pathname === '/profile' ? 'active-nav-link' : 'nav-link'} px-2`}>
-              <Link href="/profile" className="flex justify-center items-center gap-2">
-                <span className="capitalize">profile</span>
-              </Link>
-            </li>
-            <li className={`${pathname === '/contacts' ? 'active-nav-link' : 'nav-link'} px-2`}>
-              <Link href="/contacts" className="flex justify-center items-center gap-2">
-                <span className="hidden md:inline-block capitalize">Contacts</span>
-              </Link>
-            </li>
-          </div>
+          ))}
         </ul>
       </nav>
     </header>
