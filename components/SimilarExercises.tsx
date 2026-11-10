@@ -1,4 +1,3 @@
-import { Spinner } from '@nextui-org/spinner';
 import type { Exercise } from '@/types/api';
 import HorizontalScrollBar from './HorizontalScrollBar';
 
@@ -23,14 +22,18 @@ const SimilarExercises = ({
       {targetMuscleExercises.length ? (
         <HorizontalScrollBar data={targetMuscleExercises} />
       ) : (
-        <Spinner />
+        <p>No similar exercises found.</p>
       )}
     </div>
     <div className="mb-10">
       <h2>
         Other exercises with <span className="font-heading underline">{equipment}</span>:
       </h2>
-      {equipmentExercises.length ? <HorizontalScrollBar data={equipmentExercises} /> : <Spinner />}
+      {equipmentExercises.length ? (
+        <HorizontalScrollBar data={equipmentExercises} />
+      ) : (
+        <p>No exercises found for this equipment.</p>
+      )}
     </div>
   </>
 );
