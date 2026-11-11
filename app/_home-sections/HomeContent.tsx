@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import ImgSection2 from '@/app/assets/images/hero4.webp';
-import { Button } from '@nextui-org/button';
+import { Button } from '@nextui-org/react';
 import Link from 'next/link';
 import HeroImg from '@/app/assets/images/hero.webp';
 import ImgSection3 from '@/app/assets/images/hero6.webp';
@@ -14,7 +14,7 @@ const HomeContent = () => (
         <div className="relative">
           <Image
             src={ImgSection2}
-            alt="Hero image"
+            alt=""
             width={1112}
             className="w-full h-[300px] md:h-[600px] object-cover rounded-[4rem]"
           />
@@ -74,7 +74,7 @@ const HomeContent = () => (
         <div className="relative">
           <Image
             src={HeroImg}
-            alt="image"
+            alt=""
             width={1112}
             className="w-full h-[300px] md:h-[600px] object-cover rounded-[4rem]"
           />
@@ -114,7 +114,7 @@ const HomeContent = () => (
           <h2 className="text-4xl sm:text-5xl my-7">Personal profile</h2>
           <Button
             as={Link}
-            href="/exercises"
+            href="/profile"
             className="font-semibold uppercase"
             variant="light"
             radius="full"
@@ -126,7 +126,7 @@ const HomeContent = () => (
         <div className="relative">
           <Image
             src={ImgSection3}
-            alt="image"
+            alt=""
             width={1112}
             className="w-full h-[300px] md:h-[600px] object-cover rounded-[4rem]"
           />

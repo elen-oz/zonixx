@@ -18,16 +18,5 @@
         "unnamedComponents": "arrow-function"
       }
     ]
-    //    "overrides": [
-    //      {
-    //        "files": ["**/*.ts", "**/*.tsx"],
-    //        "rules": {
-    //          "no-console": "off"
-    //        },
-    //        "env": {
-    //          "development": true
-    //        }
-    //      }
-    //    ]
   }
 }

@@ -8,8 +8,8 @@ const NotFound = () => (
       <p>The page you are looking for does not exist.</p>
 
       <p className="text-xl md:text-2xl">Let&#x27;s start again?</p>
-      <Button radius="none" variant="ghost">
-        <Link href="/">Yes, please</Link>
+      <Button as={Link} href="/" radius="none" variant="ghost">
+        Yes, please
       </Button>
     </div>
   </div>

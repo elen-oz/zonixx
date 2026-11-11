@@ -73,6 +73,7 @@ This project uses the following external APIs from RapidAPI:
      EXERCISEDB_HOST=exercisedb.p.rapidapi.com
      YOUTUBE_HOST=youtube-search-and-download.p.rapidapi.com
      ```
+   - These variables are only read on the server. The browser calls this app's `/api/exercises` routes instead of RapidAPI, so the key is never sent to the client. Do not prefix them with `NEXT_PUBLIC_`.
 4. Run the development server:
 
    ```

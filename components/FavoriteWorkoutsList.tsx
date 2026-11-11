@@ -1,15 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
 import { useFavoriteWorkouts } from '@/store/useFavoriteWorkouts';
 import SmallExerciseCard from './SmallExerciseCard';
 
 const FavoriteWorkoutsList = () => {
-  const { workouts, loadWorkouts, removeWorkout } = useFavoriteWorkouts();
-
-  useEffect(() => {
-    loadWorkouts();
-  }, [loadWorkouts]);
+  const { workouts, removeWorkout } = useFavoriteWorkouts();
 
   return (
     <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4">

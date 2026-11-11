@@ -1,11 +1,12 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import type { Metadata, Viewport } from 'next';
+import { Anton, Oswald } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Providers } from './providers';
 
-const inter = Inter({ subsets: ['latin'] });
+const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-anton' });
+const oswald = Oswald({ subsets: ['latin'], variable: '--font-oswald' });
 
 export const metadata: Metadata = {
   title: 'ZONIXX',
@@ -19,16 +20,15 @@ export const metadata: Metadata = {
     ],
   },
   manifest: '/manifest.json',
-  // viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+};
+
+export const viewport: Viewport = {
+  themeColor: '#2e1065',
 };
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
-  <html lang="en" className="light">
-    <head>
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-      <title>ZONIXX</title>
-    </head>
-    <body className={`${inter.className} relative min-h-screen p-0 md:px-4`}>
+  <html lang="en" className={`light ${anton.variable} ${oswald.variable}`}>
+    <body className="relative min-h-screen p-0 md:px-4">
       <Providers>
         <div className="p-3 lg:w-[1200px] mx-auto mt-0 md:mt-[2rem] bg-white dark:bg-gray-700 shadow-xl md:mb-4">
           <Header />

@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import type { Exercise } from '@/types/api';
 import SearchExercises from '@/components/SearchExercises';
 import ExerciseListSection from '@/app/exercises/ExerciseListSection';
 import { Chip } from '@nextui-org/react';
-import { fetchExercises } from '@/lib/api';
+import { getExercisesByBodyPart, searchExercises } from '@/lib/exercisesClient';
 import StartSection from '@/app/exercises/StartSection';
 
 const bodyParts = [
@@ -23,39 +23,50 @@ const bodyParts = [
 ];
 
 const Page = () => {
-  const [exercises, setExercises] = useState<Exercise[]>([]);
+  // null = nothing requested yet (show the intro), [] = request returned no matches.
+  const [exercises, setExercises] = useState<Exercise[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [selectedBodyPart, setSelectedBodyPart] = useState<string | null>(null);
+  const latestRequest = useRef(0);
 
-  const fetchExercisesByBodyPart = async (selectedBodyPart: string = 'all') => {
+  const loadExercises = async (request: () => Promise<Exercise[]>) => {
+    latestRequest.current += 1;
+    const requestId = latestRequest.current;
     setIsLoading(true);
     setError(null);
+
     try {
-      console.info(`[Client] Fetching exercises for body part: ${selectedBodyPart}`);
-      const data = await fetchExercises(selectedBodyPart);
-      if (Array.isArray(data) && data.length > 0) {
-        setExercises(data);
-        console.info(`[Client] Fetched ${data.length} exercises for ${selectedBodyPart}`);
-      } else {
-        throw new Error('No exercises found or invalid data received from API');
-      }
+      const data = await request();
+      // Ignore a slow response if the user has already asked for something else.
+      if (requestId === latestRequest.current) setExercises(data);
     } catch (err) {
       console.error('[Client] Error fetching exercise data:', err);
-      setError('Failed to fetch exercises. Please try again.');
-      setExercises([]);
+      if (requestId === latestRequest.current) {
+        setError('Failed to fetch exercises. Please try again.');
+        setExercises(null);
+      }
     } finally {
-      setIsLoading(false);
+      if (requestId === latestRequest.current) setIsLoading(false);
     }
   };
 
-  const handleBodyPartChange = async (newBodyPart: string) => {
-    console.info(`[Client] Body part changed to: > ${newBodyPart} <`);
-    await fetchExercisesByBodyPart(newBodyPart);
+  const handleBodyPartChange = (bodyPart: string) => {
+    setSelectedBodyPart(bodyPart);
+    loadExercises(() => getExercisesByBodyPart(bodyPart));
   };
 
-  const handleExercisesData = (data: Exercise[]) => {
-    console.info(`[Client] Search results: ${data.length} exercises`);
-    setExercises(data);
+  const handleSearch = (query: string) => {
+    setSelectedBodyPart(null);
+    loadExercises(() => searchExercises(query));
+  };
+
+  const renderResults = () => {
+    if (exercises === null) return <StartSection />;
+    if (exercises.length === 0) {
+      return <p className="text-center py-10">No exercises found. Try another search.</p>;
+    }
+    return <ExerciseListSection exercises={exercises} />;
   };
 
   return (
@@ -64,13 +75,17 @@ const Page = () => {
         <h2 className="text-3xl font-extrabold text-black dark:text-white sm:text-4xl">
           Exercises
         </h2>
-        <SearchExercises handleExercisesData={handleExercisesData} />
+        <SearchExercises onSearch={handleSearch} />
         <ul className="py-8 w-full md:px-10 max-w-[550px] flex gap-1 flex-wrap justify-center">
           {bodyParts.map((item) => (
             <li key={item}>
               <Chip
+                as="button"
+                aria-pressed={selectedBodyPart === item}
                 onClick={() => handleBodyPartChange(item)}
-                className="bg-blue-50 hover:cursor-pointer active:bg-primary active:text-white"
+                className={`hover:cursor-pointer active:bg-primary active:text-white ${
+                  selectedBodyPart === item ? 'bg-primary text-white' : 'bg-blue-50'
+                }`}
               >
                 {item}
               </Chip>
@@ -82,7 +97,7 @@ const Page = () => {
       {isLoading && <p>Loading exercises...</p>}
       {error && <p className="error">{error}</p>}
 
-      {exercises.length > 0 ? <ExerciseListSection exercises={exercises} /> : <StartSection />}
+      {renderResults()}
     </>
   );
 };

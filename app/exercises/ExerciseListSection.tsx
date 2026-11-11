@@ -12,6 +12,14 @@ type ExerciseListSectionProps = {
 const ExerciseListSection = ({ exercises }: ExerciseListSectionProps) => {
   const exercisesPerPage = 12;
   const [currentPage, setCurrentPage] = useState(1);
+  const [prevExercises, setPrevExercises] = useState(exercises);
+
+  // New search or body part: go back to the first page (page 10 may not exist anymore).
+  if (exercises !== prevExercises) {
+    setPrevExercises(exercises);
+    setCurrentPage(1);
+  }
+
   const numberPages = Math.ceil(exercises.length / exercisesPerPage);
 
   const indexOfLastExercise = currentPage * exercisesPerPage;

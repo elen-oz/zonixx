@@ -1,74 +1,36 @@
 import type { ApiOptions } from '@/types/api';
 
-export const exerciseOptions = {
+// Server-only: these env vars are not prefixed with NEXT_PUBLIC_, so they never reach the browser.
+export const exerciseOptions: ApiOptions = {
   method: 'GET',
   headers: {
-    'x-rapidapi-key': process.env.NEXT_PUBLIC_API_KEY || '',
-    'x-rapidapi-host': process.env.NEXT_PUBLIC_API_HOST_EXDB || '',
+    'x-rapidapi-key': process.env.RAPIDAPI_KEY || '',
+    'x-rapidapi-host': process.env.EXERCISEDB_HOST || '',
   },
 };
 
-export const youtubeOptions = {
+export const youtubeOptions: ApiOptions = {
   method: 'GET',
   headers: {
-    'x-rapidapi-key': process.env.NEXT_PUBLIC_API_KEY || '',
-    'x-rapidapi-host': process.env.NEXT_PUBLIC_API_HOST_YT || '',
+    'x-rapidapi-key': process.env.RAPIDAPI_KEY || '',
+    'x-rapidapi-host': process.env.YOUTUBE_HOST || '',
   },
 };
 
-const isClient = typeof window !== 'undefined';
+const ONE_HOUR = 3600;
 
-const getFromCache = (key: string) => {
-  if (!isClient) return null;
-  const item = localStorage.getItem(key);
-  if (item) {
-    const { data, timestamp } = JSON.parse(item);
-    if (Date.now() - timestamp < 3600000) {
-      // 1 hour
-      console.info(`[Cache] Using cached data for: ${key}`);
-      return data;
-    }
-  }
-  return null;
-};
-
-const setToCache = (key: string, data: any) => {
-  if (!isClient) return;
-  const item = JSON.stringify({ data, timestamp: Date.now() });
-  localStorage.setItem(key, item);
-  console.info(`[Cache] Stored data in cache for: ${key}`);
-};
-
-export const fetchData = async (url: string, options: ApiOptions) => {
-  console.info(`[Fetch] Attempting to fetch data for URL: ${url}`);
-
-  if (isClient) {
-    const cachedData = getFromCache(url);
-    if (cachedData) {
-      console.info(`[Fetch] Returning cached data for: ${url}`);
-      return cachedData;
-    }
-  }
-
+export const fetchData = async <T>(url: string, options: ApiOptions): Promise<T | null> => {
   try {
-    console.info(`[Fetch] No cache hit, fetching from API: ${url}`);
-    const response = await fetch(url, options);
+    const response = await fetch(url, { ...options, next: { revalidate: ONE_HOUR } });
 
     if (!response.ok) {
-      console.error(`[Fetch] HTTP error! Status: ${response.status}`);
+      console.error(`[Fetch] ${url} failed with status ${response.status}`);
       return null;
     }
 
-    const data = await response.json();
-    console.info(`[Fetch] Received data from API. Data length: ${JSON.stringify(data).length}`);
-
-    if (isClient) {
-      setToCache(url, data);
-    }
-
-    return data;
+    return (await response.json()) as T;
   } catch (error) {
-    console.error('[Fetch] Fetch data error:', error);
+    console.error(`[Fetch] ${url} failed:`, error);
     return null;
   }
 };

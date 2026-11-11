@@ -25,6 +25,9 @@ const ModalInfo = ({ exercise, isFavorite = false }: ModalInfoProps) => {
               alt={exercise.name}
               width={370}
               height={370}
+              // Remote exercise GIFs are animated and hosted by ExerciseDB: serve them as-is
+              // (next/image would otherwise reject the unconfigured remote host).
+              unoptimized={Boolean(exercise.gifUrl)}
               className="object-cover rounded-xl"
             />
 

@@ -1,35 +1,20 @@
 import { useState } from 'react';
-import { Input } from '@nextui-org/react';
-import { Button } from '@nextui-org/button';
-import { fetchData, exerciseOptions } from '@/lib/fetchData';
-import type { Exercise } from '@/types/api';
+import { Button, Input } from '@nextui-org/react';
 
 type SearchExerciseProps = {
-  handleExercisesData: (data: Exercise[]) => void;
+  onSearch: (query: string) => void;
 };
 
-const SearchExercises = ({ handleExercisesData }: SearchExerciseProps) => {
+const SearchExercises = ({ onSearch }: SearchExerciseProps) => {
   const [search, setSearch] = useState('');
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (search) {
-      const exercisesData: Exercise[] = await fetchData(
-        'https://exercisedb.p.rapidapi.com/exercises?limit=2000&offset=0',
-        exerciseOptions,
-      );
-
-      const searchedExercises = exercisesData.filter(
-        (exercise: any) =>
-          exercise.name.toLowerCase().includes(search) ||
-          exercise.target.toLowerCase().includes(search) ||
-          exercise.equipment.toLowerCase().includes(search) ||
-          exercise.bodyPart.toLowerCase().includes(search),
-      );
-
+    const query = search.trim();
+    if (query) {
+      onSearch(query);
       setSearch('');
-      handleExercisesData(searchedExercises);
     }
   };
 
@@ -43,7 +28,9 @@ const SearchExercises = ({ handleExercisesData }: SearchExerciseProps) => {
         type="text"
         label="Search exercises"
         labelPlacement="outside"
-        onChange={(e) => setSearch(e.target.value)}
+        value={search}
+        onValueChange={setSearch}
+        onClear={() => setSearch('')}
       />
 
       <div className="md:pt-[calc(theme(fontSize.small)_+_10px)] ">

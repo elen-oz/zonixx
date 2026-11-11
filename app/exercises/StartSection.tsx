@@ -12,7 +12,7 @@ const StartSection = () => (
     <div className="relative">
       <Image
         src={HeroImg}
-        alt="image"
+        alt=""
         width={1112}
         className="w-full h-[300px] md:h-[600px] object-cover rounded-[4rem]"
       />
